@@ -11,17 +11,21 @@ async def start(message: types.Message):
                          'Для начала ознакомься с инструкцией как со мной работать и особенно удели внимание '
                          'по работе с поисковиком, иначе я не правильно отвечу на твой вопрос...')
     await message.answer("Давай знакомиться, напиши как тебя зовут.")
+    await Users.name.set()
 
 
-@dp.message_handler(text='12')
-async def command_name(message: types.Message):
+@dp.message_handler(state=Users.name)
+async def command_name(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать обучение')
-    await message.answer('Приятно познакомиться, (Имя), посмотри приветсвенное видео с '
-                         'основателем "Кыстыбый" - Азатом.', reply_markup=markup)
+    async with state.proxy() as data:
+        data['name'] = message.text
+        await message.answer(f'Приятно познакомиться, {message.text}, посмотри приветсвенное видео с '
+                             'основателем "Кыстыбый" - Азатом.', reply_markup=markup)
+        await state.finish()
 
 
-@dp.message_handler(text='Начать обучение')
+@dp.message_handler(text='Начать обучение', state=None)
 async def start_education(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я понял(а), продолжим обучение.')
@@ -32,7 +36,7 @@ async def start_education(message: types.Message):
     await message.answer("Начнем с первой темы 'Внешний вид на рабочем месте'", reply_markup=markup)
 
 
-@dp.message_handler(text='Я понял(а), продолжим обучение.', state=None)
+@dp.message_handler(text='Я понял(а), продолжим обучение.')
 async def i_undestand(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('1. Парина')
@@ -40,166 +44,201 @@ async def i_undestand(message: types.Message):
     markup.add('3. Спарткавоская')
     markup.add('4. Ямашева')
     markup.add('5. Куллахметова')
-    await Users.street.set()
     await message.answer("Выбери свою точку", reply_markup=markup)
 
 
-@dp.message_handler(text='1. Парина', state=Users.street)
-async def parina(message: types.Message, state: FSMContext):
+@dp.message_handler(text='1. Парина')
+async def parina(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['street'] = message.text
-        await Users.next()
-        await message.answer('Тут видео и файл', reply_markup=markup)
+    await message.answer('Тут видео и файл', reply_markup=markup)
 
 
-@dp.message_handler(text='2. Пушкина', state=Users.street)
-async def pushkina(message: types.Message, state: FSMContext):
+@dp.message_handler(text='2. Пушкина')
+async def pushkina(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['street'] = message.text
-        await Users.next()
-        await message.answer('Тут видео и файл', reply_markup=markup)
+    await message.answer('Тут видео и файл', reply_markup=markup)
 
 
-@dp.message_handler(text='3. Спарткавоская', state=Users.street)
-async def spart(message: types.Message, state: FSMContext):
+@dp.message_handler(text='3. Спарткавоская')
+async def spart(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['street'] = message.text
-        await Users.next()
-        await message.answer('Тут видео и файл', reply_markup=markup)
+    await message.answer('Тут видео и файл', reply_markup=markup)
 
 
-@dp.message_handler(text='4. Ямашева', state=Users.street)
-async def yamash(message: types.Message, state: FSMContext):
+@dp.message_handler(text='4. Ямашева')
+async def yamash(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['street'] = message.text
-        await Users.next()
-        await message.answer('Тут видео и файл', reply_markup=markup)
+    await message.answer('Тут видео и файл', reply_markup=markup)
 
 
-@dp.message_handler(text='5. Куллахметова', state=Users.street)
-async def kullah(message: types.Message, state: FSMContext):
+@dp.message_handler(text='5. Куллахметова')
+async def kullah(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['street'] = message.text
-        await Users.next()
-        await message.answer('Тут видео и файл', reply_markup=markup)
+    await message.answer('Тут видео и файл', reply_markup=markup)
 
 
-@dp.message_handler(text='Я посмотрел(а), го дальше :)', state=Users.video_1)
-async def done_video(message: types.Message, state: FSMContext):
+@dp.message_handler(text='Я посмотрел(а), го дальше :)')
+async def done_video(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :).')
-    async with state.proxy() as data:
-        data['video_1'] = 'done'
-        await Users.next()
-        await message.answer("А Сейчас мы с тобой изучим меню по разделам", reply_markup=markup)
-        await message.answer('Тут тоже видео и материалы')
+    await message.answer("А Сейчас мы с тобой изучим меню по разделам", reply_markup=markup)
+    await message.answer('Тут тоже видео и материалы')
 
 
-@dp.message_handler(text='Я посмотрел(а), го дальше :).', state=Users.video_2)
-async def done_video_2(message: types.Message, state: FSMContext):
+@dp.message_handler(text='Я посмотрел(а), го дальше :).')
+async def done_video_2(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('1. Чип чеби')
-    markup.add('2. Алтын чеби')
-    markup.add('3. Кояш')
-    markup.add('4. Батыр')
-    markup.add('5. Блэк Татар')
-    markup.add('6. Су анасы')
-    async with state.proxy() as data:
-        data['video_2'] = 'done'
-        await Users.next()
-        await message.answer("Давай рассмотрим составы кыстыбышек в наборе 'Комбо'", reply_markup=markup)
+    await message.answer("Давай рассмотрим составы кыстыбышек в наборе 'Комбо'", reply_markup=markup)
 
 
-@dp.message_handler(text='1. Чип чеби', state=Users.one)
-async def chip(message: types.Message, state: FSMContext):
+@dp.message_handler(text='1. Чип чеби')
+async def chip(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('2. Алтын чеби')
-    markup.add('3. Кояш')
-    markup.add('4. Батыр')
-    markup.add('5. Блэк Татар')
-    markup.add('6. Су анасы')
-    async with state.proxy() as data:
-        data['one'] = message.text
-        await Users.next()
-        await message.answer('тут меняем клаву', reply_markup=markup)
+    await message.answer('тут меняем клаву', reply_markup=markup)
 
 
-@dp.message_handler(text='2. Алтын чеби', state=Users.two)
-async def altyn(message: types.Message, state: FSMContext):
+@dp.message_handler(text='2. Алтын чеби')
+async def altyn(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('1. Чип чеби')
     markup.add('3. Кояш')
-    markup.add('4. Батыр')
-    markup.add('5. Блэк Татар')
-    markup.add('6. Су анасы')
-    async with state.proxy() as data:
-        data['two'] = message.text
-        await Users.next()
-        await message.answer('тут меняем клаву', reply_markup=markup)
+    await message.answer('тут меняем клаву', reply_markup=markup)
 
 
-@dp.message_handler(text='3. Кояш', state=Users.three)
-async def koyash(message: types.Message, state: FSMContext):
+@dp.message_handler(text='3. Кояш')
+async def koyash(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('1. Чип чеби')
-    markup.add('2. Алтын чеби')
     markup.add('4. Батыр')
-    markup.add('5. Блэк Татар')
-    markup.add('6. Су анасы')
-    async with state.proxy() as data:
-        data['three'] = message.text
-        await Users.next()
-        await message.answer('тут меняем клаву', reply_markup=markup)
+    await message.answer('тут меняем клаву', reply_markup=markup)
 
 
-@dp.message_handler(text='4. Батыр', state=Users.four)
-async def batyr(message: types.Message, state: FSMContext):
+@dp.message_handler(text='4. Батыр')
+async def batyr(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('1. Чип чеби')
-    markup.add('2. Алтын чеби')
-    markup.add('3. Кояш')
     markup.add('5. Блэк Татар')
-    markup.add('6. Су анасы')
-    async with state.proxy() as data:
-        data['four'] = message.text
-        await Users.next()
-        await message.answer('тут меняем клаву', reply_markup=markup)
+    await message.answer('тут меняем клаву', reply_markup=markup)
 
 
-@dp.message_handler(text='5. Блэк Татар', state=Users.five)
-async def black_tatar(message: types.Message, state: FSMContext):
+@dp.message_handler(text='5. Блэк Татар')
+async def black_tatar(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('1. Чип чеби')
-    markup.add('2. Алтын чеби')
-    markup.add('3. Кояш')
-    markup.add('4. Батыр')
     markup.add('6. Су анасы')
-    async with state.proxy() as data:
-        data['five'] = message.text
-        await Users.next()
-        await message.answer('тут меняем клаву', reply_markup=markup)
+    await message.answer('тут меняем клаву', reply_markup=markup)
 
 
-@dp.message_handler(text='6. Су анасы', state=Users.six)
-async def su_anasy(message: types.Message, state: FSMContext):
+@dp.message_handler(text='6. Су анасы')
+async def su_anasy(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('1. Чип чеби')
-    markup.add('2. Алтын чеби')
-    markup.add('3. Кояш')
-    markup.add('4. Батыр')
-    markup.add('5. Блэк Татар')
-    async with state.proxy() as data:
-        data['six'] = message.text
-        await message.answer("Убедись, внимательно ли ты изучил составы кыстыбый, чтобы пройти тест. "
-                             "Он поможет тебе закрепить изученную информацию :)\n"
-                             "Успехов!")
+    markup.add('Начать тест')
+    await message.answer("Убедись, внимательно ли ты изучил составы кыстыбый, чтобы пройти тест. "
+                         "Он поможет тебе закрепить изученную информацию :)\n"
+                         "Успехов!", reply_markup=markup)
+
+
+@dp.message_handler(text=['Начать тест', 'Пройти тест заново'])
+async def start_test(message: types.Message, state: FSMContext):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    markup.add('1')
+    markup.add('2')
+    markup.add('3')
+    await Users.one_one.set()
+    await message.answer('Из чего состоит Батыр?\n'
+                         '\n'
+                         '1. белая лепешка, одна говяжья котлета, сыр адыгейский, соус бургер, айсберг, помидоры, '
+                         'корнишоны, лук\n'
+                         '\n'
+                         '2. белая лепешка, одна говяжья котлета, соус барбекю, салат айсбейрг, помидоры, сыр чаддер, '
+                         'корнишоны, лук\n'
+                         '\n'
+                         '3. черная лепешка, две говяжьи котлеты, соус цезарь, салат айсбейрг, помидоры, сыр чаддер, '
+                         'корнишоны, лук', reply_markup=markup)
+
+
+@dp.message_handler(text=['1', '2', '3'], state=Users.one_one)
+async def one_one(message: types.Message, state: FSMContext):
+    if message.text == '1' or message.text == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти тест заново')
+        await message.answer('Тест провален:\n'
+                             'Все заново', reply_markup=markup)
+        await state.finish()
+    elif message.text == '2':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('1')
+        markup.add('2')
+        markup.add('3')
+        async with state.proxy() as data:
+            data['one_one'] = 'ok'
+            await Users.next()
+            await message.answer('Верно, едем дальше')
+            await message.answer('Из чего состоит Су Анасы?\n'
+                                 '\n'
+                                 '1. белая лепешка, рис, соус тереяки, лосось, нори, свежий огурец\n'
+                                 '2. белая лепешка, рис, соус тереяки, наггенсы, нори, корнишоны\n'
+                                 '3. белая лепешка, рис, соус бургер, лосось, нори, свежий огурец', reply_markup=markup)
+
+
+@dp.message_handler(text=['1', '2', '3'], state=Users.one_two)
+async def one_two(message: types.Message, state: FSMContext):
+    if message.text == '2' or message.text == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти тест заново')
+        await message.answer('Тест провален:\n'
+                             'Все заново', reply_markup=markup)
+        await state.finish()
+    elif message.text == '1':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('1')
+        markup.add('2')
+        markup.add('3')
+        async with state.proxy() as data:
+            data['one_two'] = 'ok'
+            await Users.next()
+            await message.answer('Верно, едем дальше')
+            await message.answer('Из чего состоит Чип Чеби?\n'
+                                 '\n'
+                                 '1. белая лепешка, одна куриная котлета, соус уфтанма, айсберг, корнишоны и помидоры\n'
+                                 '\n'
+                                 '2. белая лепешка, одна говяжья котлета, соус бургер, айсберг, корнишоны, помидоры и '
+                                 'лук\n '
+                                 '\n'
+                                 '3. белая лепешка, одна куриная котлета, соус бургер, айсберг и помидоры',
+                                 reply_markup=markup)
+
+
+@dp.message_handler(text=['1', '2', '3'], state=Users.one_three)
+async def one_three(message: types.Message, state: FSMContext):
+    if message.text == '1' or message.text == '2':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти тест заново')
+        await message.answer('Тест провален:\n'
+                             'Все заново', reply_markup=markup)
+        await state.finish()
+    elif message.text == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Продолжить обучение')
+        async with state.proxy() as data:
+            data['one_three'] = 'ok'
+            await message.answer('Верно! едем дальше', reply_markup=markup)
+
+
+@dp.message_handler(text='Продолжить обучение')
+async def continue_(message: types.Message):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    markup.add('1. Туган')
+    markup.add('2. Тамле')
+    markup.add('3. Абый')
+    markup.add('4. Гомбэ')
+    markup.add('5. Апа')
+    markup.add('6. Ак барс')
+    await message.answer("Давай рассмотрим еще составы кыстыбышек в наборе 'Ланч'", reply_markup=markup)
+
+
+
+
