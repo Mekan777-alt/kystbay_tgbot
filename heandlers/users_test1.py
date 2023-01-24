@@ -162,14 +162,13 @@ async def start_test(message: types.Message, state: FSMContext):
 
 @dp.message_handler(text=['1', '2', '3'], state=Users.one_one)
 async def one_one(message: types.Message, state: FSMContext):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
     if message.text == '1' or message.text == '3':
-        markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти тест заново')
         await message.answer('Тест провален:\n'
                              'Все заново', reply_markup=markup)
         await state.finish()
     elif message.text == '2':
-        markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('1')
         markup.add('2')
         markup.add('3')
@@ -186,14 +185,13 @@ async def one_one(message: types.Message, state: FSMContext):
 
 @dp.message_handler(text=['1', '2', '3'], state=Users.one_two)
 async def one_two(message: types.Message, state: FSMContext):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
     if message.text == '2' or message.text == '3':
-        markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти тест заново')
         await message.answer('Тест провален:\n'
                              'Все заново', reply_markup=markup)
         await state.finish()
     elif message.text == '1':
-        markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('1')
         markup.add('2')
         markup.add('3')
@@ -214,31 +212,15 @@ async def one_two(message: types.Message, state: FSMContext):
 
 @dp.message_handler(text=['1', '2', '3'], state=Users.one_three)
 async def one_three(message: types.Message, state: FSMContext):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
     if message.text == '1' or message.text == '2':
-        markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти тест заново')
         await message.answer('Тест провален:\n'
                              'Все заново', reply_markup=markup)
         await state.finish()
     elif message.text == '3':
-        markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Продолжить обучение')
         async with state.proxy() as data:
             data['one_three'] = 'ok'
             await message.answer('Верно! едем дальше', reply_markup=markup)
-
-
-@dp.message_handler(text='Продолжить обучение')
-async def continue_(message: types.Message):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('1. Туган')
-    markup.add('2. Тамле')
-    markup.add('3. Абый')
-    markup.add('4. Гомбэ')
-    markup.add('5. Апа')
-    markup.add('6. Ак барс')
-    await message.answer("Давай рассмотрим еще составы кыстыбышек в наборе 'Ланч'", reply_markup=markup)
-
-
-
-
+            await state.finish()
