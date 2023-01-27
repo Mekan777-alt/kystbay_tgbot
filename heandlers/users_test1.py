@@ -1,8 +1,9 @@
 from config import dp
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardMarkup
-from context.context import Users
+from aiogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
+from context.context import UsersTest_1
+from aiogram.utils.callback_data import CallbackData
 
 
 @dp.message_handler(commands='start')
@@ -11,10 +12,10 @@ async def start(message: types.Message):
                          'Для начала ознакомься с инструкцией как со мной работать и особенно удели внимание '
                          'по работе с поисковиком, иначе я не правильно отвечу на твой вопрос...')
     await message.answer("Давай знакомиться, напиши как тебя зовут.")
-    await Users.name.set()
+    await UsersTest_1.name.set()
 
 
-@dp.message_handler(state=Users.name)
+@dp.message_handler(state=UsersTest_1.name)
 async def command_name(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать обучение')
@@ -142,85 +143,94 @@ async def su_anasy(message: types.Message):
 
 
 @dp.message_handler(text=['Начать тест', 'Пройти тест заново'])
-async def start_test(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('1')
-    markup.add('2')
-    markup.add('3')
-    await Users.one_one.set()
+async def start_test(message: types.Message):
+    markup = InlineKeyboardMarkup(row_width=3)
+    markup.add(InlineKeyboardButton('1', callback_data='1'))
+    markup.add(InlineKeyboardButton('2', callback_data='2'))
+    markup.add(InlineKeyboardButton('3', callback_data='3'))
+    await UsersTest_1.one_one.set()
     await message.answer('Из чего состоит Батыр?\n'
                          '\n'
-                         '1. белая лепешка, одна говяжья котлета, сыр адыгейский, соус бургер, айсберг, помидоры, '
+                         '1. белая лепешка, одна говяжья котлета, сыр адыгейский, соус бургер, айсберг, '
+                         'помидоры, '
                          'корнишоны, лук\n'
                          '\n'
-                         '2. белая лепешка, одна говяжья котлета, соус барбекю, салат айсбейрг, помидоры, сыр чаддер, '
+                         '2. белая лепешка, одна говяжья котлета, соус барбекю, салат айсбейрг, помидоры, '
+                         'сыр чаддер, '
                          'корнишоны, лук\n'
                          '\n'
-                         '3. черная лепешка, две говяжьи котлеты, соус цезарь, салат айсбейрг, помидоры, сыр чаддер, '
+                         '3. черная лепешка, две говяжьи котлеты, соус цезарь, салат айсбейрг, помидоры, '
+                         'сыр чаддер, '
                          'корнишоны, лук', reply_markup=markup)
 
 
-@dp.message_handler(text=['1', '2', '3'], state=Users.one_one)
-async def one_one(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    if message.text == '1' or message.text == '3':
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.one_one)
+async def one_one(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '1' or call.data == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти тест заново')
-        await message.answer('Тест провален:\n'
-                             'Все заново', reply_markup=markup)
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
         await state.finish()
-    elif message.text == '2':
-        markup.add('1')
-        markup.add('2')
-        markup.add('3')
+    elif call.data == '2':
+        markup = InlineKeyboardMarkup(row_width=3)
+        markup.add(InlineKeyboardButton('1', callback_data='1'))
+        markup.add(InlineKeyboardButton('2', callback_data='2'))
+        markup.add(InlineKeyboardButton('3', callback_data='3'))
         async with state.proxy() as data:
             data['one_one'] = 'ok'
-            await Users.next()
-            await message.answer('Верно, едем дальше')
-            await message.answer('Из чего состоит Су Анасы?\n'
-                                 '\n'
-                                 '1. белая лепешка, рис, соус тереяки, лосось, нори, свежий огурец\n'
-                                 '2. белая лепешка, рис, соус тереяки, наггенсы, нори, корнишоны\n'
-                                 '3. белая лепешка, рис, соус бургер, лосось, нори, свежий огурец', reply_markup=markup)
+            await UsersTest_1.next()
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text('Из чего состоит Су Анасы?\n'
+                                         '\n'
+                                         '1. белая лепешка, рис, соус тереяки, лосось, нори, свежий огурец\n'
+                                         '2. белая лепешка, рис, соус тереяки, наггенсы, нори, корнишоны\n'
+                                         '3. белая лепешка, рис, соус бургер, лосось, нори, свежий огурец',
+                                         reply_markup=markup)
 
 
-@dp.message_handler(text=['1', '2', '3'], state=Users.one_two)
-async def one_two(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    if message.text == '2' or message.text == '3':
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.one_two)
+async def one_two(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '2' or call.data == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти тест заново')
-        await message.answer('Тест провален:\n'
-                             'Все заново', reply_markup=markup)
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
         await state.finish()
-    elif message.text == '1':
-        markup.add('1')
-        markup.add('2')
-        markup.add('3')
+    elif call.data == '1':
+        markup = InlineKeyboardMarkup(row_width=3)
+        markup.add(InlineKeyboardButton('1', callback_data='1'))
+        markup.add(InlineKeyboardButton('2', callback_data='2'))
+        markup.add(InlineKeyboardButton('3', callback_data='3'))
         async with state.proxy() as data:
             data['one_two'] = 'ok'
-            await Users.next()
-            await message.answer('Верно, едем дальше')
-            await message.answer('Из чего состоит Чип Чеби?\n'
-                                 '\n'
-                                 '1. белая лепешка, одна куриная котлета, соус уфтанма, айсберг, корнишоны и помидоры\n'
-                                 '\n'
-                                 '2. белая лепешка, одна говяжья котлета, соус бургер, айсберг, корнишоны, помидоры и '
-                                 'лук\n '
-                                 '\n'
-                                 '3. белая лепешка, одна куриная котлета, соус бургер, айсберг и помидоры',
-                                 reply_markup=markup)
+            await UsersTest_1.next()
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text('Из чего состоит Чип Чеби?\n'
+                                         '\n'
+                                         '1. белая лепешка, одна куриная котлета, соус уфтанма, айсберг, корнишоны и '
+                                         'помидоры\n '
+                                         '\n'
+                                         '2. белая лепешка, одна говяжья котлета, соус бургер, айсберг, корнишоны, '
+                                         'помидоры и '
+                                         'лук\n '
+                                         '\n'
+                                         '3. белая лепешка, одна куриная котлета, соус бургер, айсберг и помидоры',
+                                         reply_markup=markup)
 
 
-@dp.message_handler(text=['1', '2', '3'], state=Users.one_three)
-async def one_three(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    if message.text == '1' or message.text == '2':
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.one_three)
+async def one_three(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '1' or call.data == '2':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти тест заново')
-        await message.answer('Тест провален:\n'
-                             'Все заново', reply_markup=markup)
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
         await state.finish()
-    elif message.text == '3':
+    elif call.data == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Продолжить обучение')
         async with state.proxy() as data:
             data['one_three'] = 'ok'
-            await message.answer('Верно! едем дальше', reply_markup=markup)
+            await call.message.answer('Верно! едем дальше', reply_markup=markup)
             await state.finish()

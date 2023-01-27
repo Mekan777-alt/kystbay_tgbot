@@ -1,7 +1,7 @@
 from aiogram.dispatcher.filters.state import StatesGroup, State
 
 
-class Users(StatesGroup):
+class UsersTest_1(StatesGroup):
     name = State()
     one_one = State()
     one_two = State()
@@ -9,5 +9,12 @@ class Users(StatesGroup):
     two_one = State()
     two_two = State()
     two_three = State()
+    three_one = State()
+    three_two = State()
+    three_three = State()
+    three_four = State()
+    three_five = State()
+    three_six = State()
+    three_seven = State()
 
 
