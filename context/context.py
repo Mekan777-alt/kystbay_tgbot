@@ -22,5 +22,7 @@ class UsersTest_1(StatesGroup):
     five_one = State()
     five_two = State()
     five_three = State()
-
-
+    attestation_one = State()
+    attestation_two = State()
+    attestation_three = State()
+    attestation_four = State()

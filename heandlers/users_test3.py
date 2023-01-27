@@ -247,8 +247,8 @@ async def three_six(call: types.CallbackQuery, state: FSMContext):
             markup = ReplyKeyboardMarkup(resize_keyboard=True)
             markup.add('Приступить ко второму уроку.')
             data['three_seven'] = 'ok'
-            await UsersTest_1.next()
             await call.answer('Верно, ты большой молодец')
             await call.message.answer("После прохождения теста по первому уроке, напиши своему руководителю в "
                                       "ЛС, дай ему обратную связь", reply_markup=markup)
+            await state.finish()
             
