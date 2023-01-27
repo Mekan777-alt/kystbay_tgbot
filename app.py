@@ -1,7 +1,7 @@
 import logging
 from config import dp, loop
-from aiogram import executor
 import heandlers
+from aiogram import executor
 
 
 async def on_startup(dp):
@@ -9,4 +9,4 @@ async def on_startup(dp):
 
 
 if __name__ == "__main__":
-    executor.start_polling(dp, skip_updates=False, on_startup=on_startup, loop=loop)
+    executor.start_polling(dp, on_startup=on_startup, skip_updates=False, loop=loop)

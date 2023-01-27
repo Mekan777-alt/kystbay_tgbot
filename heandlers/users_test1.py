@@ -1,7 +1,7 @@
 from config import dp
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardMarkup
+from aiogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from context.context import UsersTest_1
 from buttons.buttons import nmts_cb
 
@@ -136,14 +136,15 @@ async def black_tatar(message: types.Message):
 @dp.message_handler(text='6. Су анасы')
 async def su_anasy(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Начать тест')
+    markup.add('Начать первый тест')
     await message.answer("Убедись, внимательно ли ты изучил составы кыстыбый, чтобы пройти тест. "
                          "Он поможет тебе закрепить изученную информацию :)\n"
                          "Успехов!", reply_markup=markup)
 
 
-@dp.message_handler(text=['Начать тест', 'Пройти тест заново'])
+@dp.message_handler(text=['Начать первый тест', 'Пройти первый тест заново'])
 async def start_test(message: types.Message):
+    await UsersTest_1.one_one.set()
     await message.answer('Из чего состоит Батыр?\n'
                          '\n'
                          '1. белая лепешка, одна говяжья котлета, сыр адыгейский, соус бургер, айсберг, '
@@ -163,7 +164,7 @@ async def start_test(message: types.Message):
 async def one_one(call: types.CallbackQuery, state: FSMContext):
     if call.data == '1' or call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.add('Пройти тест заново')
+        markup.add('Пройти первый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
         await state.finish()
@@ -184,7 +185,7 @@ async def one_one(call: types.CallbackQuery, state: FSMContext):
 async def one_two(call: types.CallbackQuery, state: FSMContext):
     if call.data == '2' or call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.add('Пройти тест заново')
+        markup.add('Пройти первый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
         await state.finish()
@@ -210,13 +211,13 @@ async def one_two(call: types.CallbackQuery, state: FSMContext):
 async def one_three(call: types.CallbackQuery, state: FSMContext):
     if call.data == '1' or call.data == '2':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.add('Пройти тест заново')
+        markup.add('Пройти первый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
         await state.finish()
     elif call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.add('Продолжить обучение')
+        markup.add('Начать второе упражнение')
         async with state.proxy() as data:
             data['one_three'] = 'ok'
             await call.message.answer('Верно! едем дальше', reply_markup=markup)

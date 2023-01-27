@@ -6,7 +6,7 @@ from context.context import UsersTest_1
 from buttons.buttons import nmts_cb
 
 
-@dp.message_handler(text='Продолжить обучение')
+@dp.message_handler(text='Начать второе упражнение')
 async def continue_(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('1. Туган')
@@ -57,7 +57,7 @@ async def ak_bars(message: types.Message):
                          "Успехов!", reply_markup=markup)
 
 
-@dp.message_handler(text=['Начать второй тест', 'Пройти второй тест заново.'])
+@dp.message_handler(text=['Начать второй тест', 'Пройти второй тест заново'])
 async def start_test_2(message: types.Message):
     await UsersTest_1.two_one.set()
     await message.answer('Из чего состоит Апа?\n'
@@ -97,7 +97,7 @@ async def two_one(call: types.CallbackQuery, state: FSMContext):
 async def two_two(call: types.CallbackQuery, state: FSMContext):
     if call.data == '1' or call.data == '2':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.add('Пройти второй тест заново.')
+        markup.add('Пройти второй тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
         await state.finish()
@@ -122,13 +122,13 @@ async def two_two(call: types.CallbackQuery, state: FSMContext):
 async def two_three(call: types.CallbackQuery, state: FSMContext):
     if call.data == '2' or call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.add('Пройти второй тест заново.')
+        markup.add('Пройти второй тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
         await state.finish()
     elif call.data == '1':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.add('Продолжить обучение.')
+        markup.add('Начать третье упражнение')
         async with state.proxy() as data:
             data['two_three'] = 'ok'
             await call.message.answer("Ты молодец, проделал(а) большую работу!\n"

@@ -6,7 +6,7 @@ from buttons.buttons import nmts_cb
 from context.context import UsersTest_1
 
 
-@dp.message_handler(text='Продолжить обучение.')
+@dp.message_handler(text='Начать третье упражнение')
 async def continue__(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Работа с оборудованиями: тепан')
@@ -44,17 +44,18 @@ async def work_clean(message: types.Message):
 @dp.message_handler(text='Изучить обязанности кыстыбшника.')
 async def work_clean(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Продолжить обучение..')
+    markup.add('Начать четвертое упражнение')
     await message.answer('тут материалы', reply_markup=markup)
 
 
-@dp.message_handler(text='Продолжить обучение..')
+@dp.message_handler(text='Начать четвертое упражнение')
 async def continue___(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Акт списания')
     await message.answer("Дорогой друг, если у тебя остались вопросы, прошу вернутся к нужной информации и все "
                          "повторить.")
-    await message.answer("А сейчас я кратко расскажу тебе про внутренний распорядок сети ресторана'Кыстыбый'")
+    await message.answer("А сейчас я кратко расскажу тебе про внутренний распорядок сети ресторана'Кыстыбый'",
+                         reply_markup=markup)
 
 
 @dp.message_handler(text='Акт списания')
@@ -90,7 +91,7 @@ async def google_disc(message: types.Message):
 
 
 @dp.message_handler(text=['Начать третий тест', 'Пройти третий тест заново.'])
-def start_test_3(message: types.Message):
+async def start_test_3(message: types.Message):
     await UsersTest_1.three_one.set()
     await message.answer('Что входит в состав КОМБО?\n'
                          '\n'
@@ -145,7 +146,7 @@ async def three_two(call: types.CallbackQuery, state: FSMContext):
                                          '3.', reply_markup=nmts_cb())
 
 
-@dp.message_handler(text=['1', '2', '3'], state=UsersTest_1.three_three)
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.three_three)
 async def three_three(call: types.CallbackQuery, state: FSMContext):
     if call.data == '1' or call.data == '2':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
@@ -231,3 +232,23 @@ async def three_six(call: types.CallbackQuery, state: FSMContext):
                                          "2.\n"
                                          "\n"
                                          "3.", reply_markup=nmts_cb())
+
+
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.three_seven)
+async def three_six(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '2' or call.data == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти третий тест заново.')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
+        await state.finish()
+    elif call.data == '1':
+        async with state.proxy() as data:
+            markup = ReplyKeyboardMarkup(resize_keyboard=True)
+            markup.add('Приступить ко второму уроку.')
+            data['three_seven'] = 'ok'
+            await UsersTest_1.next()
+            await call.answer('Верно, ты большой молодец')
+            await call.message.answer("После прохождения теста по первому уроке, напиши своему руководителю в "
+                                      "ЛС, дай ему обратную связь", reply_markup=markup)
+            
