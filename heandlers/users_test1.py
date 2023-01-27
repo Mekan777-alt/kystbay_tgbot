@@ -1,9 +1,9 @@
 from config import dp
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import ReplyKeyboardMarkup
 from context.context import UsersTest_1
-from aiogram.utils.callback_data import CallbackData
+from buttons.buttons import nmts_cb
 
 
 @dp.message_handler(commands='start')
@@ -144,11 +144,6 @@ async def su_anasy(message: types.Message):
 
 @dp.message_handler(text=['Начать тест', 'Пройти тест заново'])
 async def start_test(message: types.Message):
-    markup = InlineKeyboardMarkup(row_width=3)
-    markup.add(InlineKeyboardButton('1', callback_data='1'))
-    markup.add(InlineKeyboardButton('2', callback_data='2'))
-    markup.add(InlineKeyboardButton('3', callback_data='3'))
-    await UsersTest_1.one_one.set()
     await message.answer('Из чего состоит Батыр?\n'
                          '\n'
                          '1. белая лепешка, одна говяжья котлета, сыр адыгейский, соус бургер, айсберг, '
@@ -161,7 +156,7 @@ async def start_test(message: types.Message):
                          '\n'
                          '3. черная лепешка, две говяжьи котлеты, соус цезарь, салат айсбейрг, помидоры, '
                          'сыр чаддер, '
-                         'корнишоны, лук', reply_markup=markup)
+                         'корнишоны, лук', reply_markup=nmts_cb())
 
 
 @dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.one_one)
@@ -173,10 +168,6 @@ async def one_one(call: types.CallbackQuery, state: FSMContext):
                                   'Все заново', reply_markup=markup)
         await state.finish()
     elif call.data == '2':
-        markup = InlineKeyboardMarkup(row_width=3)
-        markup.add(InlineKeyboardButton('1', callback_data='1'))
-        markup.add(InlineKeyboardButton('2', callback_data='2'))
-        markup.add(InlineKeyboardButton('3', callback_data='3'))
         async with state.proxy() as data:
             data['one_one'] = 'ok'
             await UsersTest_1.next()
@@ -186,7 +177,7 @@ async def one_one(call: types.CallbackQuery, state: FSMContext):
                                          '1. белая лепешка, рис, соус тереяки, лосось, нори, свежий огурец\n'
                                          '2. белая лепешка, рис, соус тереяки, наггенсы, нори, корнишоны\n'
                                          '3. белая лепешка, рис, соус бургер, лосось, нори, свежий огурец',
-                                         reply_markup=markup)
+                                         reply_markup=nmts_cb())
 
 
 @dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.one_two)
@@ -198,10 +189,6 @@ async def one_two(call: types.CallbackQuery, state: FSMContext):
                                   'Все заново', reply_markup=markup)
         await state.finish()
     elif call.data == '1':
-        markup = InlineKeyboardMarkup(row_width=3)
-        markup.add(InlineKeyboardButton('1', callback_data='1'))
-        markup.add(InlineKeyboardButton('2', callback_data='2'))
-        markup.add(InlineKeyboardButton('3', callback_data='3'))
         async with state.proxy() as data:
             data['one_two'] = 'ok'
             await UsersTest_1.next()
@@ -216,7 +203,7 @@ async def one_two(call: types.CallbackQuery, state: FSMContext):
                                          'лук\n '
                                          '\n'
                                          '3. белая лепешка, одна куриная котлета, соус бургер, айсберг и помидоры',
-                                         reply_markup=markup)
+                                         reply_markup=nmts_cb())
 
 
 @dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.one_three)

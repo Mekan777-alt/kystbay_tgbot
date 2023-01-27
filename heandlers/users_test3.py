@@ -2,6 +2,7 @@ from config import dp
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup
+from buttons.buttons import nmts_cb
 from context.context import UsersTest_1
 
 
@@ -44,7 +45,6 @@ async def work_clean(message: types.Message):
 async def work_clean(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Продолжить обучение..')
-    markup.add('Назад')
     await message.answer('тут материалы', reply_markup=markup)
 
 
@@ -89,12 +89,8 @@ async def google_disc(message: types.Message):
                          "закрепим первый урок.", reply_markup=markup)
 
 
-@dp.message_handler(text='Начать третий тест')
+@dp.message_handler(text=['Начать третий тест', 'Пройти третий тест заново.'])
 def start_test_3(message: types.Message):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('1')
-    markup.add('2')
-    markup.add('3')
     await UsersTest_1.three_one.set()
     await message.answer('Что входит в состав КОМБО?\n'
                          '\n'
@@ -102,156 +98,136 @@ def start_test_3(message: types.Message):
                          '\n'
                          '2.\n'
                          '\n'
-                         '3.\n', reply_markup=markup)
+                         '3.\n', reply_markup=nmts_cb())
 
 
-@dp.message_handler(text=['1', '2', '3'], state=UsersTest_1.three_one)
-async def three_one(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    if message.text == '2' or message.text == '3':
-        markup.add('Пройти тест заново.')
-        await message.answer('Тест провален:\n'
-                             'Все заново', reply_markup=markup)
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.three_one)
+async def three_one(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '2' or call.data == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти третий тест заново.')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
         await state.finish()
-    elif message.text == '1':
-        markup.add('1')
-        markup.add('2')
-        markup.add('3')
+    elif call.data == '1':
         async with state.proxy() as data:
             data['three_one'] = 'ok'
             await UsersTest_1.next()
-            await message.answer('Верно, едем дальше')
-            await message.answer('Что входит в состав ЛАНЧ?\n'
-                                 '\n'
-                                 '1.\n'
-                                 '\n'
-                                 '2.\n'
-                                 '\n'
-                                 '3.', reply_markup=markup)
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text('Что входит в состав ЛАНЧ?\n'
+                                         '\n'
+                                         '1.\n'
+                                         '\n'
+                                         '2.\n'
+                                         '\n'
+                                         '3.', reply_markup=nmts_cb())
 
 
-@dp.message_handler(text=['1', '2', '3'], state=UsersTest_1.three_two)
-async def three_two(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    if message.text == '1' or message.text == '2':
-        markup.add('Пройти тест заново.')
-        await message.answer('Тест провален:\n'
-                             'Все заново', reply_markup=markup)
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.three_two)
+async def three_two(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '1' or call.data == '2':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти третий тест заново.')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
         await state.finish()
-    elif message.text == '3':
-        markup.add('1')
-        markup.add('2')
-        markup.add('3')
+    elif call.data == '3':
         async with state.proxy() as data:
             data['three_two'] = 'ok'
             await UsersTest_1.next()
-            await message.answer('Верно, едем дальше')
-            await message.answer('Что д?\n'
-                                 '\n'
-                                 '1.\n'
-                                 '\n'
-                                 '2.\n'
-                                 '\n'
-                                 '3.', reply_markup=markup)
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text('Что д?\n'
+                                         '\n'
+                                         '1.\n'
+                                         '\n'
+                                         '2.\n'
+                                         '\n'
+                                         '3.', reply_markup=nmts_cb())
 
 
 @dp.message_handler(text=['1', '2', '3'], state=UsersTest_1.three_three)
-async def three_three(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    if message.text == '1' or message.text == '2':
-        markup.add('Пройти тест заново.')
-        await message.answer('Тест провален:\n'
-                             'Все заново', reply_markup=markup)
+async def three_three(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '1' or call.data == '2':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти третий тест заново.')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
         await state.finish()
-    elif message.text == '3':
-        markup.add('1')
-        markup.add('2')
-        markup.add('3')
+    elif call.data == '3':
         async with state.proxy() as data:
             data['three_three'] = 'ok'
             await UsersTest_1.next()
-            await message.answer('Верно, едем дальше')
-            await message.answer('Сколько грамм картофельного пюре входит в состав кыстыбый Туган?\n'
-                                 '\n'
-                                 '1.\n'
-                                 '\n'
-                                 '2.\n'
-                                 '\n'
-                                 '3.', reply_markup=markup)
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text('Сколько грамм картофельного пюре входит в состав кыстыбый Туган?\n'
+                                         '\n'
+                                         '1.\n'
+                                         '\n'
+                                         '2.\n'
+                                         '\n'
+                                         '3.', reply_markup=nmts_cb())
 
 
-@dp.message_handler(text=['1', '2', '3'], state=UsersTest_1.three_four)
-async def three_four(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    if message.text == '2' or message.text == '3':
-        markup.add('Пройти тест заново.')
-        await message.answer('Тест провален:\n'
-                             'Все заново', reply_markup=markup)
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.three_four)
+async def three_four(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '2' or call.data == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти третий тест заново.')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
         await state.finish()
-    elif message.text == '1':
-        markup.add('1')
-        markup.add('2')
-        markup.add('3')
+    elif call.data == '1':
         async with state.proxy() as data:
             data['three_four'] = 'ok'
             await UsersTest_1.next()
-            await message.answer('Верно, едем дальше')
-            await message.answer('Сколько грамм айсберга входят в состав Батыр и Блэк татар?\n'
-                                 '\n'
-                                 '1.\n'
-                                 '\n'
-                                 '2.\n'
-                                 '\n'
-                                 '3.', reply_markup=markup)
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text('Сколько грамм айсберга входят в состав Батыр и Блэк татар?\n'
+                                         '\n'
+                                         '1.\n'
+                                         '\n'
+                                         '2.\n'
+                                         '\n'
+                                         '3.', reply_markup=nmts_cb())
 
 
-@dp.message_handler(text=['1', '2', '3'], state=UsersTest_1.three_five)
-async def three_five(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    if message.text == '2' or message.text == '3':
-        markup.add('Пройти тест заново.')
-        await message.answer('Тест провален:\n'
-                             'Все заново', reply_markup=markup)
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.three_five)
+async def three_five(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '2' or call.data == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти третий тест заново.')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
         await state.finish()
-    elif message.text == '1':
-        markup.add('1')
-        markup.add('2')
-        markup.add('3')
+    elif call.data == '1':
         async with state.proxy() as data:
             data['three_five'] = 'ok'
             await UsersTest_1.next()
-            await message.answer('Верно, едем дальше')
-            await message.answer("Чем чреваты последствия, если не писать в 'Акте списания' порчу продуктов?\n"
-                                 "\n"
-                                 "1.\n"
-                                 "\n"
-                                 "2.\n"
-                                 "\n"
-                                 "3.", reply_markup=markup)
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text("Чем чреваты последствия, если не писать в 'Акте списания' порчу продуктов?\n"
+                                         "\n"
+                                         "1.\n"
+                                         "\n"
+                                         "2.\n"
+                                         "\n"
+                                         "3.", reply_markup=nmts_cb())
 
 
-@dp.message_handler(text=['1', '2', '3'], state=UsersTest_1.three_six)
-async def three_six(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    if message.text == '2' or message.text == '3':
-        markup.add('Пройти тест заново.')
-        await message.answer('Тест провален:\n'
-                             'Все заново', reply_markup=markup)
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.three_six)
+async def three_six(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '2' or call.data == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти третий тест заново.')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
         await state.finish()
-    elif message.text == '1':
-        markup.add('1')
-        markup.add('2')
-        markup.add('3')
+    elif call.data == '1':
         async with state.proxy() as data:
             data['three_six'] = 'ok'
             await UsersTest_1.next()
-            await message.answer('Верно, едем дальше')
-            await message.answer("Какая миссия компании 'Кыстыбый'\n"
-                                 "\n"
-                                 "1.\n"
-                                 "\n"
-                                 "2.\n"
-                                 "\n"
-                                 "3.", reply_markup=markup)
-
-
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text("Какая миссия компании 'Кыстыбый'\n"
+                                         "\n"
+                                         "1.\n"
+                                         "\n"
+                                         "2.\n"
+                                         "\n"
+                                         "3.", reply_markup=nmts_cb())
