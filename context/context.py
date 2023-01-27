@@ -16,5 +16,11 @@ class UsersTest_1(StatesGroup):
     three_five = State()
     three_six = State()
     three_seven = State()
+    four_one = State()
+    four_two = State()
+    four_three = State()
+    five_one = State()
+    five_two = State()
+    five_three = State()
 
 
