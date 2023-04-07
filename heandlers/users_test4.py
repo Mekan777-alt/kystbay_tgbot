@@ -1,4 +1,4 @@
-from config import dp
+from config import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup
@@ -10,6 +10,7 @@ from context.context import UsersTest_1
 async def lesson2(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Микроволновка')
+    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/obyazsbor.docx', 'rb')
     await message.answer("Второй урок.\n"
                          "\n"
                          "Во втором уроке ты узнаешь все про зоны сборки,расстановку заказа, срок хранения, инвентарь "
@@ -17,14 +18,16 @@ async def lesson2(message: types.Message):
                          "Я научу тебя правильно использовать обородувания и свой мозг =)\n"
                          "Давай приступим.", reply_markup=markup)
     await message.answer("Для начала ознакомься с обязанностями сборщика. Тебе будет несложно!")
-    await message.answer('тут материалы')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
+    await bot.send_document(message.chat.id, document=doc)
 
 
 @dp.message_handler(text='Микроволновка')
 async def mircro(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Чайник')
-    await message.answer('тут материалы', reply_markup=markup)
+    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/micro.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
 
 
 @dp.message_handler(text='Чайник')

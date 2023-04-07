@@ -1,4 +1,4 @@
-from config import dp
+from config import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup
@@ -9,22 +9,28 @@ from context.context import UsersTest_1
 @dp.message_handler(text='Начать третье упражнение')
 async def continue__(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Работа с оборудованиями: тепан')
+    markup.add('Зона кыстыбый')
     await message.answer("Вот что тебе еще надо знать о зоне кыстыбый.", reply_markup=markup)
 
 
-@dp.message_handler(text='Работа с оборудованиями: тепан')
+@dp.message_handler(text='Зона кыстыбый')
 async def work_obor(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как делать заготовки.')
-    await message.answer('тут материалы', reply_markup=markup)
+    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/zonakyst.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
 
 
 @dp.message_handler(text='Как делать заготовки.')
 async def work_zagat(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как хранить продукты.')
-    await message.answer('тут материалы', reply_markup=markup)
+    video1 = open('/home/mekan_bot/kystbay_tgbot/kst_data/smetana.MP4', 'rb')
+    video2 = open('/home/mekan_bot/kystbay_tgbot/kst_data/lapsha.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=video1)
+    await bot.send_video(chat_id=message.chat.id, video=video2, reply_markup=markup)
 
 
 @dp.message_handler(text='Как хранить продукты.')
@@ -38,14 +44,17 @@ async def work_prod(message: types.Message):
 async def work_clean(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Изучить обязанности кыстыбшника.')
-    await message.answer('тут материалы', reply_markup=markup)
+    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/chistotakst.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
 
 
 @dp.message_handler(text='Изучить обязанности кыстыбшника.')
 async def work_clean(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать четвертое упражнение')
-    await message.answer('тут материалы', reply_markup=markup)
+    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/obyazkst.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
 
 
 @dp.message_handler(text='Начать четвертое упражнение')
@@ -62,32 +71,35 @@ async def continue___(message: types.Message):
 async def akt_spis(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Стафф')
-    await message.answer('тут материалы', reply_markup=markup)
+    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/aktspis.xlsx ', 'rb')
+    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/aktspisa.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
+    await bot.send_document(message.chat.id, document=doc)
 
 
 @dp.message_handler(text='Стафф')
 async def staff(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Рабочий чат')
-    await message.answer('тут материалы', reply_markup=markup)
+    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/staff.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
 
 
 @dp.message_handler(text='Рабочий чат')
 async def work_chat(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Гугл диск "КСТБ"')
-    await message.answer('тут материалы', reply_markup=markup)
-
-
-@dp.message_handler(text='Гугл диск "КСТБ"')
-async def google_disc(message: types.Message):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать третий тест')
-    await message.answer('тут материалы', reply_markup=markup)
+    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/char_rab.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
+    await bot.send_chat_action(message.chat.id, ChatActions.TYPING)
     await message.answer("Дорогой друг, наш первый урок подошел к концу.\n"
                          "Ты научился делать двойное сальто вперед, =)\n"
                          "изучил зону кыстыбый, внутренний распорядок, осовную часть меню. И давай с помощью теста "
                          "закрепим первый урок.", reply_markup=markup)
+
 
 
 @dp.message_handler(text=['Начать третий тест', 'Пройти третий тест заново.'])

@@ -5,3 +5,4 @@ __pycache__
 *.pyc
 *.log
 .DS_Store
+/kst_data

@@ -1,4 +1,4 @@
-from config import dp
+from config import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup
@@ -17,35 +17,41 @@ async def continue_(message: types.Message):
 async def tugan(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('2. Тамле')
-    await message.answer('тут меняем клаву', reply_markup=markup)
+    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/tugan.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
+    
 
 
 @dp.message_handler(text='2. Тамле')
 async def tamle(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('3. Абый')
-    await message.answer('тут меняем клаву', reply_markup=markup)
+    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/tamle.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
 
 
 @dp.message_handler(text='3. Абый')
 async def aby(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('4. Гомбэ')
-    await message.answer('тут меняем клаву', reply_markup=markup)
+    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/aby.PNG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
 
 
 @dp.message_handler(text='4. Гомбэ')
 async def gombe(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('5. Апа')
-    await message.answer('тут меняем клаву', reply_markup=markup)
+    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/gombe.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
 
 
 @dp.message_handler(text='5. Апа')
 async def apa(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('6. Ак барс')
-    await message.answer('тут меняем клаву', reply_markup=markup)
+    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/apa.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
 
 
 @dp.message_handler(text='6. Ак барс')
