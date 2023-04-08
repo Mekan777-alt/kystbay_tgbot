@@ -3,6 +3,7 @@ from aiogram.dispatcher.filters.state import StatesGroup, State
 
 class UsersTest_1(StatesGroup):
     name = State()
+    cafe = State()
     one_one = State()
     one_two = State()
     one_three = State()
