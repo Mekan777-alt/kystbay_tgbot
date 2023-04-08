@@ -1,7 +1,7 @@
 from config import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardMarkup
+from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from buttons.buttons import nmts_cb
 from context.context import UsersTest_1
 
@@ -323,7 +323,6 @@ async def four_one(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти четвертый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '2':
         async with state.proxy() as data:
             data['four_one'] = 'ok'
@@ -344,7 +343,6 @@ async def four_two(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти четвертый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '1':
         async with state.proxy() as data:
             data['four_two'] = 'ok'
@@ -370,7 +368,6 @@ async def four_three(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти четвертый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Я красавчик(ца), идем дальше.')

@@ -1,7 +1,7 @@
 from config import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardMarkup
+from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from buttons.buttons import nmts_cb
 from context.context import UsersTest_1
 
@@ -99,7 +99,6 @@ async def work_chat(message: types.Message):
                          "Ты научился делать двойное сальто вперед, =)\n"
                          "изучил зону кыстыбый, внутренний распорядок, осовную часть меню. И давай с помощью теста "
                          "закрепим первый урок.", reply_markup=markup)
-
 
 
 @dp.message_handler(text=['Начать третий тест', 'Пройти третий тест заново.'])
@@ -262,5 +261,3 @@ async def three_six(call: types.CallbackQuery, state: FSMContext):
             await call.answer('Верно, ты большой молодец')
             await call.message.answer("После прохождения теста по первому уроке, напиши своему руководителю в "
                                       "ЛС, дай ему обратную связь", reply_markup=markup)
-            await state.finish()
-            

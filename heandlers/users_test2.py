@@ -19,7 +19,6 @@ async def tugan(message: types.Message):
     markup.add('2. Тамле')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/tugan.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
-    
 
 
 @dp.message_handler(text='2. Тамле')
@@ -84,7 +83,6 @@ async def two_one(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти второй тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '1':
         async with state.proxy() as data:
             data['two_one'] = 'ok'
@@ -106,7 +104,6 @@ async def two_two(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти второй тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '3':
         async with state.proxy() as data:
             data['two_two'] = 'ok'
@@ -131,7 +128,6 @@ async def two_three(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти второй тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '1':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Начать третье упражнение')
@@ -141,4 +137,3 @@ async def two_three(call: types.CallbackQuery, state: FSMContext):
                                       "Теперь ты знаешь основной состав нашего меню.\n"
                                       "Чтобы полностью усвоить зону кыстыбый, тебе надо сделать двоеное сальто вперед ("
                                       "Латнааа татарская шутка :) ", reply_markup=markup)
-            await state.finish()

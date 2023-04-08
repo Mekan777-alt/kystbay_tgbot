@@ -223,7 +223,6 @@ async def one_one(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти первый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '2':
         async with state.proxy() as data:
             data['one_one'] = 'ok'
@@ -244,7 +243,6 @@ async def one_two(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти первый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '1':
         async with state.proxy() as data:
             data['one_two'] = 'ok'
@@ -270,7 +268,6 @@ async def one_three(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти первый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Начать второе упражнение')
