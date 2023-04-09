@@ -180,7 +180,6 @@ async def five_one(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти первый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '2':
         async with state.proxy() as data:
             data['five_one'] = 'ok'
@@ -201,7 +200,6 @@ async def five_two(call: types.CallbackQuery, state: FSMContext):
         markup.add('Пройти первый тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
-        await state.finish()
     elif call.data == '1':
         async with state.proxy() as data:
             data['five_two'] = 'ok'
@@ -237,4 +235,3 @@ async def five_three(call: types.CallbackQuery, state: FSMContext):
             await call.message.answer("КРАССАВИЧИК!\n"
                                       "А теперь давай пройдем еще и аттестацию :) добью тебя сегодня =)",
                                       reply_markup=markup)
-            await state.finish()
