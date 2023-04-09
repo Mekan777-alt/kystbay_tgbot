@@ -57,6 +57,8 @@ async def apa(message: types.Message):
 async def ak_bars(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать второй тест')
+    photo = open('')
+    await bot.send_photo(message.chat.id, photo=photo)
     await message.answer("Убедись, внимательно ли ты изучил составы кыстыбый, чтобы пройти тест. "
                          "Он поможет тебе закрепить изученную информацию :)\n"
                          "Успехов!", reply_markup=markup)
