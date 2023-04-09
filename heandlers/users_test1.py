@@ -61,6 +61,7 @@ async def parina(message: types.Message, state: FSMContext):
     markup.add('Я посмотрел(а), го дальше :)')
     async with state.proxy() as data:
         data['cafe'] = message.text
+        await UsersTest_1.next()
         file = "BAACAgIAAxkBAAMGZDACavgOKYb2Uce9QCTW0aZvkh4AAqQxAAK0MYFJqvztuhQf-OgvBA"
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
@@ -72,6 +73,7 @@ async def pushkina(message: types.Message, state: FSMContext):
     markup.add('Я посмотрел(а), го дальше :)')
     async with state.proxy() as data:
         data['cafe'] = message.text
+        await UsersTest_1.next()
         file = "BAACAgIAAxkBAAMcZDAIzYEnZUnQt3nc8exVVmvrFz8AAsExAAK0MYFJ_o9QSoIF2xkvBA"
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
@@ -83,6 +85,7 @@ async def spart(message: types.Message, state: FSMContext):
     markup.add('Я посмотрел(а), го дальше :)')
     async with state.proxy() as data:
         data['cafe'] = message.text
+        await UsersTest_1.next()
         file = "BAACAgIAAxkBAAIBP2QxqtK-k5NXmIZH-WS-sBoG7720AAJlKwACtHKRSfxxkjNzDs-uLwQ"
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
@@ -94,6 +97,7 @@ async def yamash(message: types.Message, state: FSMContext):
     markup.add('Я посмотрел(а), го дальше :)')
     async with state.proxy() as data:
         data['cafe'] = message.text
+        await UsersTest_1.next()
         file = open('/home/mekan_bot/kystbay_tgbot/kst_data/yamash.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
@@ -105,6 +109,7 @@ async def kullah(message: types.Message, state: FSMContext):
     markup.add('Я посмотрел(а), го дальше :)')
     async with state.proxy() as data:
         data['cafe'] = message.text
+        await UsersTest_1.next()
         file = "BAACAgIAAxkBAAIBPmQxnIhXITqL8KthUK7nuf1Bs9a4AAL4KgACtHKRSR5fKtmcOj4ELwQ"
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
