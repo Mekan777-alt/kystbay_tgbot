@@ -7,3 +7,10 @@ def nmts_cb():
     markup.add(InlineKeyboardButton('2', callback_data='2'))
     markup.add(InlineKeyboardButton('3', callback_data='3'))
     return markup
+
+
+def nmts_cb2():
+    markup = InlineKeyboardMarkup(row_width=2)
+    markup.add(InlineKeyboardButton('1', callback_data='1'))
+    markup.add(InlineKeyboardButton('2', callback_data='2'))
+    return markup
