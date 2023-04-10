@@ -25,7 +25,7 @@ async def work_obor(message: types.Message):
 @dp.message_handler(text='Как делать заготовки.')
 async def work_zagat(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Как хранить продукты.')
+    markup.add('Обзор холодильников')
     video1 = open('/home/mekan_bot/kystbay_tgbot/kst_data/smetana.MP4', 'rb')
     video2 = open('/home/mekan_bot/kystbay_tgbot/kst_data/lapsha.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
@@ -33,7 +33,7 @@ async def work_zagat(message: types.Message):
     await bot.send_video(chat_id=message.chat.id, video=video2, reply_markup=markup)
 
 
-@dp.message_handler(text='Как хранить продукты.')
+@dp.message_handler(text='Обзор холодильников')
 async def work_prod(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как держать зону кыстыбышника в чистоте.')
