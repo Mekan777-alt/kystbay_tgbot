@@ -2,7 +2,7 @@ from config import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ChatActions
-from buttons.buttons import nmts_cb
+from buttons.buttons import nmts_cb, nmts_cb2
 from context.context import UsersTest_1
 
 
@@ -25,7 +25,7 @@ async def lesson2(message: types.Message):
 @dp.message_handler(text='Микроволновка')
 async def mircro(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Чайник')
+    markup.add('Кофемашина')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/micro.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
 
@@ -33,24 +33,24 @@ async def mircro(message: types.Message):
 @dp.message_handler(text='Кофемашина')
 async def cofe(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Фритюрница')
+    markup.add('Я ознакомился(ась), пошли дальше.')
     async with state.proxy() as data:
         if data['cafe'] in '3. Спарткавоская' or data['cafe'] in '1. Парина':
             file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=file)
+            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
         elif data['cafe'] in '2. Пушкина':
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
-            await bot.send_document(message.chat.id, document=doc)
+            await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
         elif data['cafe'] in '4. Ямашева':
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
-            await bot.send_document(message.chat.id, document=doc)
+            await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
         elif data['cafe'] in '5. Куллахметова':
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/yamashkofe.JPG', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
-            await bot.send_document(message.chat.id, document=doc)
+            await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Я ознакомился(ась), пошли дальше.')
@@ -285,7 +285,7 @@ async def podpis(message: types.Message):
 @dp.message_handler(text='Регламент по уборке кухни, зоны сборки')
 async def reglament(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Пройти четвертый тест')
+    markup.add('Тест по Второму уроку')
     await message.answer('тут материалы', reply_markup=markup)
     await message.answer("Поздравляю, ты прошел второй урок!.\n"
                          "Давай проверим как ты усвоил информацию.\n"
@@ -293,81 +293,160 @@ async def reglament(message: types.Message):
                          "хихихи:)")
 
 
-@dp.message_handler(text=['Пройти четвертый тест', 'Пройти четвертый тест заново'])
-async def test_4(message: types.Message):
-    await UsersTest_1.four_one.set()
-    await message.answer('Из чего состоит Батыр?\n'
-                         '\n'
-                         '1. белая лепешка, одна говяжья котлета, сыр адыгейский, соус бургер, айсберг, '
-                         'помидоры, '
-                         'корнишоны, лук\n'
-                         '\n'
-                         '2. белая лепешка, одна говяжья котлета, соус барбекю, салат айсбейрг, помидоры, '
-                         'сыр чаддер, '
-                         'корнишоны, лук\n'
-                         '\n'
-                         '3. черная лепешка, две говяжьи котлеты, соус цезарь, салат айсбейрг, помидоры, '
-                         'сыр чаддер, '
-                         'корнишоны, лук', reply_markup=nmts_cb())
+@dp.message_handler(text=['Тест по Второму уроку', 'Пройти второй тест заново'])
+async def start_test_2(message: types.Message):
+    await UsersTest_1.two_1.set()
+    await message.answer('Сколько грамм в суп лапши входит курица и лапша?\n')
 
 
-@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.four_one)
-async def four_one(call: types.CallbackQuery, state: FSMContext):
-    if call.data == '1' or call.data == '3':
-        markup = ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.add('Пройти четвертый тест заново')
-        await call.message.answer('Тест провален:\n'
-                                  'Все заново', reply_markup=markup)
-    elif call.data == '2':
-        async with state.proxy() as data:
-            data['four_one'] = 'ok'
-            await UsersTest_1.next()
-            await call.answer('Верно, едем дальше')
-            await call.message.edit_text('Из чего состоит Су Анасы?\n'
-                                         '\n'
-                                         '1. белая лепешка, рис, соус тереяки, лосось, нори, свежий огурец\n'
-                                         '2. белая лепешка, рис, соус тереяки, наггенсы, нори, корнишоны\n'
-                                         '3. белая лепешка, рис, соус бургер, лосось, нори, свежий огурец',
-                                         reply_markup=nmts_cb())
+@dp.message_handler(state=UsersTest_1.two_1)
+async def two_1(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['two_1'] = message.text
+        await UsersTest_1.next()
+        await message.answer('Что входит в детский набор «Куян сет»\n'
+                             '\n'
+                             '1. детское фри, кыстыбый «бэлэкэч», сок 0,2 либо компот, игрушка\n'
+                             '\n'
+                             '2. детское фри, кыстыбый «туган», сок 0,2 либо компот, игрушка\n'
+                             '\n'
+                             '3. детское фри, кыстыбый «бэлэкэч», сок 0,2 либо компот', reply_markup=nmts_cb())
 
 
-@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.four_two)
-async def four_two(call: types.CallbackQuery, state: FSMContext):
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.two_2)
+async def two_2(call: types.CallbackQuery, state: FSMContext):
     if call.data == '2' or call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.add('Пройти четвертый тест заново')
+        markup.add('Пройти второй тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
+        await state.finish()
     elif call.data == '1':
         async with state.proxy() as data:
-            data['four_two'] = 'ok'
+            data['two_2'] = 'ok'
             await UsersTest_1.next()
             await call.answer('Верно, едем дальше')
-            await call.message.edit_text('Из чего состоит Чип Чеби?\n'
+            await call.message.edit_text('Сколько по времени готовится Нани?\n'
                                          '\n'
-                                         '1. белая лепешка, одна куриная котлета, соус уфтанма, айсберг, корнишоны и '
-                                         'помидоры\n '
+                                         '1. 3-4 мин\n'
                                          '\n'
-                                         '2. белая лепешка, одна говяжья котлета, соус бургер, айсберг, корнишоны, '
-                                         'помидоры и '
-                                         'лук\n '
+                                         '2. 8 мин\n'
                                          '\n'
-                                         '3. белая лепешка, одна куриная котлета, соус бургер, айсберг и помидоры',
+                                         '3. 4-5 мин',
                                          reply_markup=nmts_cb())
 
 
-@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.four_three)
-async def four_three(call: types.CallbackQuery, state: FSMContext):
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.two_3)
+async def two_3(call: types.CallbackQuery, state: FSMContext):
     if call.data == '1' or call.data == '2':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
-        markup.add('Пройти четвертый тест заново')
+        markup.add('Пройти второй тест заново')
         await call.message.answer('Тест провален:\n'
                                   'Все заново', reply_markup=markup)
+        await state.finish()
+    elif call.data == '3':
+        async with state.proxy() as data:
+            data['two_3'] = 'ok'
+            await UsersTest_1.next()
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text('Что входит в завтрак 1 и как он называется?\n'
+                                         '\n'
+                                         '1. «Тан». Пюре, сосиска халяль, яичница, лепешка, зелень, лук фри, салат: '
+                                         'помидоры, огурцы, айсберг, соус цезарь\n '
+                                         '\n'
+                                         '2. «Иртэ». Пюре, сосиска халяль, яичница, лепешка, зелень, лук фри, салат: '
+                                         'помидоры, огурцы, айсберг, соус бургер\n',
+                                         reply_markup=nmts_cb2())
+
+
+@dp.callback_query_handler(text=['1', '2'], state=UsersTest_1.two_4)
+async def two_4(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '1':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти второй тест заново')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
+        await state.finish()
+    elif call.data == '2':
+        async with state.proxy() as data:
+            data['two_4'] = 'ok'
+            await UsersTest_1.next()
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text('Что входит в состав салата «Уфтанма»?\n'
+                                         '\n'
+                                         '1. огурцы, болгарский перец, помидоры, айсберг, запеченная курица, '
+                                         'апельсины, соус уфтанма, черный кунжут.\n '
+                                         '\n'
+                                         '2. огурцы, болгарский перец, айсберг, запеченная курица, апельсины, '
+                                         'соус уфтанма, черный кунжут.\n '
+                                         '\n'
+                                         '3. огурцы, болгарский перец, айсберг, запеченная курица, апельсины, '
+                                         'соус чесночный.',
+                                         reply_markup=nmts_cb())
+
+
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.two_5)
+async def two_5(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '1' or call.data == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти второй тест заново')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
+        await state.finish()
+    elif call.data == '2':
+        async with state.proxy() as data:
+            data['two_5'] = 'ok'
+            await UsersTest_1.next()
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text('Сколько грамм по регламенту входит стандартная картошка фри и детская?\n'
+                                         '\n'
+                                         '1. 110 гр, 100 гр\n'
+                                         '\n'
+                                         '2. 100 гр, 90 гр\n'
+                                         '\n'
+                                         '3. 120 гр, 110 гр ',
+                                         reply_markup=nmts_cb())
+
+
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.two_6)
+async def two_6(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '2' or call.data == '3':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти второй тест заново')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
+        await state.finish()
+    elif call.data == '1':
+        async with state.proxy() as data:
+            data['two_6'] = 'ok'
+            await UsersTest_1.next()
+            await call.answer('Верно, едем дальше')
+            await call.message.edit_text('Cколько штук замороженых мантов входит в Полуфабрикаты? \n'
+                                         '\n'
+                                         '1. 7 шт\n'
+                                         '\n'
+                                         '2. 9 шт\n'
+                                         '\n'
+                                         '3. 8 шт',
+                                         reply_markup=nmts_cb())
+
+
+@dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.two_7)
+async def two_7(call: types.CallbackQuery, state: FSMContext):
+    if call.data == '1' or call.data == '2':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Пройти второй тест заново')
+        await call.message.answer('Тест провален:\n'
+                                  'Все заново', reply_markup=markup)
+        await state.finish()
     elif call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Я красавчик(ца), идем дальше.')
         async with state.proxy() as data:
-            data['four_three'] = 'ok'
-            await call.message.answer('Верно! едем дальше', reply_markup=markup)
+            data['two_7'] = 'ok'
+            await call.message.answer("Ты молодец, проделал(а) большую работу!\n"
+                                      "Теперь ты знаешь основной состав нашего меню.\n"
+                                      "Чтобы полностью усвоить зону кыстыбый, тебе надо сделать двоеное сальто вперед ("
+                                      "Латнааа татарская шутка :) ", reply_markup=markup)
             await state.finish()
 
