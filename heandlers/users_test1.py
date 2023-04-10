@@ -205,7 +205,4 @@ async def su_anasy(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать второе упражнение')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/suanasy.JPG', 'rb')
-    await bot.send_photo(message.chat.id, photo=photo)
-    await message.answer("Убедись, внимательно ли ты изучил составы кыстыбый, чтобы пройти тест. "
-                         "Он поможет тебе закрепить изученную информацию :)\n"
-                         "Успехов!", reply_markup=markup)
+    await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)

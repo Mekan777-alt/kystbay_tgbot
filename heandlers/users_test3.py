@@ -71,7 +71,7 @@ async def continue___(message: types.Message):
 async def akt_spis(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Стафф')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/aktspis.xlsx ', 'rb')
+    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/aktspis.xlsx', 'rb')
     video = open('/home/mekan_bot/kystbay_tgbot/kst_data/aktspisa.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
