@@ -93,8 +93,9 @@ async def lapsha(message: types.Message):
 async def mors_compot(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как нарезать зелень, лимон')
-    await message.answer('тут материалы', reply_markup=markup)
-
+    video = 'BAACAgIAAxkBAAIDx2Q1XfaywkjDDfUAAdx3cmUwFcJJfQACBygAAjsmsEnFuqz1AhrT0y8E'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=video, reply_markup=markup)
 
 @dp.message_handler(text='Как нарезать зелень, лимон')
 async def zelen_lemon(message: types.Message):
@@ -116,10 +117,16 @@ async def sous(message: types.Message):
 
 
 @dp.message_handler(text='Как заполнить пространоство расходных материалов (ложки, вилки, сахар, перец, салфетки)')
-async def lojka_vilka(message: types.Message):
+async def lojka_vilka(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Чистота в зоне сборки')
-    await message.answer('тут материалы', reply_markup=markup)
+    async with state.proxy() as data:
+        if data['cafe'] in '1. Парина':
+            video = open('/home/mekan_bot/kystbay_tgbot/kst_data/parinarashodmat.MP4', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+        else:
+            await message.answer('тут материалы', reply_markup=markup)
 
 
 

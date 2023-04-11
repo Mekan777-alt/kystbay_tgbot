@@ -124,8 +124,15 @@ async def bonus_kassa(message: types.Message):
                          "по чистоте. Здесь тебе будет не сложно")
 
 
-@dp.message_handler(text='Закрытие смены. Чек-лист закрытия')
+@dp.message_handler(text='Закрытие смены. Как закрывать кассу, киоск. Убрать помещение')
 async def close_work(message: types.Message):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    markup.add('Чек-лист закрытия')
+    await message.answer('тут материалы', reply_markup=markup)
+
+
+@dp.message_handler(text='Чек-лист закрытия')
+async def check_list(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Чек-лист по бытовой химии')
     await message.answer('тут материалы', reply_markup=markup)
