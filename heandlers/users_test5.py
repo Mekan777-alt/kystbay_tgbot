@@ -21,6 +21,13 @@ async def lesson3(message: types.Message):
 @dp.message_handler(text='Открытие заведения,снятие сигнализации,включение вытяжки, света в кафе.')
 async def open_smen(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    markup.add('Как открывать и закрывать рабочую смену')
+    await message.answer('тут материалы', reply_markup=markup)
+
+
+@dp.message_handler(text='Как открывать и закрывать рабочую смену')
+async def open_smen(message: types.Message):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Открытие кассы и рабочей смены')
     await message.answer('тут материалы', reply_markup=markup)
 
@@ -55,13 +62,6 @@ async def problem_kiosk(message: types.Message):
 
 @dp.message_handler(text='Включение ТВ, экрана выдачи заказа')
 async def vkl_vykl_tv(message: types.Message):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Проблемы в работе с ТВ, экрана выдачи заказа')
-    await message.answer('тут материалы', reply_markup=markup)
-
-
-@dp.message_handler(text='Проблемы в работе с ТВ, экрана выдачи заказа')
-async def problem_vkl_vykl_tv(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Регламент по уборке зала и туалетов')
     await message.answer('тут материалы', reply_markup=markup)

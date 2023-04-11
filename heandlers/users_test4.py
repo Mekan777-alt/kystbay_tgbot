@@ -157,7 +157,8 @@ async def go(message: types.Message):
 async def one_blude(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Вторые блюда: балеш "Эгоист", Булгур с курицей, манты, мясо по- татарски, пельмени "Кияу".')
-    await message.answer('тут материалы', reply_markup=markup)
+    photo5 = open('/home/mekan_bot/kystbay_tgbot/kst_data/pervyybluda.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo5, reply_markup=markup)
 
 
 @dp.message_handler(text='Вторые блюда: балеш "Эгоист", Булгур с курицей, манты, мясо по- татарски, пельмени "Кияу".')
@@ -165,8 +166,8 @@ async def two_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Завтраки: завтрак 1 "Иртэ", завтрак 2 "Тан", завтрак 3 "Тэртип", завтрак 4 "Кояш", "Тост с ветчиной и '
                'сыром","сырники","каша овсяная".')
-    await message.answer('тут материалы', reply_markup=markup)
-
+    photo9 = open('/home/mekan_bot/kystbay_tgbot/kst_data/vtorybluda.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo9, reply_markup=markup)
 
 @dp.message_handler(
     text='Завтраки: завтрак 1 "Иртэ", завтрак 2 "Тан", завтрак 3 "Тэртип", завтрак 4 "Кояш", "Тост с ветчиной и '
@@ -174,7 +175,8 @@ async def two_blud(message: types.Message):
 async def morning_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Детское меню: "Куян Сет", кыстыбый "Бэлэкэч", детские пельмени, игрушка, сок.')
-    await message.answer('тут материалы', reply_markup=markup)
+    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/zawtraki.pdf', 'rb')
+    await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Детское меню: "Куян Сет", кыстыбый "Бэлэкэч", детские пельмени, игрушка, сок.')
@@ -182,8 +184,8 @@ async def kids_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Напитки: кофе "Латте", "Капучино", "Американо", "Чай Черный", "Чай Зеленый", "морс Облепиховый", '
                'компот "Ягодный", сок 0,2.')
-    await message.answer('тут материалы', reply_markup=markup)
-
+    photo2 = open('/home/mekan_bot/kystbay_tgbot/kst_data/detskoye.PNG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo2, reply_markup=markup)
 
 @dp.message_handler(
     text='Напитки: кофе "Латте", "Капучино", "Американо", "Чай Черный", "Чай Зеленый", "морс Облепиховый", '
@@ -191,14 +193,16 @@ async def kids_blud(message: types.Message):
 async def water_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Десерты: "Ичмасам", "Маффин", "Меренговый рулет", "Тирамису", "Чак-чак", "Чизкейк".')
-    await message.answer('тут материалы', reply_markup=markup)
-
+    photo4 = open('/home/mekan_bot/kystbay_tgbot/kst_data/napitki.PNG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo4, reply_markup=markup)
 
 @dp.message_handler(text='Десерты: "Ичмасам", "Маффин", "Меренговый рулет", "Тирамису", "Чак-чак", "Чизкейк".')
 async def des_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Новинки: "салат с наггетсами","кыстыбый с пшенкой", "Пшеная каша с уткой", "суп тыквенный"')
     await message.answer('тут материалы', reply_markup=markup)
+    photo7 = open('/home/mekan_bot/kystbay_tgbot/kst_data/deserty.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo7, reply_markup=markup)
 
 
 @dp.message_handler(text='Новинки: "салат с наггетсами","кыстыбый с пшенкой", "Пшеная каша с уткой", "суп тыквенный"')
@@ -212,14 +216,15 @@ async def new_blud(message: types.Message):
 async def salat_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('СНЭКИ: "картофель фри", "Наггетсы Чеби 3 шт", "Нани очпочмак", "Крылышки-канат".')
-    await message.answer('тут материалы', reply_markup=markup)
-
+    photo6 = open('/home/mekan_bot/kystbay_tgbot/kst_data/salaty.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo6, reply_markup=markup)
 
 @dp.message_handler(text='СНЭКИ: "картофель фри", "Наггетсы Чеби 3 шт", "Нани очпочмак", "Крылышки-канат".')
 async def snek_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Выпечка: "Губадия", "Элеш", "Эчпочмак", "Балеш 1,5 кг".')
-    await message.answer('тут материалы', reply_markup=markup)
+    photo8 = open('/home/mekan_bot/kystbay_tgbot/kst_data/sneki.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo8, reply_markup=markup)
 
 
 @dp.message_handler(text='Выпечка: "Губадия", "Элеш", "Эчпочмак", "Балеш 1,5 кг".')
@@ -228,7 +233,8 @@ async def belesh_blud(message: types.Message):
     markup.add('Полуфабрикаты: "Пельмени ПФ","Нани ПФ","Манты ПФ", " Наггетсы ПФ", "Сырники ПФ", "Голубцы ПФ", \n'
                '"Треуголники ПФ", "Элеши ПФ","Губадия ПФ","Балеш эгоист ПФ", "Котлеты из говядины ПФ", "Котлеты из \n'
                'курицы ПФ", "Фрикадельки говяжьи ПФ", "Фрикадельки куриные ПФ", "Тефтели ПФ".')
-    await message.answer('тут материалы', reply_markup=markup)
+    photo10 = open('/home/mekan_bot/kystbay_tgbot/kst_data/vypechka.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo10, reply_markup=markup)
 
 
 @dp.message_handler(
@@ -238,7 +244,8 @@ async def belesh_blud(message: types.Message):
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Разогрев блюд')
-    await message.answer('тут материалы')
+    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/Полуфабрикаты новые цены январь.pdf', 'rb')
+    await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
     await message.answer('Молодец,дружище!\n'
                          'Теперь ты изучил полный состав меню! Если тебе нужно будет вспомнить какое-нибудь блюдо, '
                          'ты сможешь всегда воспользоваться кнопкой в меню "поиск". \n'
@@ -249,14 +256,28 @@ async def fabric_blud(message: types.Message):
 async def razogrev(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как сделать разновидности кофе')
-    await message.answer('тут материалы', reply_markup=markup)
+    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/Разогрев блюд.pptx', 'rb')
+    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_7999.MOV', 'rb')
+    await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=video, reply_markup=markup)
 
 
 @dp.message_handler(text='Как сделать разновидности кофе')
-async def coffee_razvod(message: types.Message):
+async def coffee_razvod(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Расстановка заказа на подносе')
-    await message.answer('тут материалы', reply_markup=markup)
+    async with state.proxy() as data:
+        if data['cafe'] in '3. Спарткавоская' or data['cafe'] in '1. Парина' or data['cafe'] in '2. Пушкина':
+            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+        elif data['cafe'] in '5. Куллахметова' or data['cafe'] in '4. Ямашева':
+            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6966.MOV', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+
+
 
 
 @dp.message_handler(text='Расстановка заказа на подносе')
