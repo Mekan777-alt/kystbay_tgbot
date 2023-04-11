@@ -141,20 +141,6 @@ async def check_list(message: types.Message):
 @dp.message_handler(text='Чек-лист по бытовой химии')
 async def chek_list(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Регламент заполнение маркетов')
-    await message.answer('тут материалы', reply_markup=markup)
-
-
-@dp.message_handler(text='Регламент заполнение маркетов')
-async def reglament_maket(message: types.Message):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Регламент заполнения витрины')
-    await message.answer('тут материалы', reply_markup=markup)
-
-
-@dp.message_handler(text='Регламент заполнения витрины')
-async def reglament_vitrin(message: types.Message):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Приступить к АТТЕСТАЦИИ.')
     await message.answer('тут материалы', reply_markup=markup)
     await message.answer("КРАССАВИЧИК!\n"

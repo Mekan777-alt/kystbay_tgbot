@@ -298,15 +298,19 @@ async def sborka(message: types.Message):
 async def sborka_2(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как подписывать крышки, крафт пакеты.')
-    await message.answer('тут материалы', reply_markup=markup)
+    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5750.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+
 
 
 @dp.message_handler(text='Как подписывать крышки, крафт пакеты.')
 async def podpis(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Регламент по уборке кухни, зоны сборки')
-    await message.answer('тут материалы', reply_markup=markup)
-
+    file = 'BAACAgIAAxkBAAIDyGQ1d78lM5gsLTsFcMNVF4e8hZRpAAIDKQACOyawSdH8X58fdavfLwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
 @dp.message_handler(text='Регламент по уборке кухни, зоны сборки')
 async def reglament(message: types.Message):
