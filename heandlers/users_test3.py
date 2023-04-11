@@ -25,7 +25,7 @@ async def work_obor(message: types.Message):
 @dp.message_handler(text='Как делать заготовки.')
 async def work_zagat(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Как хранить продукты.')
+    markup.add('Обзор холодильников')
     video1 = open('/home/mekan_bot/kystbay_tgbot/kst_data/smetana.MP4', 'rb')
     video2 = open('/home/mekan_bot/kystbay_tgbot/kst_data/lapsha.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
@@ -33,11 +33,31 @@ async def work_zagat(message: types.Message):
     await bot.send_video(chat_id=message.chat.id, video=video2, reply_markup=markup)
 
 
-@dp.message_handler(text='Как хранить продукты.')
-async def work_prod(message: types.Message):
+@dp.message_handler(text='Обзор холодильников')
+async def work_prod(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как держать зону кыстыбышника в чистоте.')
-    await message.answer('тут материалы', reply_markup=markup)
+    async with state.proxy() as data:
+        if data['cafe'] in '1. Парина':
+            file = 'BQACAgIAAxkBAAICrGQ0MhaHB_O3dcVvhnKs6UkDiENiAAJ4MQACTCigSUc0DdutDdukLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+        elif data['cafe'] in '2. Пушкина':
+            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/obzholodpush.MP4', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+        elif data['cafe'] in '3. Спарткавоская':
+            doc = 'BQACAgIAAxkBAAICqWQ0LVK5vUmXmuOKw8hR3cmdag3qAAIqMQACTCigSTlZFROorzUjLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+        elif data['cafe'] in '4. Ямашева':
+            doc = 'BQACAgIAAxkBAAICqmQ0MTCDOLmFgyqvp1ltqQnE_cy8AAJhMQACTCigSZl61jZzUevTLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+        elif data['cafe'] in '5. Куллахметова':
+            doc = 'BQACAgIAAxkBAAICq2Q0MevnSE2ciFyU2eA9Y_3jHVJgAAJzMQACTCigSTJG7Slu1wQOLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Как держать зону кыстыбышника в чистоте.')
@@ -71,7 +91,7 @@ async def continue___(message: types.Message):
 async def akt_spis(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Стафф')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/aktspis.xlsx ', 'rb')
+    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/aktspis.xlsx', 'rb')
     video = open('/home/mekan_bot/kystbay_tgbot/kst_data/aktspisa.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
@@ -90,7 +110,7 @@ async def staff(message: types.Message):
 @dp.message_handler(text='Рабочий чат')
 async def work_chat(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Начать третий тест')
+    markup.add('Начать тест к первому уроку')
     video = open('/home/mekan_bot/kystbay_tgbot/kst_data/char_rab.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
@@ -101,7 +121,7 @@ async def work_chat(message: types.Message):
                          "закрепим первый урок.", reply_markup=markup)
 
 
-@dp.message_handler(text=['Тест по Первому уроку', 'Пройти первый тест заново'])
+@dp.message_handler(text=['Начать тест к первому уроку', 'Пройти первый тест заново'])
 async def start_test(message: types.Message):
     await UsersTest_1.one_1.set()
     await message.answer('Что входит в состав КОМБО?\n'

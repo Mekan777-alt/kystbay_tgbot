@@ -57,9 +57,10 @@ async def cofe(message: types.Message, state: FSMContext):
 async def continue_work(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Продолжить')
-    await message.answer("Пора научиться готовить продукты во фритюрнице, такие как нани, фри, наггетсы, сосиски. ",
-                         reply_markup=markup)
-    await message.answer('тут материалы')
+    file = open('/home/mekan_bot/kstbay_tgbot/kst_data/reg.pptx', 'rb')
+    await message.answer("Пора научиться готовить продукты во фритюрнице, такие как нани, фри, наггетсы, сосиски. ")
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
+    await bot.send_document(message.chat.id, document=file, reply_markup=markup)
 
 
 @dp.message_handler(text='Продолжить')
@@ -74,14 +75,18 @@ async def con(message: types.Message):
 async def tea(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как сделать лапшу')
-    await message.answer('тут матриалы', reply_markup=markup)
+    file = open('/home/mekan_bot/kstbay_tgbot/kst_data/chay.pptx', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
+    await bot.send_document(message.chat.id, document=file, reply_markup=markup)
 
 
 @dp.message_handler(text='Как сделать лапшу')
 async def lapsha(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как сделать напитки: морс и компот')
-    await message.answer('тут материалы', reply_markup=markup)
+    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/lapsha.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
 
 @dp.message_handler(text='Как сделать напитки: морс и компот')
@@ -95,42 +100,35 @@ async def mors_compot(message: types.Message):
 async def zelen_lemon(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как заполнить сметану в соусничке')
-    await message.answer('тут материалы', reply_markup=markup)
+    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/zelen.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
 
 @dp.message_handler(text='Как заполнить сметану в соусничке')
 async def sous(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Как заполнить витрину')
-    await message.answer('тут материалы', reply_markup=markup)
-
-
-@dp.message_handler(text='Как заполнить витрину')
-async def vetrina(message: types.Message):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как заполнить пространоство расходных материалов (ложки, вилки, сахар, перец, салфетки)')
-    await message.answer('тут материалы', reply_markup=markup)
+    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/smetana.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+
 
 
 @dp.message_handler(text='Как заполнить пространоство расходных материалов (ложки, вилки, сахар, перец, салфетки)')
 async def lojka_vilka(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Как заполнить маркет')
-    await message.answer('тут материалы', reply_markup=markup)
-
-
-@dp.message_handler(text='Как заполнить маркет')
-async def market(message: types.Message):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Чистота в зоне сборки')
     await message.answer('тут материалы', reply_markup=markup)
+
 
 
 @dp.message_handler(text='Чистота в зоне сборки')
 async def sborka(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я усвоил(а), гоу дальше.')
-    await message.answer('тут материалы', reply_markup=markup)
+    photo10 = open('/home/mekan_bot/kystbay_tgbot/kst_data/chist.JPG', 'rb')
+    await bot.send_photo(message.chat.id, photo=photo10, reply_markup=markup)
 
 
 @dp.message_handler(text='Я усвоил(а), гоу дальше.')

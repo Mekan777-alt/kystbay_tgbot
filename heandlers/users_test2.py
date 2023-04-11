@@ -59,4 +59,3 @@ async def ak_bars(message: types.Message):
     markup.add('Начать третье упражнение')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/photo_2023-04-10 13.37.27.jpeg', 'rb')
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
-
