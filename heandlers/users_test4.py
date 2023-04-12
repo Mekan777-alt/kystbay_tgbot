@@ -75,7 +75,7 @@ async def con(message: types.Message):
 async def tea(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как сделать лапшу')
-    file = open('/home/mekan_bot/kstbay_tgbot/kst_data/chay.pptx', 'rb')
+    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/chay.pptx', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
     await bot.send_document(message.chat.id, document=file, reply_markup=markup)
 
