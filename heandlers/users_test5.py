@@ -23,7 +23,6 @@ async def open_smen(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как открывать и закрывать рабочую смену')
     async with state.proxy() as data:
-        print(data['cafe'])
         if data['cafe'] in '1. Парина':
             # file = 'BQACAgIAAxkBAAICrGQ0MhaHB_O3dcVvhnKs6UkDiENiAAJ4MQACTCigSUc0DdutDdukLwQ'
             # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
@@ -204,7 +203,7 @@ async def obyaz_kass(message: types.Message):
 @dp.message_handler(text='Нужные документы для кассира, как чек-лист, акт такси, график уборки туалета')
 async def dock_kassa(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Оформление доставки на кассе, чеки для  доставки, закрытие доставок')
+    markup.add('Оформление доставки на кассе, чеки для доставки, закрытие доставок')
     doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/Чек-лист.xlsx', 'rb')
     doc1 = open('/home/mekan_bot/kystbay_tgbot/kst_data/Акт такси.xls', 'rb')
     await bot.send_document(message.chat.id, document=doc1)
@@ -247,7 +246,7 @@ async def bonus_kassa(message: types.Message):
                          "по чистоте. Здесь тебе будет не сложно")
 
 
-@dp.message_handler(text='Закрытие смены. Как закрывать кассу, киоск. Убрать помещение')
+@dp.message_handler(text='Закрытие смены. Чек-лист закрытия')
 async def close_work(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Чек-лист закрытия')
