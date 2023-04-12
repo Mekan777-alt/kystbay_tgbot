@@ -200,7 +200,6 @@ async def water_blud(message: types.Message):
 async def des_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Новинки: "салат с наггетсами","кыстыбый с пшенкой", "Пшеная каша с уткой", "суп тыквенный"')
-    await message.answer('тут материалы', reply_markup=markup)
     photo7 = open('/home/mekan_bot/kystbay_tgbot/kst_data/deserty.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo7, reply_markup=markup)
 

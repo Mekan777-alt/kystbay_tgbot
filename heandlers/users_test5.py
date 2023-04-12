@@ -23,6 +23,7 @@ async def open_smen(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как открывать и закрывать рабочую смену')
     async with state.proxy() as data:
+        print(data['cafe'])
         if data['cafe'] in '1. Парина':
             # file = 'BQACAgIAAxkBAAICrGQ0MhaHB_O3dcVvhnKs6UkDiENiAAJ4MQACTCigSUc0DdutDdukLwQ'
             # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
