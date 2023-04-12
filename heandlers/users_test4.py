@@ -57,7 +57,7 @@ async def cofe(message: types.Message, state: FSMContext):
 async def continue_work(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Продолжить')
-    file = open('/home/mekan_bot/kstbay_tgbot/kst_data/reg.pptx', 'rb')
+    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/reg.pptx', 'rb')
     await message.answer("Пора научиться готовить продукты во фритюрнице, такие как нани, фри, наггетсы, сосиски. ")
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
     await bot.send_document(message.chat.id, document=file, reply_markup=markup)
@@ -313,10 +313,35 @@ async def podpis(message: types.Message):
     await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
 @dp.message_handler(text='Регламент по уборке кухни, зоны сборки')
-async def reglament(message: types.Message):
+async def reglament(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Тест по Второму уроку')
-    await message.answer('тут материалы', reply_markup=markup)
+    async with state.proxy() as data:
+        if data['cafe'] in '1. Парина':
+            # file = 'BQACAgIAAxkBAAICrGQ0MhaHB_O3dcVvhnKs6UkDiENiAAJ4MQACTCigSUc0DdutDdukLwQ'
+            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            # await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+            await message.answer('тут материалы', reply_markup=markup)
+        elif data['cafe'] in '2. Пушкина':
+            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5713.MP4', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+        elif data['cafe'] in '3. Спарткавоская':
+            # doc = 'BQACAgIAAxkBAAICqWQ0LVK5vUmXmuOKw8hR3cmdag3qAAIqMQACTCigSTlZFROorzUjLwQ'
+            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+            await message.answer('тут материалы', reply_markup=markup)
+        elif data['cafe'] in '4. Ямашева':
+            # doc = 'BQACAgIAAxkBAAICqmQ0MTCDOLmFgyqvp1ltqQnE_cy8AAJhMQACTCigSZl61jZzUevTLwQ'
+            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+            await message.answer('тут материалы', reply_markup=markup)
+        elif data['cafe'] in '5. Куллахметова':
+            # doc = 'BQACAgIAAxkBAAICq2Q0MevnSE2ciFyU2eA9Y_3jHVJgAAJzMQACTCigSTJG7Slu1wQOLwQ'
+            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+            await message.answer('тут материалы', reply_markup=markup)
+
     await message.answer("Поздравляю, ты прошел второй урок!.\n"
                          "Давай проверим как ты усвоил информацию.\n"
                          "Ладно, не переживай, это делается лишь для того, чтобы тебе было легче работать и кайфовать. "
