@@ -22,7 +22,27 @@ async def lesson3(message: types.Message):
 async def open_smen(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как открывать и закрывать рабочую смену')
-    await message.answer('тут материалы', reply_markup=markup)
+    async with state.proxy() as data:
+        if data['cafe'] in '1. Парина':
+            file = 'BQACAgIAAxkBAAICrGQ0MhaHB_O3dcVvhnKs6UkDiENiAAJ4MQACTCigSUc0DdutDdukLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+        elif data['cafe'] in '2. Пушкина':
+            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/obzholodpush.MP4', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+        elif data['cafe'] in '3. Спарткавоская':
+            doc = 'BQACAgIAAxkBAAICqWQ0LVK5vUmXmuOKw8hR3cmdag3qAAIqMQACTCigSTlZFROorzUjLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+        elif data['cafe'] in '4. Ямашева':
+            doc = 'BQACAgIAAxkBAAICqmQ0MTCDOLmFgyqvp1ltqQnE_cy8AAJhMQACTCigSZl61jZzUevTLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+        elif data['cafe'] in '5. Куллахметова':
+            doc = ''
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Как открывать и закрывать рабочую смену')

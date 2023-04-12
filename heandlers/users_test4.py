@@ -230,17 +230,12 @@ async def snek_blud(message: types.Message):
 @dp.message_handler(text='Выпечка: "Губадия", "Элеш", "Эчпочмак", "Балеш 1,5 кг".')
 async def belesh_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Полуфабрикаты: "Пельмени ПФ","Нани ПФ","Манты ПФ", " Наггетсы ПФ", "Сырники ПФ", "Голубцы ПФ", \n'
-               '"Треуголники ПФ", "Элеши ПФ","Губадия ПФ","Балеш эгоист ПФ", "Котлеты из говядины ПФ", "Котлеты из \n'
-               'курицы ПФ", "Фрикадельки говяжьи ПФ", "Фрикадельки куриные ПФ", "Тефтели ПФ".')
+    markup.add('Полуфабрикаты: "Пельмени ПФ","Нани ПФ","Манты ПФ", " Наггетсы ПФ"')
     photo10 = open('/home/mekan_bot/kystbay_tgbot/kst_data/vypechka.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo10, reply_markup=markup)
 
 
-@dp.message_handler(
-    text='Полуфабрикаты: "Пельмени ПФ","Нани ПФ","Манты ПФ", " Наггетсы ПФ", "Сырники ПФ", "Голубцы ПФ", \n'
-         '"Треуголники ПФ", "Элеши ПФ","Губадия ПФ","Балеш эгоист ПФ", "Котлеты из говядины ПФ", "Котлеты из \n'
-         'курицы ПФ", "Фрикадельки говяжьи ПФ", "Фрикадельки куриные ПФ", "Тефтели ПФ".')
+@dp.message_handler(text='Полуфабрикаты: "Пельмени ПФ","Нани ПФ","Манты ПФ", " Наггетсы ПФ"')
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Разогрев блюд')
@@ -284,14 +279,17 @@ async def coffee_razvod(message: types.Message, state: FSMContext):
 async def rastanovka(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Сборка в крафт пакете для доставки')
-    await message.answer('тут материалы', reply_markup=markup)
-
+    file = 'BAACAgIAAxkBAAIFkmQ2vM4nK2NagmZKjCLbE0lKtNn3AAI9KgACNCKwSRMpycu3fTxVLwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
 @dp.message_handler(text='Сборка в крафт пакете для доставки')
 async def sborka(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Сборка садака')
-    await message.answer('тут материалы', reply_markup=markup)
+    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
 
 @dp.message_handler(text='Сборка садака')
