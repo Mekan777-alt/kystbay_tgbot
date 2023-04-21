@@ -13,7 +13,7 @@ async def lesson2(message: types.Message):
     doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/obyazsbor.docx', 'rb')
     await message.answer("Второй урок.\n"
                          "\n"
-                         "Во втором уроке ты узнаешь все про зоны сборки,расстановку заказа, срок хранения, инвентарь "
+                         "Во втором уроке ты узнаешь все про зоны сборки, расстановку заказа, срок хранения, инвентарь "
                          "и как собрать доставку в наших заведениях. "
                          "Я научу тебя правильно использовать обородувания и свой мозг =)\n"
                          "Давай приступим.", reply_markup=markup)
@@ -125,6 +125,10 @@ async def lojka_vilka(message: types.Message, state: FSMContext):
             video = open('/home/mekan_bot/kystbay_tgbot/kst_data/parinarashodmat.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+        elif data['cafe'] in '2. Пушкина':
+            video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5711.MP4', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
         else:
             await message.answer('тут материалы', reply_markup=markup)
 
@@ -145,7 +149,9 @@ async def go(message: types.Message):
                'Аш".')
     await message.answer("Тебе нужно еще знать объемы стаканов, бутылок. "
                          "Ознакомиться с посудой для первых и вторых блюд, десертов и выпечки.", reply_markup=markup)
-    await message.answer('тут материалы')
+    file = 'BAACAgIAAxkBAAIRJWRCZZrzqR9mg7UQycDCo1mUxF2RAAKeLAAC4CEQSi6c-uOIg-ZdLwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=file)
     await message.answer(
         '"Давай научу тебя выполнять основные действия на зоне сборки. Для начала ознакомлю тебя с составом МЕНЮ '
         '"KSTB"."')
@@ -199,16 +205,9 @@ async def water_blud(message: types.Message):
 @dp.message_handler(text='Десерты: "Ичмасам", "Маффин", "Меренговый рулет", "Тирамису", "Чак-чак", "Чизкейк".')
 async def des_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Новинки: "салат с наггетсами","кыстыбый с пшенкой", "Пшеная каша с уткой", "суп тыквенный"')
+    markup.add('Салаты: салат "Уфтанма", салат "Летний".')
     photo7 = open('/home/mekan_bot/kystbay_tgbot/kst_data/deserty.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo7, reply_markup=markup)
-
-
-@dp.message_handler(text='Новинки: "салат с наггетсами","кыстыбый с пшенкой", "Пшеная каша с уткой", "суп тыквенный"')
-async def new_blud(message: types.Message):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Салаты: салат "Уфтанма", салат "Летний".')
-    await message.answer('тут материалы', reply_markup=markup)
 
 
 @dp.message_handler(text='Салаты: салат "Уфтанма", салат "Летний".')
@@ -240,7 +239,7 @@ async def fabric_blud(message: types.Message):
     markup.add('Разогрев блюд')
     doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/Полуфабрикаты новые цены январь.pdf', 'rb')
     await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
-    await message.answer('Молодец,дружище!\n'
+    await message.answer('Молодец, дружище!\n'
                          'Теперь ты изучил полный состав меню! Если тебе нужно будет вспомнить какое-нибудь блюдо, '
                          'ты сможешь всегда воспользоваться кнопкой в меню "поиск". \n'
                          'Пора перейти к изучению Зоны Сборки.', reply_markup=markup)
@@ -249,7 +248,7 @@ async def fabric_blud(message: types.Message):
 @dp.message_handler(text='Разогрев блюд')
 async def razogrev(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Как сделать разновидности кофе')
+    markup.add('Как сделать кофе')
     doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/Разогрев блюд.pptx', 'rb')
     video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_7999.MOV', 'rb')
     await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
@@ -257,7 +256,7 @@ async def razogrev(message: types.Message):
     await bot.send_video(message.chat.id, video=video, reply_markup=markup)
 
 
-@dp.message_handler(text='Как сделать разновидности кофе')
+@dp.message_handler(text='Как сделать кофе')
 async def coffee_razvod(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Расстановка заказа на подносе')
@@ -492,7 +491,7 @@ async def two_7(call: types.CallbackQuery, state: FSMContext):
             data['two_7'] = 'ok'
             await call.message.answer("Ты молодец, проделал(а) большую работу!\n"
                                       "Теперь ты знаешь основной состав нашего меню.\n"
-                                      "Чтобы полностью усвоить зону кыстыбый, тебе надо сделать двоеное сальто вперед ("
+                                      "Чтобы полностью усвоить зону сборки, тебе надо сделать двоеное сальто вперед ("
                                       "Латнааа татарская шутка :) ", reply_markup=markup)
             await state.finish()
 
