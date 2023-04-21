@@ -22,8 +22,8 @@ async def command_name(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['name'] = message.text
         works.append(message.text)
-        await message.answer(f'Приятно познакомиться, {message.text}, посмотри приветсвенное видео с '
-                             'основателем "Кыстыбый" - Азатом.', reply_markup=markup)
+        await message.answer(f'Приятно познакомиться, {message.text}, посмотри приветсвенное видео '
+                ' с Основателем Кыстыбый - Назмутдинов Азатом и с руководителем сети Еленой Кофоновой', reply_markup=markup)
         video = "BAACAgIAAxkBAAMHZDAGxfiTTc-0WpjY1Kg0Kjz2tdQAArcxAAK0MYFJNbrtrYo39A8vBA"
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(chat_id=message.chat.id, video=video)
