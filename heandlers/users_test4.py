@@ -35,6 +35,7 @@ async def cofe(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я ознакомился(ась), пошли дальше.')
     async with state.proxy() as data:
+        print(data['cafe'])
         if data['cafe'] in '3. Спарткавоская' or data['cafe'] in '1. Парина':
             file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
@@ -125,9 +126,22 @@ async def lojka_vilka(message: types.Message, state: FSMContext):
             video = open('/home/mekan_bot/kystbay_tgbot/kst_data/parinarashodmat.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-        else:
-            await message.answer('тут материалы', reply_markup=markup)
-
+        elif data['cafe'] in '3. Спарткавоская':
+            video = 'BAACAgIAAxkBAAIRQmRCydKwcJf6XhtifJYwRCHoGw8xAAIIMAAC4CEYStVMDvMZM9LxLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+        elif data['cafe'] in '2. Пушкина':
+            video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5711.MP4', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+        elif data['cafe'] in '5. Куллахметова':
+            video = 'BAACAgIAAxkBAAIRQ2RCy8XVKBgFI4IoYj5MyNjB9qFAAAIUMAAC4CEYSrXFh9PGlNM6LwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+        elif data['cafe'] in '4. Ямашева':
+            video = 'BAACAgIAAxkBAAIRQ2RCy8XVKBgFI4IoYj5MyNjB9qFAAAIUMAAC4CEYSrXFh9PGlNM6LwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
 
 
 @dp.message_handler(text='Чистота в зоне сборки')
