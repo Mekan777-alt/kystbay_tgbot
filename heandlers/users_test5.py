@@ -73,14 +73,14 @@ async def open_kassa(message: types.Message, state: FSMContext):
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         elif data['cafe'] in '4. Ямашева':
-            # doc = 'BAACAgIAAxkBAAIFlWQ2wGh-TSGw2_wzIPsmjnhbCa-DAAJiKgACNCKwSb9ilm6KHdD7LwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6388.MP4', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
             await message.answer('тут материалы', reply_markup=markup)
         elif data['cafe'] in '5. Куллахметова':
-            # doc = 'BAACAgIAAxkBAAIFk2Q2v3QN6n5_BHnVvGsj7C7kgEuqAAJVKgACNCKwSXG6M9WOdspKLwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+            doc = 'BAACAgIAAxkBAAIRRGRC1m7ENDAbLWMyd3FQXVPd-jBwAAJIMAAC4CEYSmPiHeD73wucLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
             await message.answer('тут материалы', reply_markup=markup)
 
 

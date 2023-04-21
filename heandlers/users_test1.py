@@ -165,15 +165,20 @@ async def chip(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/chipchebi.JPG', 'rb')
     markup.add('2. Алтын чеби')
+    video = 'BAACAgIAAxkBAAIRRWRDEFGKTdRzg7_h9zxsFqHTj6WZAAJOLQACXmgZSrBbFtMYyleULwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
-
+    await bot.send_video(chat_id=message.chat.id, video=video)
 
 @dp.message_handler(text='2. Алтын чеби')
 async def altyn(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('3. Кояш')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/altynchebi.PNG', 'rb')
+    video = 'BAACAgIAAxkBAAIRRmRDEXU-9LBVpZgxwrKQ442Ga4E4AAJULQACXmgZSvbFRyfYaVrGLwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
+    await bot.send_video(chat_id=message.chat.id, video=video)
 
 
 @dp.message_handler(text='3. Кояш')
@@ -181,7 +186,10 @@ async def koyash(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('4. Батыр')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/koyash.JPG', 'rb')
+    video = 'BAACAgIAAxkBAAIRR2RDEhXtthaSP-CjlmWOzUqu5euMAAJVLQACXmgZSg45y0MOQI1CLwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
+    await bot.send_video(chat_id=message.chat.id, video=video)
 
 
 @dp.message_handler(text='4. Батыр')
@@ -189,7 +197,10 @@ async def batyr(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('5. Блэк Татар')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/batyr.JPG', 'rb')
+    video = 'BAACAgIAAxkBAAIRSGRDErCXgVjC5fD9ZNvfTTVMnv_YAAJWLQACXmgZSjxRL2SJc2PQLwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
+    await bot.send_video(chat_id=message.chat.id, video=video)
 
 
 @dp.message_handler(text='5. Блэк Татар')
@@ -197,7 +208,10 @@ async def black_tatar(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('6. Су анасы')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/blacktatar.JPG', 'rb')
+    video = 'BAACAgIAAxkBAAIRSWRDFID8tO_yKEqdD87_VQYCsodhAAJXLQACXmgZSvlff7zUB-FSLwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
+    await bot.send_video(chat_id=message.chat.id, video=video)
 
 
 @dp.message_handler(text='6. Су анасы')
@@ -205,4 +219,7 @@ async def su_anasy(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать второе упражнение')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/suanasy.JPG', 'rb')
+    video = 'BAACAgIAAxkBAAIRSmRDF2Hg6D0qDT59vq8730VvIcg5AAJZLQACXmgZSvRmQnKMFNqXLwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
+    await bot.send_video(chat_id=message.chat.id, video=video)
