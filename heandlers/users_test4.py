@@ -370,8 +370,7 @@ async def two_2(call: types.CallbackQuery, state: FSMContext):
     if call.data == '2' or call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти второй тест заново')
-        await call.message.answer('Тест провален:\n'
-                                  'Все заново', reply_markup=markup)
+        await call.message.answer('Давай начнем сначала))', reply_markup=markup)
         await state.finish()
     elif call.data == '1':
         async with state.proxy() as data:
@@ -393,8 +392,7 @@ async def two_3(call: types.CallbackQuery, state: FSMContext):
     if call.data == '1' or call.data == '2':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти второй тест заново')
-        await call.message.answer('Тест провален:\n'
-                                  'Все заново', reply_markup=markup)
+        await call.message.answer('Давай начнем сначала))', reply_markup=markup)
         await state.finish()
     elif call.data == '3':
         async with state.proxy() as data:
@@ -416,8 +414,7 @@ async def two_4(call: types.CallbackQuery, state: FSMContext):
     if call.data == '1':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти второй тест заново')
-        await call.message.answer('Тест провален:\n'
-                                  'Все заново', reply_markup=markup)
+        await call.message.answer('Давай начнем сначала))', reply_markup=markup)
         await state.finish()
     elif call.data == '2':
         async with state.proxy() as data:
@@ -442,8 +439,7 @@ async def two_5(call: types.CallbackQuery, state: FSMContext):
     if call.data == '1' or call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти второй тест заново')
-        await call.message.answer('Тест провален:\n'
-                                  'Все заново', reply_markup=markup)
+        await call.message.answer('Давай начнем сначала))', reply_markup=markup)
         await state.finish()
     elif call.data == '2':
         async with state.proxy() as data:
@@ -465,8 +461,7 @@ async def two_6(call: types.CallbackQuery, state: FSMContext):
     if call.data == '2' or call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти второй тест заново')
-        await call.message.answer('Тест провален:\n'
-                                  'Все заново', reply_markup=markup)
+        await call.message.answer('Давай начнем сначала))', reply_markup=markup)
         await state.finish()
     elif call.data == '1':
         async with state.proxy() as data:
@@ -488,8 +483,7 @@ async def two_7(call: types.CallbackQuery, state: FSMContext):
     if call.data == '1' or call.data == '2':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Пройти второй тест заново')
-        await call.message.answer('Тест провален:\n'
-                                  'Все заново', reply_markup=markup)
+        await call.message.answer('Давай начнем сначала))', reply_markup=markup)
         await state.finish()
     elif call.data == '3':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
