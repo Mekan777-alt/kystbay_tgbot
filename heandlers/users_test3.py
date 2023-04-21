@@ -194,7 +194,7 @@ async def one_3(call: types.CallbackQuery, state: FSMContext):
                                          '\n'
                                          '1. 125 гр\n '
                                          '\n'
-                                         '2. 150 гр\n '
+                                         '2. 175 гр\n '
                                          '\n'
                                          '3. 180 гр',
                                          reply_markup=nmts_cb())
