@@ -140,7 +140,7 @@ async def lojka_vilka(message: types.Message, state: FSMContext):
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=video, reply_markup=markup)
         elif data['cafe'] in '4. Ямашева':
-            video = 'BAACAgIAAxkBAAIRQ2RCy8XVKBgFI4IoYj5MyNjB9qFAAAIUMAAC4CEYSrXFh9PGlNM6LwQ'
+            video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8432.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=video, reply_markup=markup)
         else:
