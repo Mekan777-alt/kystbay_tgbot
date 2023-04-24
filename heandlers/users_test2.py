@@ -71,9 +71,31 @@ async def apa(message: types.Message):
 @dp.message_handler(text='6. Ак барс')
 async def ak_bars(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Начать третье упражнение')
+    markup.add('7. Кыстыбый Бэлэкэч')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/photo_2023-04-10 13.37.27.jpeg', 'rb')
     video = 'BAACAgIAAxkBAAIRUGRDG3nI847qHVPiEODa_NImTTqLAAJhLQACXmgZSkDg7B6kOqyLLwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
+    await bot.send_video(chat_id=message.chat.id, video=video)
+
+
+@dp.message_handler(text='7. Кыстыбый Бэлэкэч')
+async def ak_bars(message: types.Message):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    markup.add('8. Кыстыбый с кашей')
+    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/photo_2023-04-24 20.59.45.jpeg', 'rb')
+    video = 'BAACAgIAAxkBAAIXCmRGwsTgGfKXeSZd2YbjwN3dmfLCAAJsKgACcUg4SocL6d6Ufe8oLwQ'
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
+    await bot.send_video(chat_id=message.chat.id, video=video)
+
+
+@dp.message_handler(text='8. Кыстыбый с кашей')
+async def ak_bars(message: types.Message):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    markup.add('Начать третье упражнение')
+    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/photo_2023-04-24 20.57.04.jpeg', 'rb')
+    video = ''
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
     await bot.send_video(chat_id=message.chat.id, video=video)
