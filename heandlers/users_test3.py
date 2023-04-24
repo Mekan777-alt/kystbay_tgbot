@@ -26,7 +26,7 @@ async def work_obor(message: types.Message):
 async def work_zagat(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Обзор холодильников')
-    video1 = open('/home/mekan_bot/kystbay_tgbot/kst_data/smetana.MP4', 'rb')
+    # video1 = open('/home/mekan_bot/kystbay_tgbot/kst_data/smetana.MP4', 'rb')
     video2 = open('/home/mekan_bot/kystbay_tgbot/kst_data/lapsha.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video1)
@@ -39,11 +39,11 @@ async def work_prod(message: types.Message, state: FSMContext):
     markup.add('Как держать зону кыстыбышника в чистоте.')
     async with state.proxy() as data:
         if data['cafe'] in '1. Парина':
-            file = 'BQACAgIAAxkBAAICrGQ0MhaHB_O3dcVvhnKs6UkDiENiAAJ4MQACTCigSUc0DdutDdukLwQ'
+            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8163.MOV', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=file, reply_markup=markup)
         elif data['cafe'] in '2. Пушкина':
-            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/obzholodpush.MP4', 'rb')
+            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8162.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         elif data['cafe'] in '3. Спарткавоская':
@@ -51,11 +51,11 @@ async def work_prod(message: types.Message, state: FSMContext):
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         elif data['cafe'] in '4. Ямашева':
-            doc = 'BQACAgIAAxkBAAICqmQ0MTCDOLmFgyqvp1ltqQnE_cy8AAJhMQACTCigSZl61jZzUevTLwQ'
+            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8164.MOV', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         elif data['cafe'] in '5. Куллахметова':
-            doc = 'BQACAgIAAxkBAAICq2Q0MevnSE2ciFyU2eA9Y_3jHVJgAAJzMQACTCigSTJG7Slu1wQOLwQ'
+            doc = 'BAACAgIAAxkBAAIXAWRGrLrlcsVvhkjYZjQnFy3OBrvhAALAKQACcUg4SiHPIgMXhS0aLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
