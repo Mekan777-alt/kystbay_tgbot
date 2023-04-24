@@ -47,7 +47,7 @@ async def work_prod(message: types.Message, state: FSMContext):
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         elif data['cafe'] in '3. Спарткавоская':
-            doc = 'BQACAgIAAxkBAAICqWQ0LVK5vUmXmuOKw8hR3cmdag3qAAIqMQACTCigSTlZFROorzUjLwQ'
+            doc = 'BAACAgIAAxkBAAIXAmRGrkDq-jLJJoZEbnLHSPIjyNFEAALKKQACcUg4Su2q2tbGQi3XLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         elif data['cafe'] in '4. Ямашева':
@@ -72,7 +72,7 @@ async def work_clean(message: types.Message):
 async def work_clean(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать четвертое упражнение')
-    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/obyazkst.MP4', 'rb')
+    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/Обязанности кыстыбышника.docx', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
 
