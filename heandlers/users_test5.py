@@ -24,9 +24,9 @@ async def open_smen(message: types.Message, state: FSMContext):
     markup.add('Как открывать и закрывать рабочую смену')
     async with state.proxy() as data:
         if data['cafe'] in '1. Парина':
-            # file = 'BQACAgIAAxkBAAICrGQ0MhaHB_O3dcVvhnKs6UkDiENiAAJ4MQACTCigSUc0DdutDdukLwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+            file = 'BAACAgIAAxkBAAIXA2RGsB4q93TazKwM_TMxK3--dbdhAALRKQACcUg4Sg8vUP2BcBMsLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
             await message.answer('тут материалы', reply_markup=markup)
         elif data['cafe'] in '2. Пушкина':
             # doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/obzholodpush.MP4', 'rb')
@@ -125,9 +125,9 @@ async def problem_kiosk(message: types.Message, state: FSMContext):
     markup.add('Включение ТВ, экрана выдачи заказа')
     async with state.proxy() as data:
         if data['cafe'] in '1. Парина':
-            # file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6011.MP4', 'rb')
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+            file = 'BAACAgIAAxkBAAIXBGRGscyG-1GOr24HUzQzAprrIYmcAALiKQACcUg4SmbSQuKCdzdsLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
             await message.answer('тут материалы', reply_markup=markup)
         elif data['cafe'] in '2. Пушкина':
             doc = 'BAACAgIAAxkBAAIFmWQ2xh-SgbsicEP7Ev921ahO8IKVAAKVKgACNCKwSRaPluEKh3NMLwQ'
@@ -155,10 +155,9 @@ async def vkl_vykl_tv(message: types.Message, state: FSMContext):
     markup.add('Регламент по уборке зала и туалетов')
     async with state.proxy() as data:
         if data['cafe'] in '1. Парина':
-            # file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6011.MP4', 'rb')
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
+            file = 'BAACAgIAAxkBAAIXBWRGsodH7K2QWyXBHozKlQSsxeX2AALqKQACcUg4SiN9bKaZI_53LwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
         elif data['cafe'] in '2. Пушкина':
             # doc = 'BAACAgIAAxkBAAIFmWQ2xh-SgbsicEP7Ev921ahO8IKVAAKVKgACNCKwSRaPluEKh3NMLwQ'
             # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
@@ -180,16 +179,37 @@ async def vkl_vykl_tv(message: types.Message, state: FSMContext):
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 @dp.message_handler(text='Регламент по уборке зала и туалетов')
-async def reglament_bathroom(message: types.Message):
+async def reglament_bathroom(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Обязанности кассира')
     photo7 = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_7095.JPG', 'rb')
     photo6 = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_7099.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo6)
-    await bot.send_photo(message.chat.id, photo=photo7, reply_markup=markup)
+    await bot.send_photo(message.chat.id, photo=photo7)
+    async with state.proxy() as data:
+        if data['cafe'] in '1. Парина':
+            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6272.MOV', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=file)
+        elif data['cafe'] in '2. Пушкина':
+            doc = 'BAACAgIAAxkBAAIXBmRGtBoyw2aE8Z4Faaz8v7IP9DbaAAL0KQACcUg4Skjc_yiGyR8bLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc)
+        elif data['cafe'] in '3. Спарткавоская':
+            doc = 'BAACAgIAAxkBAAIXB2RGtzztlbgqt-vbDWgL400Li7nCAAIOKgACcUg4SgFsUZePdPpJLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc)
+        elif data['cafe'] in '4. Ямашева':
+            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6195.MOV', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc)
+        elif data['cafe'] in '5. Куллахметова':
+            doc = 'BAACAgIAAxkBAAIXCGRGuCh5r3pDoWJXxtIt9diiNiWdAAIWKgACcUg4Sm0hBB5noDXELwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc)
     await message.answer("Молодец! Теперь ты умеешь открывать заведение. Настало время применить знания на практике. "
                          "Проинформируй своего руководителя об этом и отправь фотоотчет ему по открытию кассы, "
-                         "киосков, ТВ. Короче, красавчик, дерзай! ")
+                         "киосков, ТВ. Короче, красавчик, дерзай! ", reply_markup=markup)
 
 
 @dp.message_handler(text='Обязанности кассира')
