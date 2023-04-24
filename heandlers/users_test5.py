@@ -60,9 +60,9 @@ async def open_kassa(message: types.Message, state: FSMContext):
     markup.add('Проблемы в работе с кассой')
     async with state.proxy() as data:
         if data['cafe'] in '1. Парина':
-            # file = 'BQACAgIAAxkBAAICrGQ0MhaHB_O3dcVvhnKs6UkDiENiAAJ4MQACTCigSUc0DdutDdukLwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+            file = 'BAACAgIAAxkBAAIXCWRGutTc8Ej2R5W_gQraKj6UVGGJAAI2KgACcUg4Ss13vDebg5jKLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
             await message.answer('тут материалы', reply_markup=markup)
         elif data['cafe'] in '2. Пушкина':
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6117.MP4', 'rb')
@@ -125,7 +125,7 @@ async def problem_kiosk(message: types.Message, state: FSMContext):
     markup.add('Включение ТВ, экрана выдачи заказа')
     async with state.proxy() as data:
         if data['cafe'] in '1. Парина':
-            file = 'BAACAgIAAxkBAAIXBGRGscyG-1GOr24HUzQzAprrIYmcAALiKQACcUg4SmbSQuKCdzdsLwQ'
+            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6390.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=file, reply_markup=markup)
             await message.answer('тут материалы', reply_markup=markup)
@@ -250,15 +250,11 @@ async def script_kassa(message: types.Message):
 @dp.message_handler(text='Как решать конфликтные вопросы с гостями? Скрипт по отзывам.')
 async def konflikt_kassa(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Дополнительные обязанности кассира')
-    doc1 = open('/home/mekan_bot/kystbay_tgbot/kst_data/Скрипт по отзывам.docx', 'rb')
-    await bot.send_document(message.chat.id, document=doc1, reply_markup=markup)
-
-@dp.message_handler(text='Дополнительные обязанности кассира')
-async def bonus_kassa(message: types.Message):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Закрытие смены. Чек-лист закрытия')
-    await message.answer('тут материалы', reply_markup=markup)
+    doc1 = open('/home/mekan_bot/kystbay_tgbot/kst_data/Скрипт по отзывам.docx', 'rb')
+    doc2 = open('/home/mekan_bot/kystbay_tgbot/kst_data/', 'rb')
+    await bot.send_document(message.chat.id, document=doc1, reply_markup=markup)
+    await bot.send_document(message.chat.id, document=doc2, reply_markup=markup)
     await message.answer("Ярар, хеппи енд близок, а может и нет)))Хихихихииииии:D Все уже, заканчиваем. Почти))")
     await message.answer("Давай научимся закрывать смену. Администратор вечером сам закроет кассу, киоски и сделает "
                          "отчет по выручке дня, поэтому тебе нужно будет совместно с командой сдать чистую смену, "
