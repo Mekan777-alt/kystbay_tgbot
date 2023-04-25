@@ -27,13 +27,11 @@ async def open_smen(message: types.Message, state: FSMContext):
             file = 'BAACAgIAAxkBAAIXA2RGsB4q93TazKwM_TMxK3--dbdhAALRKQACcUg4Sg8vUP2BcBMsLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
         elif data['cafe'] in '2. Пушкина':
-            # doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/obzholodpush.MP4', 'rb')
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
-        elif data['cafe'] in '3. Спарткавоская':
+            doc = 'BAACAgIAAxkBAAIXWmRHpJeH3h-NVPZbdsHcpwz4JFXoAAKnLQACcUhASvnhV3yoOJFMLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+        elif data['cafe'] in '3. Спартаковская':
             doc = 'BAACAgIAAxkBAAIFlGQ2v53Qy38L0xDAtPdVU34jNvDMAAJaKgACNCKwSfOwXOYS3btyLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
@@ -63,12 +61,11 @@ async def open_kassa(message: types.Message, state: FSMContext):
             file = 'BAACAgIAAxkBAAIXCWRGutTc8Ej2R5W_gQraKj6UVGGJAAI2KgACcUg4Ss13vDebg5jKLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
         elif data['cafe'] in '2. Пушкина':
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6117.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-        elif data['cafe'] in '3. Спарткавоская':
+        elif data['cafe'] in '3. Спартаковская':
             doc = 'BAACAgIAAxkBAAIFlmQ2wxb1LiFMxrJ9LMGJ8cDu8OjrAAJ0KgACNCKwSRj4Ns4vHLhWLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
@@ -76,19 +73,19 @@ async def open_kassa(message: types.Message, state: FSMContext):
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6388.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
         elif data['cafe'] in '5. Куллахметова':
             doc = 'BAACAgIAAxkBAAIRRGRC1m7ENDAbLWMyd3FQXVPd-jBwAAJIMAAC4CEYSmPiHeD73wucLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
 
 
 @dp.message_handler(text='Проблемы в работе с кассой')
 async def problem_kassa(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Открытие киосков')
-    await message.answer('тут материалы', reply_markup=markup)
+    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6390.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Открытие киосков')
@@ -101,11 +98,10 @@ async def open_kiosk(message: types.Message, state: FSMContext):
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=file, reply_markup=markup)
         elif data['cafe'] in '2. Пушкина':
-            # doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6117.MP4', 'rb')
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
-        elif data['cafe'] in '3. Спарткавоская':
+            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6391.MP4', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+        elif data['cafe'] in '3. Спартаковская':
             doc = 'BAACAgIAAxkBAAIFmGQ2xFqpjJnW6RKg893lTkxJndgvAAKIKgACNCKwSQEtf5jXi3IVLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
@@ -133,7 +129,7 @@ async def problem_kiosk(message: types.Message, state: FSMContext):
             doc = 'BAACAgIAAxkBAAIFmWQ2xh-SgbsicEP7Ev921ahO8IKVAAKVKgACNCKwSRaPluEKh3NMLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-        elif data['cafe'] in '3. Спарткавоская':
+        elif data['cafe'] in '3. Спартаковская':
             # doc = 'BAACAgIAAxkBAAIFmGQ2xFqpjJnW6RKg893lTkxJndgvAAKIKgACNCKwSQEtf5jXi3IVLwQ'
             # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
@@ -163,11 +159,10 @@ async def vkl_vykl_tv(message: types.Message, state: FSMContext):
             # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
             await message.answer('тут материалы', reply_markup=markup)
-        elif data['cafe'] in '3. Спарткавоская':
-            # doc = 'BAACAgIAAxkBAAIFmGQ2xFqpjJnW6RKg893lTkxJndgvAAKIKgACNCKwSQEtf5jXi3IVLwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
+        elif data['cafe'] in '3. Спартаковская':
+            doc = 'BAACAgIAAxkBAAIXW2RHqZfLXt4kS_FyV36X580IneU2AALBLQACcUhAStvNRzVmta_bLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         elif data['cafe'] in '4. Ямашева':
             # doc = 'BAACAgIAAxkBAAIFl2Q2xDZ3xS60D7mgxRXXzcDEGaJZAAKEKgACNCKwSXxqt1knD9AKLwQ'
             # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
@@ -195,7 +190,7 @@ async def reglament_bathroom(message: types.Message, state: FSMContext):
             doc = 'BAACAgIAAxkBAAIXBmRGtBoyw2aE8Z4Faaz8v7IP9DbaAAL0KQACcUg4Skjc_yiGyR8bLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc)
-        elif data['cafe'] in '3. Спарткавоская':
+        elif data['cafe'] in '3. Спартаковская':
             doc = 'BAACAgIAAxkBAAIXB2RGtzztlbgqt-vbDWgL400Li7nCAAIOKgACcUg4SgFsUZePdPpJLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc)
@@ -275,11 +270,10 @@ async def close_work(message: types.Message, state: FSMContext):
             doc = 'BAACAgIAAxkBAAIFn2Q25k67BtvY8tSMMbxKr3LS48MaAALPLQACNCK4SXX1Kd0NCIR9LwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-        elif data['cafe'] in '3. Спарткавоская':
-            # doc = 'BAACAgIAAxkBAAIFmGQ2xFqpjJnW6RKg893lTkxJndgvAAKIKgACNCKwSQEtf5jXi3IVLwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
+        elif data['cafe'] in '3. Спартаковская':
+            doc = 'BAACAgIAAxkBAAIXXGRHqosockJCjdR4mpjYO_s8SiXrAALHLQACcUhASiBYn4pxtT7rLwQ'
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         elif data['cafe'] in '4. Ямашева':
             doc = 'BAACAgIAAxkBAAIFnWQ21T83g9MhwzksUKsP_0Hmp6MlAAJDLQACNCK4SdM3Q6-WqXfvLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)

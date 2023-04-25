@@ -36,7 +36,7 @@ async def cofe(message: types.Message, state: FSMContext):
     markup.add('Я ознакомился(ась), пошли дальше.')
     async with state.proxy() as data:
         print(data['cafe'])
-        if data['cafe'] in '3. Спарткавоская' or data['cafe'] in '1. Парина':
+        if data['cafe'] in '3. Спартаковская' or data['cafe'] in '1. Парина':
             file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=file, reply_markup=markup)
@@ -126,7 +126,7 @@ async def lojka_vilka(message: types.Message, state: FSMContext):
             video = open('/home/mekan_bot/kystbay_tgbot/kst_data/parinarashodmat.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-        elif data['cafe'] in '3. Спарткавоская':
+        elif data['cafe'] in '3. Спартаковская':
             video = 'BAACAgIAAxkBAAIRQmRCydKwcJf6XhtifJYwRCHoGw8xAAIIMAAC4CEYStVMDvMZM9LxLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=video, reply_markup=markup)
@@ -134,7 +134,6 @@ async def lojka_vilka(message: types.Message, state: FSMContext):
             video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5711.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-
         elif data['cafe'] in '5. Куллахметова':
             video = 'BAACAgIAAxkBAAIRQ2RCy8XVKBgFI4IoYj5MyNjB9qFAAAIUMAAC4CEYSrXFh9PGlNM6LwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
@@ -143,8 +142,6 @@ async def lojka_vilka(message: types.Message, state: FSMContext):
             video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8432.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-        else:
-            await message.answer('тут материалы', reply_markup=markup)
 
 
 @dp.message_handler(text='Чистота в зоне сборки')
@@ -374,41 +371,10 @@ async def sborka_2(message: types.Message):
 @dp.message_handler(text='Как подписывать крышки, крафт пакеты.')
 async def podpis(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Регламент по уборке кухни, зоны сборки')
+    markup.add('Тест по Второму уроку')
     file = 'BAACAgIAAxkBAAIDyGQ1d78lM5gsLTsFcMNVF4e8hZRpAAIDKQACOyawSdH8X58fdavfLwQ'
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-
-@dp.message_handler(text='Регламент по уборке кухни, зоны сборки')
-async def reglament(message: types.Message, state: FSMContext):
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Тест по Второму уроку')
-    async with state.proxy() as data:
-        if data['cafe'] in '1. Парина':
-            # file = 'BQACAgIAAxkBAAICrGQ0MhaHB_O3dcVvhnKs6UkDiENiAAJ4MQACTCigSUc0DdutDdukLwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
-        elif data['cafe'] in '2. Пушкина':
-            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5713.MP4', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-        elif data['cafe'] in '3. Спарткавоская':
-            # doc = 'BQACAgIAAxkBAAICqWQ0LVK5vUmXmuOKw8hR3cmdag3qAAIqMQACTCigSTlZFROorzUjLwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
-        elif data['cafe'] in '4. Ямашева':
-            # doc = 'BQACAgIAAxkBAAICqmQ0MTCDOLmFgyqvp1ltqQnE_cy8AAJhMQACTCigSZl61jZzUevTLwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова':
-            # doc = 'BQACAgIAAxkBAAICq2Q0MevnSE2ciFyU2eA9Y_3jHVJgAAJzMQACTCigSTJG7Slu1wQOLwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
-
     await message.answer("Поздравляю, ты прошел второй урок!.\n"
                          "Давай проверим как ты усвоил информацию.\n"
                          "Ладно, не переживай, это делается лишь для того, чтобы тебе было легче работать и кайфовать. "
