@@ -1,8 +1,7 @@
 from config import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardMarkup
-from context.context import UsersTest_1
+from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from buttons.buttons import nmts_cb
 
 
