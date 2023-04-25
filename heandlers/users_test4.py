@@ -47,7 +47,7 @@ async def cofe(message: types.Message, state: FSMContext):
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
             await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова':
+        elif data['cafe'] in '5. Кулахметова':
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/yamashkofe.JPG', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
             await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
@@ -133,7 +133,7 @@ async def lojka_vilka(message: types.Message, state: FSMContext):
             video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5711.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова':
+        elif data['cafe'] in '5. Кулахметова':
             video = 'BAACAgIAAxkBAAIRQ2RCy8XVKBgFI4IoYj5MyNjB9qFAAAIUMAAC4CEYSrXFh9PGlNM6LwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=video, reply_markup=markup)
@@ -320,7 +320,7 @@ async def coffee_razvod(message: types.Message, state: FSMContext):
             file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова' or data['cafe'] in '4. Ямашева':
+        elif data['cafe'] in '5. Кулахметова' or data['cafe'] in '4. Ямашева':
             file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6966.MOV', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=file, reply_markup=markup)

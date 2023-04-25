@@ -39,7 +39,7 @@ async def open_smen(message: types.Message, state: FSMContext):
             doc = 'BAACAgIAAxkBAAIFlWQ2wGh-TSGw2_wzIPsmjnhbCa-DAAJiKgACNCKwSb9ilm6KHdD7LwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова':
+        elif data['cafe'] in '5. Кулахметова':
             doc = 'BAACAgIAAxkBAAIFk2Q2v3QN6n5_BHnVvGsj7C7kgEuqAAJVKgACNCKwSXG6M9WOdspKLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
@@ -73,7 +73,7 @@ async def open_kassa(message: types.Message, state: FSMContext):
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6388.MP4', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова':
+        elif data['cafe'] in '5. Кулахметова':
             doc = 'BAACAgIAAxkBAAIRRGRC1m7ENDAbLWMyd3FQXVPd-jBwAAJIMAAC4CEYSmPiHeD73wucLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
@@ -109,7 +109,7 @@ async def open_kiosk(message: types.Message, state: FSMContext):
             doc = 'BAACAgIAAxkBAAIFl2Q2xDZ3xS60D7mgxRXXzcDEGaJZAAKEKgACNCKwSXxqt1knD9AKLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова':
+        elif data['cafe'] in '5. Кулахметова':
             # doc = 'BAACAgIAAxkBAAIFk2Q2v3QN6n5_BHnVvGsj7C7kgEuqAAJVKgACNCKwSXG6M9WOdspKLwQ'
             # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
@@ -139,7 +139,7 @@ async def problem_kiosk(message: types.Message, state: FSMContext):
             # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
             await message.answer('тут материалы', reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова':
+        elif data['cafe'] in '5. Кулахметова':
             doc = 'BAACAgIAAxkBAAIFmmQ2xw6ECYW1r2zVIQ6VqH2gHsR0AALgLAACNCK4ST3JnbwdjIb4LwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
@@ -168,7 +168,7 @@ async def vkl_vykl_tv(message: types.Message, state: FSMContext):
             # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
             await message.answer('тут материалы', reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова':
+        elif data['cafe'] in '5. Кулахметова':
             doc = 'BAACAgIAAxkBAAIFm2Q2yTb2cT19kEBnst1vlWX0GZz9AAL6LAACNCK4STfB9emIRty0LwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
@@ -198,7 +198,7 @@ async def reglament_bathroom(message: types.Message, state: FSMContext):
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6195.MOV', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc)
-        elif data['cafe'] in '5. Куллахметова':
+        elif data['cafe'] in '5. Кулахметова':
             doc = 'BAACAgIAAxkBAAIXCGRGuCh5r3pDoWJXxtIt9diiNiWdAAIWKgACcUg4Sm0hBB5noDXELwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc)
@@ -278,7 +278,7 @@ async def close_work(message: types.Message, state: FSMContext):
             doc = 'BAACAgIAAxkBAAIFnWQ21T83g9MhwzksUKsP_0Hmp6MlAAJDLQACNCK4SdM3Q6-WqXfvLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова':
+        elif data['cafe'] in '5. Кулахметова':
             doc = 'BAACAgIAAxkBAAIFnmQ22aoZglKWqTk_DL2LJzUZeDygAAJmLQACNCK4Sd8RrjxcJU6nLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)

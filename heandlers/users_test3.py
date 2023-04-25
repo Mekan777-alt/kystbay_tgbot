@@ -52,7 +52,7 @@ async def work_prod(message: types.Message, state: FSMContext):
             doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8164.MOV', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-        elif data['cafe'] in '5. Куллахметова':
+        elif data['cafe'] in '5. Кулахметова':
             doc = 'BAACAgIAAxkBAAIXAWRGrLrlcsVvhkjYZjQnFy3OBrvhAALAKQACcUg4SiHPIgMXhS0aLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)

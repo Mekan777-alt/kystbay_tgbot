@@ -53,7 +53,7 @@ async def i_undestand(message: types.Message):
     markup.add('2. Пушкина')
     markup.add('3. Спартаковская')
     markup.add('4. Ямашева')
-    markup.add('5. Куллахметова')
+    markup.add('5. Кулахметова')
     await UsersTest_1.cafe.set()
     await message.answer("Выбери свою точку", reply_markup=markup)
 
@@ -110,7 +110,7 @@ async def yamash(message: types.Message, state: FSMContext):
         await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
 
 
-@dp.message_handler(text='5. Куллахметова', state=UsersTest_1.cafe)
+@dp.message_handler(text='5. Кулахметова', state=UsersTest_1.cafe)
 async def kullah(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
