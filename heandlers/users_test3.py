@@ -26,7 +26,7 @@ async def work_obor(message: types.Message):
 async def work_zagat(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Обзор холодильников')
-    video2 = open('/home/mekan_bot/kystbay_tgbot/kst_data/lapsha.MP4', 'rb')
+    video2 = 'BAACAgIAAxkBAAIZAWRIFXs7kt1sqaCQrHer01y9aZA6AAJrMwACcUhASvFGPcbzv87ILwQ'
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video2, reply_markup=markup)
 
@@ -61,12 +61,12 @@ async def work_prod(message: types.Message, state: FSMContext):
 @dp.message_handler(text='Как держать зону кыстыбышника в чистоте.')
 async def work_clean(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add('Обязанности кыстыбшника.')
+    markup.add('Обязанности кыстыбышника')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/chistotakst.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
 
 
-@dp.message_handler(text='Обязанности кыстыбшника.')
+@dp.message_handler(text='Обязанности кыстыбышника')
 async def work_clean(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать четвертое упражнение')
