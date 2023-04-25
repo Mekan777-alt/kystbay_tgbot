@@ -35,7 +35,6 @@ async def cofe(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я ознакомился(ась), пошли дальше.')
     async with state.proxy() as data:
-        print(data['cafe'])
         if data['cafe'] in '3. Спартаковская' or data['cafe'] in '1. Парина':
             file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
