@@ -49,7 +49,9 @@ async def open_smen(message: types.Message, state: FSMContext):
 async def open_smen(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Открытие кассы и рабочей смены')
-    await message.answer('тут материалы', reply_markup=markup)
+    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/e7.mp4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Открытие кассы и рабочей смены')
@@ -110,10 +112,10 @@ async def open_kiosk(message: types.Message, state: FSMContext):
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         elif data['cafe'] in '5. Кулахметова':
-            # doc = 'BAACAgIAAxkBAAIFk2Q2v3QN6n5_BHnVvGsj7C7kgEuqAAJVKgACNCKwSXG6M9WOdspKLwQ'
-            # await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            # await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
+            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/открытие киосков.pptx', 'rb')
+            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
+            await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
+
 
 @dp.message_handler(text='Проблемы в работе с киосками')
 async def problem_kiosk(message: types.Message, state: FSMContext):
@@ -172,6 +174,7 @@ async def vkl_vykl_tv(message: types.Message, state: FSMContext):
             doc = 'BAACAgIAAxkBAAIFm2Q2yTb2cT19kEBnst1vlWX0GZz9AAL6LAACNCK4STfB9emIRty0LwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+
 
 @dp.message_handler(text='Регламент по уборке зала и туалетов')
 async def reglament_bathroom(message: types.Message, state: FSMContext):
@@ -300,4 +303,3 @@ async def chek_list(message: types.Message):
     await bot.send_document(message.chat.id, document=doc1, reply_markup=markup)
     await message.answer("КРАССАВИЧИК!\n"
                          "А теперь давай пройдем еще и аттестацию :) добью тебя сегодня =)", reply_markup=markup)
-
