@@ -1,7 +1,7 @@
 from config import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
-from aiogram.types import ReplyKeyboardMarkup
+from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from context.context import UsersTest_1
 from buttons.buttons import nmts_cb
 
@@ -95,7 +95,7 @@ async def ak_bars(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать третье упражнение')
     photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/photo_2023-04-24 20.57.04.jpeg', 'rb')
-    video = ''
+    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6914.MOV', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
     await bot.send_video(chat_id=message.chat.id, video=video)

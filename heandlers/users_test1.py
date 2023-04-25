@@ -51,7 +51,7 @@ async def i_undestand(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('1. Парина')
     markup.add('2. Пушкина')
-    markup.add('3. Спарткавоская')
+    markup.add('3. Спартаковская')
     markup.add('4. Ямашева')
     markup.add('5. Куллахметова')
     await UsersTest_1.cafe.set()
@@ -84,7 +84,7 @@ async def pushkina(message: types.Message, state: FSMContext):
         await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
 
 
-@dp.message_handler(text='3. Спарткавоская', state=UsersTest_1.cafe)
+@dp.message_handler(text='3. Спартаковская', state=UsersTest_1.cafe)
 async def spart(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
