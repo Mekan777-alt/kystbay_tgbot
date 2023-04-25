@@ -37,4 +37,3 @@ class UsersTest_1(StatesGroup):
     attestation_17 = State()
     attestation_18 = State()
     attestation_19 = State()
-    attestation_20 = State()

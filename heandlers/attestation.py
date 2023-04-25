@@ -81,130 +81,122 @@ async def att_4(message: types.Message, state: FSMContext):
 
 
 @dp.message_handler(state=UsersTest_1.attestation_5)
-async def att_5(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['attestation_5'] = message.text
-        await UsersTest_1.next()
-        await message.answer('Что входит в завтрак 4?')
-
-
-@dp.message_handler(state=UsersTest_1.attestation_6)
 async def att_6(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_6'] = message.text
+        data['attestation_5'] = message.text
         await UsersTest_1.next()
         await message.answer('Добавка доп сыр – сколько порции?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_7)
+@dp.message_handler(state=UsersTest_1.attestation_6)
 async def att_7(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_7'] = message.text
+        data['attestation_6'] = message.text
         await UsersTest_1.next()
         await message.answer('Как подают Кояшлы аш')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_8)
+@dp.message_handler(state=UsersTest_1.attestation_7)
 async def att_8(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_8'] = message.text
+        data['attestation_7'] = message.text
         await UsersTest_1.next()
         await message.answer('Зашел гость, последовательность обслуживания?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_9)
+@dp.message_handler(state=UsersTest_1.attestation_8)
 async def att_9(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_9'] = message.text
+        data['attestation_8'] = message.text
         await UsersTest_1.next()
         await message.answer('Как мы работаем с конфликтными ситуациями?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_10)
+@dp.message_handler(state=UsersTest_1.attestation_9)
 async def att_10(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_10'] = message.text
+        data['attestation_9'] = message.text
         await UsersTest_1.next()
         await message.answer('Ты на сборке, гость просит убрать стол?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_11)
+@dp.message_handler(state=UsersTest_1.attestation_10)
 async def att_11(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_11'] = message.text
+        data['attestation_10'] = message.text
         await UsersTest_1.next()
         await message.answer('Какие вторичные обязанности у кассира?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_12)
+@dp.message_handler(state=UsersTest_1.attestation_11)
 async def att_12(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_12'] = message.text
+        data['attestation_11'] = message.text
         await UsersTest_1.next()
         await message.answer('Гость заказал Ланч №2, чизкейк, манты. Какая будет расстановка на подносе?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_13)
+@dp.message_handler(state=UsersTest_1.attestation_12)
 async def att_13(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_13'] = message.text
+        data['attestation_12'] = message.text
         await UsersTest_1.next()
         await message.answer('Гость спрашивает, что в составе Булгура с курицей?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_14)
+@dp.message_handler(state=UsersTest_1.attestation_13)
 async def att_14(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_14'] = message.text
+        data['attestation_13'] = message.text
         await UsersTest_1.next()
         await message.answer('У гостя в заказе Комбо №5, булгур, уфтанма, капучино – последовательность сборки?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_15)
+@dp.message_handler(state=UsersTest_1.attestation_14)
 async def att_15(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_15'] = message.text
+        data['attestation_14'] = message.text
         await UsersTest_1.next()
         await message.answer('Сколько мл сгущенки наливается в соусничку?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_16)
+@dp.message_handler(state=UsersTest_1.attestation_15)
 async def att_16(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_16'] = message.text
+        data['attestation_15'] = message.text
         await UsersTest_1.next()
         await message.answer('Состав супа Токмач Ям?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_17)
+@dp.message_handler(state=UsersTest_1.attestation_16)
 async def att_17(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_17'] = message.text
+        data['attestation_16'] = message.text
         await UsersTest_1.next()
         await message.answer('Как собираем с собой доставку Ланч 2, Уфтанма?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_18)
+@dp.message_handler(state=UsersTest_1.attestation_17)
 async def att_18(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_18'] = message.text
+        data['attestation_17'] = message.text
         await UsersTest_1.next()
         await message.answer('Как часто проверяем (чистим) санузлы?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_19)
+@dp.message_handler(state=UsersTest_1.attestation_18)
 async def att_19(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['attestation_19'] = message.text
+        data['attestation_18'] = message.text
         await UsersTest_1.next()
         await message.answer('Как происходит закрытие смены?')
 
 
-@dp.message_handler(state=UsersTest_1.attestation_20)
+@dp.message_handler(state=UsersTest_1.attestation_19)
 async def att_20(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         markup = ReplyKeyboardRemove()
-        data['attestation_20'] = message.text
+        data['attestation_19'] = message.text
         await message.answer('"Поздравляю, ты прошел аттестацию! Теперь ты гордость нашей команды))"',
                              reply_markup=markup)
         await state.finish()

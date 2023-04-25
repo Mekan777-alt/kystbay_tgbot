@@ -252,7 +252,7 @@ async def konflikt_kassa(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Закрытие смены. Чек-лист закрытия')
     doc1 = open('/home/mekan_bot/kystbay_tgbot/kst_data/Скрипт по отзывам.docx', 'rb')
-    doc2 = open('/home/mekan_bot/kystbay_tgbot/kst_data/', 'rb')
+    doc2 = open('/home/mekan_bot/kystbay_tgbot/kst_data/Памятка возражения.pdf', 'rb')
     await bot.send_document(message.chat.id, document=doc1, reply_markup=markup)
     await bot.send_document(message.chat.id, document=doc2, reply_markup=markup)
     await message.answer("Ярар, хеппи енд близок, а может и нет)))Хихихихииииии:D Все уже, заканчиваем. Почти))")
@@ -294,7 +294,8 @@ async def close_work(message: types.Message, state: FSMContext):
 async def check_list(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Чек-лист по бытовой химии')
-    await message.answer('тут материалы', reply_markup=markup)
+    doc1 = open('/home/mekan_bot/kystbay_tgbot/kst_data/Чек-лист Закрытия1.docx', 'rb')
+    await bot.send_document(message.chat.id, document=doc1, reply_markup=markup)
 
 
 @dp.message_handler(text='Чек-лист по бытовой химии')
