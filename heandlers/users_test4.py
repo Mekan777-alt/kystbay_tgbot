@@ -258,7 +258,7 @@ async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 2')
     doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/telegram.mp4', 'rb')
-    await bot.send_video(message.chat.id, document=doc, reply_markup=markup)
+    await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Бокс 2')
@@ -266,14 +266,14 @@ async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 3')
     doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/t2.mp4', 'rb')
-    await bot.send_video(message.chat.id, document=doc, reply_markup=markup)
+    await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 @dp.message_handler(text='Бокс 3')
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 4')
     doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/t3.mp4', 'rb')
-    await bot.send_video(message.chat.id, document=doc, reply_markup=markup)
+    await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Бокс 4')
@@ -281,7 +281,7 @@ async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 5')
     doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/t4.mp4', 'rb')
-    await bot.send_video(message.chat.id, document=doc, reply_markup=markup)
+    await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Бокс 5')
@@ -289,7 +289,7 @@ async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 6')
     doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/t5.mp4', 'rb')
-    await bot.send_video(message.chat.id, document=doc, reply_markup=markup)
+    await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Бокс 6')
@@ -297,7 +297,7 @@ async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Разогрев блюд')
     doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/t6.mp4', 'rb')
-    await bot.send_video(message.chat.id, document=doc, reply_markup=markup)
+    await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
     await message.answer('Молодец, дружище!\n'
                          'Теперь ты изучил полный состав меню! Если тебе нужно будет вспомнить какое-нибудь блюдо, '
                          'ты сможешь всегда воспользоваться кнопкой в меню "поиск". \n'
