@@ -3,7 +3,6 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from context.context import UsersTest_1
-from buttons.buttons import nmts_cb
 
 works = []
 
@@ -23,14 +22,15 @@ async def command_name(message: types.Message, state: FSMContext):
         data['name'] = message.text
         works.append(message.text)
         await message.answer(f'Приятно познакомиться, {message.text}, посмотри приветсвенное видео '
-                ' с Основателем Кыстыбый - Назмутдинов Азатом и с руководителем сети Еленой Кофоновой', reply_markup=markup)
+                             ' с Основателем Кыстыбый - Назмутдинов Азатом и с руководителем сети Еленой Кофоновой',
+                             reply_markup=markup)
         video = "BAACAgIAAxkBAAMHZDAGxfiTTc-0WpjY1Kg0Kjz2tdQAArcxAAK0MYFJNbrtrYo39A8vBA"
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(chat_id=message.chat.id, video=video)
         await state.finish()
 
 
-@dp.message_handler(text='Начать обучение', state=None)
+@dp.message_handler(text='Начать обучение')
 async def start_education(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я понял(а), продолжим обучение.')
@@ -62,65 +62,55 @@ async def i_undestand(message: types.Message):
 async def parina(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['cafe'] = message.text
-        works.append(message.text)
-        await state.finish()
-        file = "BAACAgIAAxkBAAMGZDACavgOKYb2Uce9QCTW0aZvkh4AAqQxAAK0MYFJqvztuhQf-OgvBA"
-        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-        await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
+    works.append(message.text)
+    await state.finish()
+    file = "BAACAgIAAxkBAAMGZDACavgOKYb2Uce9QCTW0aZvkh4AAqQxAAK0MYFJqvztuhQf-OgvBA"
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
 
 
 @dp.message_handler(text='2. Пушкина', state=UsersTest_1.cafe)
 async def pushkina(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['cafe'] = message.text
-        works.append(message.text)
-        await state.finish()
-        file = "BAACAgIAAxkBAAMcZDAIzYEnZUnQt3nc8exVVmvrFz8AAsExAAK0MYFJ_o9QSoIF2xkvBA"
-        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-        await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
+    works.append(message.text)
+    await state.finish()
+    file = "BAACAgIAAxkBAAMcZDAIzYEnZUnQt3nc8exVVmvrFz8AAsExAAK0MYFJ_o9QSoIF2xkvBA"
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
 
 
 @dp.message_handler(text='3. Спартаковская', state=UsersTest_1.cafe)
 async def spart(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['cafe'] = message.text
-        works.append(message.text)
-        await state.finish()
-        file = "BAACAgIAAxkBAAIBP2QxqtK-k5NXmIZH-WS-sBoG7720AAJlKwACtHKRSfxxkjNzDs-uLwQ"
-        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-        await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
+    works.append(message.text)
+    await state.finish()
+    file = "BAACAgIAAxkBAAIBP2QxqtK-k5NXmIZH-WS-sBoG7720AAJlKwACtHKRSfxxkjNzDs-uLwQ"
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
 
 
 @dp.message_handler(text='4. Ямашева', state=UsersTest_1.cafe)
 async def yamash(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['cafe'] = message.text
-        works.append(message.text)
-        await state.finish()
-        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/yamash.MP4', 'rb')
-        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-        await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
+    works.append(message.text)
+    await state.finish()
+    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/yamash.MP4', 'rb')
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
 
 
 @dp.message_handler(text='5. Кулахметова', state=UsersTest_1.cafe)
 async def kullah(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['cafe'] = message.text
-        works.append(message.text)
-        await state.finish()
-        file = "BAACAgIAAxkBAAIBPmQxnIhXITqL8KthUK7nuf1Bs9a4AAL4KgACtHKRSR5fKtmcOj4ELwQ"
-        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-        await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
+    works.append(message.text)
+    await state.finish()
+    file = "BAACAgIAAxkBAAIBPmQxnIhXITqL8KthUK7nuf1Bs9a4AAL4KgACtHKRSR5fKtmcOj4ELwQ"
+    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+    await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
 
 
 @dp.message_handler(text='Я посмотрел(а), го дальше :)')
@@ -169,6 +159,7 @@ async def chip(message: types.Message):
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
     await bot.send_video(chat_id=message.chat.id, video=video)
+
 
 @dp.message_handler(text='2. Алтын чеби')
 async def altyn(message: types.Message):
