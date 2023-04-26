@@ -20,6 +20,7 @@ async def command_name(message: types.Message, state: FSMContext):
     markup.add('Начать обучение')
     async with state.proxy() as data:
         data['name'] = message.text
+        await UsersTest_1.next()
         await message.answer(f'Приятно познакомиться, {message.text}, посмотри приветсвенное видео '
                              ' с Основателем Кыстыбый - Назмутдинов Азатом и с руководителем сети Еленой Кофоновой',
                              reply_markup=markup)
