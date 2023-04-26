@@ -1,7 +1,7 @@
 import logging
 from config import dp, loop
-import heandlers
 from aiogram import executor
+import heandlers
 
 
 async def on_startup(dp):
