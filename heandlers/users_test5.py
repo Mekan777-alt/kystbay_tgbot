@@ -121,10 +121,9 @@ async def problem_kiosk(message: types.Message, state: FSMContext):
     markup.add('Включение ТВ, экрана выдачи заказа')
     async with state.proxy() as data:
         if data['cafe'] in '1. Парина':
-            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6390.MP4', 'rb')
+            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/kioskparin.MOV', 'rb')
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
             await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-            await message.answer('тут материалы', reply_markup=markup)
         elif data['cafe'] in '2. Пушкина':
             doc = 'BAACAgIAAxkBAAIFmWQ2xh-SgbsicEP7Ev921ahO8IKVAAKVKgACNCKwSRaPluEKh3NMLwQ'
             await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
