@@ -28,7 +28,7 @@ async def command_name(message: types.Message, state: FSMContext):
         await bot.send_video(chat_id=message.chat.id, video=video)
 
 
-@dp.message_handler(text='Начать обучение', state=None)
+@dp.message_handler(text='Начать обучение')
 async def start_education(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я понял(а), продолжим обучение.')
