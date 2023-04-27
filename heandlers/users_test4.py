@@ -4,6 +4,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from buttons.buttons import nmts_cb, nmts_cb2
 from context.context import UsersTest_1
+from .users_test1 import works
 
 
 @dp.message_handler(text='Приступить ко второму уроку.')
@@ -34,27 +35,26 @@ async def mircro(message: types.Message):
 async def cofe(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я ознакомился(ась), пошли дальше.')
-    async with state.proxy() as data:
-        if data['cafe'] in '3. Спартаковская':
-            file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-        elif data['cafe'] in '1. Парина':
-            file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-        elif data['cafe'] in '2. Пушкина':
-            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
-            await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
-        elif data['cafe'] in '4. Ямашева':
-            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
-            await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
-        elif data['cafe'] in '5. Кулахметова':
-            doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/yamashkofe.JPG', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
-            await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
+    if works['cafe'] in '3. Спартаковская':
+        file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+    elif works['cafe'] in '1. Парина':
+        file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+    elif works['cafe'] in '2. Пушкина':
+        doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
+        await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
+    elif works['cafe'] in '4. Ямашева':
+        doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
+        await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
+    elif works['cafe'] in '5. Кулахметова':
+        doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/yamashkofe.JPG', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
+        await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
 
 
 @dp.message_handler(text='Я ознакомился(ась), пошли дальше.')
@@ -124,27 +124,26 @@ async def sous(message: types.Message):
 async def lojka_vilka(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Чистота в зоне сборки')
-    async with state.proxy() as data:
-        if data['cafe'] in '1. Парина':
-            video = open('/home/mekan_bot/kystbay_tgbot/kst_data/parinarashodmat.MP4', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-        elif data['cafe'] in '3. Спартаковская':
-            video = 'BAACAgIAAxkBAAIRQmRCydKwcJf6XhtifJYwRCHoGw8xAAIIMAAC4CEYStVMDvMZM9LxLwQ'
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-        elif data['cafe'] in '2. Пушкина':
-            video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5711.MP4', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-        elif data['cafe'] in '5. Кулахметова':
-            video = 'BAACAgIAAxkBAAIRQ2RCy8XVKBgFI4IoYj5MyNjB9qFAAAIUMAAC4CEYSrXFh9PGlNM6LwQ'
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-        elif data['cafe'] in '4. Ямашева':
-            video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8432.MP4', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+    if works['cafe'] in '1. Парина':
+        video = open('/home/mekan_bot/kystbay_tgbot/kst_data/parinarashodmat.MP4', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+    elif works['cafe'] in '3. Спартаковская':
+        video = 'BAACAgIAAxkBAAIRQmRCydKwcJf6XhtifJYwRCHoGw8xAAIIMAAC4CEYStVMDvMZM9LxLwQ'
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+    elif works['cafe'] in '2. Пушкина':
+        video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5711.MP4', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+    elif works['cafe'] in '5. Кулахметова':
+        video = 'BAACAgIAAxkBAAIRQ2RCy8XVKBgFI4IoYj5MyNjB9qFAAAIUMAAC4CEYSrXFh9PGlNM6LwQ'
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+    elif works['cafe'] in '4. Ямашева':
+        video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8432.MP4', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=video, reply_markup=markup)
 
 
 @dp.message_handler(text='Чистота в зоне сборки')
@@ -325,15 +324,14 @@ async def razogrev(message: types.Message):
 async def coffee_razvod(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Расстановка заказа на подносе')
-    async with state.proxy() as data:
-        if data['cafe'] in '3. Спарткавоская' or data['cafe'] in '1. Парина' or data['cafe'] in '2. Пушкина':
-            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-        elif data['cafe'] in '5. Кулахметова' or data['cafe'] in '4. Ямашева':
-            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6966.MOV', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+    if works['cafe'] in '3. Спарткавоская' or works['cafe'] in '1. Парина' or works['cafe'] in '2. Пушкина':
+        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+    elif works['cafe'] in '5. Кулахметова' or works['cafe'] in '4. Ямашева':
+        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6966.MOV', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
 
 @dp.message_handler(text='Расстановка заказа на подносе')
@@ -346,20 +344,19 @@ async def rastanovka(message: types.Message):
 
 
 @dp.message_handler(text='Сборка в крафт пакете для доставки')
-async def sborka(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        if data['cafe'] != '3. Спарткавоская':
-            markup = ReplyKeyboardMarkup(resize_keyboard=True)
-            markup.add('Сборка садака')
-            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-        else:
-            markup = ReplyKeyboardMarkup(resize_keyboard=True)
-            markup.add('Как подписывать крышки, крафт пакеты.')
-            file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
-            await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-            await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+async def sborka(message: types.Message):
+    if works['cafe'] != '3. Спарткавоская':
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Сборка садака')
+        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+    else:
+        markup = ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add('Как подписывать крышки, крафт пакеты.')
+        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
 
 @dp.message_handler(text='Сборка садака')
