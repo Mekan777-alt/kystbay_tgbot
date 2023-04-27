@@ -151,7 +151,6 @@ async def vkl_vykl_tv(message: types.Message, state: FSMContext):
         doc = 'BAACAgIAAxkBAAIfE2RKkZdLMbumGmMJBbJMIzmIDP5nAAJPKwACGDBRSscpFyvfitJKLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-        await message.answer('тут материалы', reply_markup=markup)
     elif works['cafe'] in '3. Спартаковская':
         doc = 'BAACAgIAAxkBAAIXW2RHqZfLXt4kS_FyV36X580IneU2AALBLQACcUhAStvNRzVmta_bLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
