@@ -33,7 +33,7 @@ async def work_zagat(message: types.Message):
 
 
 @dp.message_handler(text='Обзор холодильников')
-async def work_prod(message: types.Message, state: FSMContext):
+async def work_prod(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как держать зону кыстыбышника в чистоте.')
     if works['cafe'] in '1. Парина':
@@ -72,7 +72,7 @@ async def work_clean(message: types.Message):
     markup.add('Начать четвертое упражнение')
     video = open('/home/mekan_bot/kystbay_tgbot/kst_data/Обязанности кыстыбышника.docx', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-    await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
+    await bot.send_document(chat_id=message.chat.id, document=video, reply_markup=markup)
 
 
 @dp.message_handler(text='Начать четвертое упражнение')

@@ -53,11 +53,11 @@ async def open_smen(message: types.Message):
 
 
 @dp.message_handler(text='Открытие кассы и рабочей смены')
-async def open_kassa(message: types.Message, state: FSMContext):
+async def open_kassa(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Проблемы в работе с кассой')
     if works['cafe'] in '1. Парина':
-        file = 'BAACAgIAAxkBAAIXCWRGutTc8Ej2R5W_gQraKj6UVGGJAAI2KgACcUg4Ss13vDebg5jKLwQ'
+        file = 'BAACAgIAAxkBAAImdGRLs0qwoD3i2d6PGjYTKJ_08om-AALtLAAClvtZShFr5qTYAhICLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
     elif works['cafe'] in '2. Пушкина':
