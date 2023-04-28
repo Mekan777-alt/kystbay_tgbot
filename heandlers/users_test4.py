@@ -52,7 +52,7 @@ async def cofe(message: types.Message):
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
     elif works['cafe'] in '5. Кулахметова':
-        doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/yamashkofe.JPG', 'rb')
+        doc = 'BAACAgIAAxkBAAImdmRLvedk1hhUwNXiAAEcTa9ks-DdNwACQC0AApb7WUpaZNg9AAFEJ7ovBA'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
 
