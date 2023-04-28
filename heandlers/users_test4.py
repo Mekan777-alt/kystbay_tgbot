@@ -47,10 +47,6 @@ async def cofe(message: types.Message):
         doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
-    if works['cafe'] in '3. Спартаковская':
-        file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
-        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-        await bot.send_video(message.chat.id, video=file, reply_markup=markup)
     elif works['cafe'] in '4. Ямашева':
         doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
