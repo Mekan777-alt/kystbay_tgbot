@@ -3,7 +3,6 @@ from config import dp
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
-from buttons.buttons import nmts_cb
 from context.context import UsersTest_1
 
 

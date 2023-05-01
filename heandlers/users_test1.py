@@ -3,8 +3,15 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from context.context import UsersTest_1
+from aiogram.utils import exceptions
 
 works = {}
+
+
+@dp.errors_handler(exception=exceptions.RetryAfter)
+async def exception_handler(update: types.Update, exception: exceptions.RetryAfter):
+    # Do something
+    return True
 
 
 @dp.message_handler(commands='start')
