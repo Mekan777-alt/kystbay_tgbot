@@ -16,6 +16,8 @@ async def exception_handler(update: types.Update, exception: exceptions.RetryAft
 
 @dp.message_handler(commands='start')
 async def start(message: types.Message):
+    print(works)
+    works.clear()
     await message.answer('Привет, друг! с тобой на связи KSTBOT, я обучу тебя всей работе в нашей компании. \n')
     await message.answer("Давай знакомиться, напиши как тебя зовут.")
     await UsersTest_1.name.set()
@@ -59,6 +61,7 @@ async def i_undestand(message: types.Message):
     markup.add('3. Спартаковская')
     markup.add('4. Ямашева')
     markup.add('5. Кулахметова')
+    print(works)
     await UsersTest_1.cafe.set()
     await message.answer("Выбери свою точку", reply_markup=markup)
 
