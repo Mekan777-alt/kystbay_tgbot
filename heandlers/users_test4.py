@@ -11,7 +11,7 @@ from .users_test1 import works
 async def lesson2(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Микроволновка')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/obyazsbor.docx', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/obyazsbor.docx', 'rb')
     await message.answer("Второй урок.\n"
                          "\n"
                          "Во втором уроке ты узнаешь все про зоны сборки, расстановку заказа, срок хранения, инвентарь "
@@ -27,7 +27,7 @@ async def lesson2(message: types.Message):
 async def mircro(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Кофемашина')
-    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/micro.JPG', 'rb')
+    photo = open('/root/bot/kystbay_tgbot/kst_data/micro.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
 
 
@@ -44,11 +44,11 @@ async def cofe(message: types.Message):
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
     elif works['cafe'] in '2. Пушкина':
-        doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
+        doc = open('/root/bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
     elif works['cafe'] in '4. Ямашева':
-        doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
+        doc = open('/root/bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
     elif works['cafe'] in '5. Кулахметова':
@@ -61,7 +61,7 @@ async def cofe(message: types.Message):
 async def continue_work(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Продолжить')
-    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/reg.pptx', 'rb')
+    file = open('/root/bot/kystbay_tgbot/kst_data/reg.pptx', 'rb')
     await message.answer("Пора научиться готовить продукты во фритюрнице, такие как нани, фри, наггетсы, сосиски. ")
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
     await bot.send_document(message.chat.id, document=file, reply_markup=markup)
@@ -80,11 +80,11 @@ async def tea(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как сделать лапшу')
     if works['cafe'] in '3. Спартаковская':
-        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/zavarkaspart.MP4', 'rb')
+        file = open('/root/bot/kystbay_tgbot/kst_data/zavarkaspart.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
     else:
-        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/chay.pptx', 'rb')
+        file = open('/root/bot/kystbay_tgbot/kst_data/chay.pptx', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=file, reply_markup=markup)
 
@@ -93,7 +93,7 @@ async def tea(message: types.Message):
 async def lapsha(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как сделать напитки: морс и компот')
-    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/lapsha.MP4', 'rb')
+    file = open('/root/bot/kystbay_tgbot/kst_data/lapsha.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
@@ -111,7 +111,7 @@ async def mors_compot(message: types.Message):
 async def zelen_lemon(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как заполнить сметану в соусничке')
-    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/zelen.MP4', 'rb')
+    file = open('/root/bot/kystbay_tgbot/kst_data/zelen.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
@@ -120,7 +120,7 @@ async def zelen_lemon(message: types.Message):
 async def sous(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как заполнить пространоство расходных материалов (ложки, вилки, сахар, перец, салфетки)')
-    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/smetana.MP4', 'rb')
+    file = open('/root/bot/kystbay_tgbot/kst_data/smetana.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
@@ -130,7 +130,7 @@ async def lojka_vilka(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Чистота в зоне сборки')
     if works['cafe'] in '1. Парина':
-        video = open('/home/mekan_bot/kystbay_tgbot/kst_data/parinarashodmat.MP4', 'rb')
+        video = open('/root/bot/kystbay_tgbot/kst_data/parinarashodmat.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
     elif works['cafe'] in '3. Спартаковская':
@@ -138,7 +138,7 @@ async def lojka_vilka(message: types.Message):
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
     elif works['cafe'] in '2. Пушкина':
-        video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5711.MP4', 'rb')
+        video = open('/root/bot/kystbay_tgbot/kst_data/IMG_5711.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
     elif works['cafe'] in '5. Кулахметова':
@@ -146,7 +146,7 @@ async def lojka_vilka(message: types.Message):
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
     elif works['cafe'] in '4. Ямашева':
-        video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8432.MP4', 'rb')
+        video = open('/root/bot/kystbay_tgbot/kst_data/IMG_8432.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
 
@@ -155,7 +155,7 @@ async def lojka_vilka(message: types.Message):
 async def sborka(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я усвоил(а), гоу дальше.')
-    photo10 = open('/home/mekan_bot/kystbay_tgbot/kst_data/chist.JPG', 'rb')
+    photo10 = open('/root/bot/kystbay_tgbot/kst_data/chist.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo10, reply_markup=markup)
 
 
@@ -180,7 +180,7 @@ async def go(message: types.Message):
 async def one_blude(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Вторые блюда: балеш "Эгоист", Булгур с курицей, манты, мясо по- татарски, пельмени "Кияу".')
-    photo5 = open('/home/mekan_bot/kystbay_tgbot/kst_data/pervyybluda.JPG', 'rb')
+    photo5 = open('/root/bot/kystbay_tgbot/kst_data/pervyybluda.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo5, reply_markup=markup)
 
 
@@ -189,7 +189,7 @@ async def two_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Завтраки: завтрак 1 "Иртэ", завтрак 2 "Тан", завтрак 3 "Тэртип", завтрак 4 "Кояш", "Тост с ветчиной и '
                'сыром","сырники","каша овсяная".')
-    photo9 = open('/home/mekan_bot/kystbay_tgbot/kst_data/vtorybluda.JPG', 'rb')
+    photo9 = open('/root/bot/kystbay_tgbot/kst_data/vtorybluda.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo9, reply_markup=markup)
 
 
@@ -199,7 +199,7 @@ async def two_blud(message: types.Message):
 async def morning_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Детское меню: "Куян Сет", кыстыбый "Бэлэкэч", детские пельмени, игрушка, сок.')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/zawtraki.pdf', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/zawtraki.pdf', 'rb')
     await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
 
 
@@ -208,7 +208,7 @@ async def kids_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Напитки: кофе "Латте", "Капучино", "Американо", "Чай Черный", "Чай Зеленый", "морс Облепиховый", '
                'компот "Ягодный", сок 0,2.')
-    photo2 = open('/home/mekan_bot/kystbay_tgbot/kst_data/detskoye.PNG', 'rb')
+    photo2 = open('/root/bot/kystbay_tgbot/kst_data/detskoye.PNG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo2, reply_markup=markup)
 
 
@@ -218,7 +218,7 @@ async def kids_blud(message: types.Message):
 async def water_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Десерты: "Ичмасам", "Маффин", "Меренговый рулет", "Тирамису", "Чак-чак", "Чизкейк".')
-    photo4 = open('/home/mekan_bot/kystbay_tgbot/kst_data/napitki.PNG', 'rb')
+    photo4 = open('/root/bot/kystbay_tgbot/kst_data/napitki.PNG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo4, reply_markup=markup)
 
 
@@ -226,7 +226,7 @@ async def water_blud(message: types.Message):
 async def des_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Салаты: салат "Уфтанма", салат "Летний".')
-    photo7 = open('/home/mekan_bot/kystbay_tgbot/kst_data/deserty.JPG', 'rb')
+    photo7 = open('/root/bot/kystbay_tgbot/kst_data/deserty.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo7, reply_markup=markup)
 
 
@@ -234,7 +234,7 @@ async def des_blud(message: types.Message):
 async def salat_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('СНЭКИ: "картофель фри", "Наггетсы Чеби 3 шт", "Нани очпочмак", "Крылышки-канат".')
-    photo6 = open('/home/mekan_bot/kystbay_tgbot/kst_data/salaty.JPG', 'rb')
+    photo6 = open('/root/bot/kystbay_tgbot/kst_data/salaty.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo6, reply_markup=markup)
 
 
@@ -242,7 +242,7 @@ async def salat_blud(message: types.Message):
 async def snek_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Выпечка: "Губадия", "Элеш", "Эчпочмак", "Балеш 1,5 кг".')
-    photo8 = open('/home/mekan_bot/kystbay_tgbot/kst_data/sneki.JPG', 'rb')
+    photo8 = open('/root/bot/kystbay_tgbot/kst_data/sneki.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo8, reply_markup=markup)
 
 
@@ -250,7 +250,7 @@ async def snek_blud(message: types.Message):
 async def belesh_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Полуфабрикаты: "Пельмени ПФ","Нани ПФ","Манты ПФ", " Наггетсы ПФ"')
-    photo10 = open('/home/mekan_bot/kystbay_tgbot/kst_data/vypechka.JPG', 'rb')
+    photo10 = open('/root/bot/kystbay_tgbot/kst_data/vypechka.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo10, reply_markup=markup)
 
 
@@ -258,7 +258,7 @@ async def belesh_blud(message: types.Message):
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 1')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/Полуфабрикаты новые цены январь.pdf', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/Полуфабрикаты новые цены январь.pdf', 'rb')
     await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
 
 
@@ -266,7 +266,7 @@ async def fabric_blud(message: types.Message):
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 2')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/telegram.mp4', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/telegram.mp4', 'rb')
     await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
@@ -274,7 +274,7 @@ async def fabric_blud(message: types.Message):
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 3')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/t2.mp4', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/t2.mp4', 'rb')
     await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
@@ -282,7 +282,7 @@ async def fabric_blud(message: types.Message):
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 4')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/t3.mp4', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/t3.mp4', 'rb')
     await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
@@ -290,7 +290,7 @@ async def fabric_blud(message: types.Message):
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 5')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/t4.mp4', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/t4.mp4', 'rb')
     await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
@@ -298,7 +298,7 @@ async def fabric_blud(message: types.Message):
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 6')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/t5.mp4', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/t5.mp4', 'rb')
     await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
 
 
@@ -306,7 +306,7 @@ async def fabric_blud(message: types.Message):
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Разогрев блюд')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/t6.mp4', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/t6.mp4', 'rb')
     await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
     await message.answer('Молодец, дружище!\n'
                          'Теперь ты изучил полный состав меню! Если тебе нужно будет вспомнить какое-нибудь блюдо, '
@@ -318,8 +318,8 @@ async def fabric_blud(message: types.Message):
 async def razogrev(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как сделать кофе')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/Разогрев блюд.pptx', 'rb')
-    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_7999.MOV', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/Разогрев блюд.pptx', 'rb')
+    video = open('/root/bot/kystbay_tgbot/kst_data/IMG_7999.MOV', 'rb')
     await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(message.chat.id, video=video, reply_markup=markup)
@@ -330,15 +330,15 @@ async def coffee_razvod(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Расстановка заказа на подносе')
     if works['cafe'] in '3. Спартаковская':
-        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
+        file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
     elif works['cafe'] in '1. Парина':
-        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
+        file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
     elif works['cafe'] in '2. Пушкина':
-        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
+        file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
     elif works['cafe'] in '4. Ямашева':
@@ -346,7 +346,7 @@ async def coffee_razvod(message: types.Message):
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
     elif works['cafe'] in '5. Кулахметова':
-        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/kulahkofe.MOV', 'rb')
+        file = open('/root/bot/kystbay_tgbot/kst_data/kulahkofe.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
@@ -365,13 +365,13 @@ async def sborka(message: types.Message):
     if works['cafe'] != '3. Спарткавоская':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Сборка садака')
-        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
+        file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
     else:
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Как подписывать крышки, крафт пакеты.')
-        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
+        file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 
@@ -380,7 +380,7 @@ async def sborka(message: types.Message):
 async def sborka_2(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как подписывать крышки, крафт пакеты.')
-    file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_5750.MP4', 'rb')
+    file = open('/root/bot/kystbay_tgbot/kst_data/IMG_5750.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(message.chat.id, video=file, reply_markup=markup)
 

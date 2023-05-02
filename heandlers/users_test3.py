@@ -18,7 +18,7 @@ async def continue__(message: types.Message):
 async def work_obor(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как делать заготовки.')
-    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/zonakyst.MP4', 'rb')
+    video = open('/root/bot/kystbay_tgbot/kst_data/zonakyst.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
 
@@ -37,11 +37,11 @@ async def work_prod(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как держать зону кыстыбышника в чистоте.')
     if works['cafe'] in '1. Парина':
-        file = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8163.MOV', 'rb')
+        file = open('/root/bot/kystbay_tgbot/kst_data/IMG_8163.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
     elif works['cafe'] in '2. Пушкина':
-        doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8162.MP4', 'rb')
+        doc = open('/root/bot/kystbay_tgbot/kst_data/IMG_8162.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
     elif works['cafe'] in '3. Спартаковская':
@@ -49,7 +49,7 @@ async def work_prod(message: types.Message):
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
     elif works['cafe'] in '4. Ямашева':
-        doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/IMG_8164.MOV', 'rb')
+        doc = open('/root/bot/kystbay_tgbot/kst_data/IMG_8164.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
     elif works['cafe'] in '5. Кулахметова':
@@ -62,7 +62,7 @@ async def work_prod(message: types.Message):
 async def work_clean(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Обязанности кыстыбышника')
-    photo = open('/home/mekan_bot/kystbay_tgbot/kst_data/chistotakst.JPG', 'rb')
+    photo = open('/root/bot/kystbay_tgbot/kst_data/chistotakst.JPG', 'rb')
     await bot.send_photo(message.chat.id, photo=photo, reply_markup=markup)
 
 
@@ -70,7 +70,7 @@ async def work_clean(message: types.Message):
 async def work_clean(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать четвертое упражнение')
-    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/Обязанности кыстыбышника.docx', 'rb')
+    video = open('/root/bot/kystbay_tgbot/kst_data/Обязанности кыстыбышника.docx', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_document(chat_id=message.chat.id, document=video, reply_markup=markup)
 
@@ -89,8 +89,8 @@ async def continue___(message: types.Message):
 async def akt_spis(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Стафф')
-    doc = open('/home/mekan_bot/kystbay_tgbot/kst_data/aktspis.xlsx', 'rb')
-    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/aktspisa.MP4', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/aktspis.xlsx', 'rb')
+    video = open('/root/bot/kystbay_tgbot/kst_data/aktspisa.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
     await bot.send_document(message.chat.id, document=doc)
@@ -100,7 +100,7 @@ async def akt_spis(message: types.Message):
 async def staff(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Рабочий чат')
-    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/staff.MP4', 'rb')
+    video = open('/root/bot/kystbay_tgbot/kst_data/staff.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
 
@@ -109,7 +109,7 @@ async def staff(message: types.Message):
 async def work_chat(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать тест к первому уроку')
-    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/char_rab.MP4', 'rb')
+    video = open('/root/bot/kystbay_tgbot/kst_data/char_rab.MP4', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
     await bot.send_chat_action(message.chat.id, ChatActions.TYPING)
