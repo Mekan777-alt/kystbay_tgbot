@@ -258,7 +258,7 @@ async def belesh_blud(message: types.Message):
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 1')
-    doc = open('/root/bot/kystbay_tgbot/Полуфабрикаты новые цены январь.pdf', 'rb')
+    doc = open('/root/bot/kystbay_tgbot/kst_data/Полуфабрикаты новые цены январь.pdf', 'rb')
     await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
 
 
