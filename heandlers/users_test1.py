@@ -46,7 +46,7 @@ async def start_education(message: types.Message):
                          'Приступим к первому уроку. Я предоставлю тебе материалы в PDF формате и видеороликах.\n'
                          'Для закрепления информации ты будешь проходить тесты.')
     await message.answer("Начнем с первой темы 'Внешний вид на рабочем месте'", reply_markup=markup)
-    video = open('/home/mekan_bot/kystbay_tgbot/kst_data/vneshniyvid.MP4', 'rb')
+    video = open('/root/bot/kystbay_tgbot/kst_data/vneshniyvid.MP4', 'rb')
     doc = open('/root/bot/kystbay_tgbot/kst_data/forma.pptx', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video)
