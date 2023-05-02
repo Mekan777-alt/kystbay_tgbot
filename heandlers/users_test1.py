@@ -16,8 +16,8 @@ async def exception_handler(update: types.Update, exception: exceptions.RetryAft
 
 @dp.message_handler(commands='start')
 async def start(message: types.Message):
-    print(works)
     works.clear()
+    works['id'] = message.chat.id
     await message.answer('Привет, друг! с тобой на связи KSTBOT, я обучу тебя всей работе в нашей компании. \n')
     await message.answer("Давай знакомиться, напиши как тебя зовут.")
     await UsersTest_1.name.set()

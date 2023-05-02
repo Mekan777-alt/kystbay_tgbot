@@ -35,23 +35,23 @@ async def mircro(message: types.Message):
 async def cofe(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я ознакомился(ась), пошли дальше.')
-    if works['cafe'] in '3. Спартаковская':
+    if works['cafe'] in '3. Спартаковская' and works['id'] in message.chat.id:
         file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '1. Парина':
+    elif works['cafe'] in '1. Парина' and works['id'] in message.chat.id:
         file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '2. Пушкина':
+    elif works['cafe'] in '2. Пушкина' and works['id'] in message.chat.id:
         doc = open('/root/bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
-    elif works['cafe'] in '4. Ямашева':
+    elif works['cafe'] in '4. Ямашева' and works['id'] in message.chat.id:
         doc = open('/root/bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
-    elif works['cafe'] in '5. Кулахметова':
+    elif works['cafe'] in '5. Кулахметова' and works['id'] in message.chat.id:
         doc = 'BAACAgIAAxkBAAImdmRLvedk1hhUwNXiAAEcTa9ks-DdNwACQC0AApb7WUpaZNg9AAFEJ7ovBA'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
@@ -79,7 +79,7 @@ async def con(message: types.Message):
 async def tea(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как сделать лапшу')
-    if works['cafe'] in '3. Спартаковская':
+    if works['cafe'] in '3. Спартаковская' and works['id'] in message.chat.id:
         file = open('/root/bot/kystbay_tgbot/kst_data/zavarkaspart.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
@@ -129,23 +129,23 @@ async def sous(message: types.Message):
 async def lojka_vilka(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Чистота в зоне сборки')
-    if works['cafe'] in '1. Парина':
+    if works['cafe'] in '1. Парина' and works['id'] in message.chat.id:
         video = open('/root/bot/kystbay_tgbot/kst_data/parinarashodmat.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-    elif works['cafe'] in '3. Спартаковская':
+    elif works['cafe'] in '3. Спартаковская' and works['id'] in message.chat.id:
         video = 'BAACAgIAAxkBAAIRQmRCydKwcJf6XhtifJYwRCHoGw8xAAIIMAAC4CEYStVMDvMZM9LxLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-    elif works['cafe'] in '2. Пушкина':
+    elif works['cafe'] in '2. Пушкина' and works['id'] in message.chat.id:
         video = open('/root/bot/kystbay_tgbot/kst_data/IMG_5711.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-    elif works['cafe'] in '5. Кулахметова':
+    elif works['cafe'] in '5. Кулахметова' and works['id'] in message.chat.id:
         video = 'BAACAgIAAxkBAAIRQ2RCy8XVKBgFI4IoYj5MyNjB9qFAAAIUMAAC4CEYSrXFh9PGlNM6LwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-    elif works['cafe'] in '4. Ямашева':
+    elif works['cafe'] in '4. Ямашева' and works['id'] in message.chat.id:
         video = open('/root/bot/kystbay_tgbot/kst_data/IMG_8432.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
@@ -329,23 +329,23 @@ async def razogrev(message: types.Message):
 async def coffee_razvod(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Расстановка заказа на подносе')
-    if works['cafe'] in '3. Спартаковская':
+    if works['cafe'] in '3. Спартаковская' and works['id'] in message.chat.id:
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '1. Парина':
+    elif works['cafe'] in '1. Парина' and works['id'] in message.chat.id:
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '2. Пушкина':
+    elif works['cafe'] in '2. Пушкина' and works['id'] in message.chat.id:
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '4. Ямашева':
+    elif works['cafe'] in '4. Ямашева' and works['id'] in message.chat.id:
         file = 'BAACAgIAAxkBAAImdWRLvFJ_8FrLzSgWRikclunPTDCjAAI3LQAClvtZSlO7t1aM7nE5LwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '5. Кулахметова':
+    elif works['cafe'] in '5. Кулахметова' and works['id'] in message.chat.id:
         file = open('/root/bot/kystbay_tgbot/kst_data/kulahkofe.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
