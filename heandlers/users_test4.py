@@ -48,8 +48,10 @@ async def cofe(message: types.Message):
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
     elif works['cafe'] in '4. Ямашева' and works['id'] in message.chat.id:
+        video = open('/root/bot/kystbay_tgbot/kst_data/chistkakofe.MP4', 'rb')
         doc = open('/root/bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
-        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=video)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
     elif works['cafe'] in '5. Кулахметова' and works['id'] in message.chat.id:
         doc = 'BAACAgIAAxkBAAImdmRLvedk1hhUwNXiAAEcTa9ks-DdNwACQC0AApb7WUpaZNg9AAFEJ7ovBA'
