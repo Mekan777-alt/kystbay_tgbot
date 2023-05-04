@@ -36,23 +36,23 @@ async def work_zagat(message: types.Message):
 async def work_prod(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как держать зону кыстыбышника в чистоте.')
-    if works['cafe'] in '1. Парина' and works['id'] in message.chat.id:
+    if works['cafe'] in '1. Парина' and works['id'] == message.chat.id:
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_8163.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '2. Пушкина' and works['id'] in message.chat.id:
+    elif works['cafe'] in '2. Пушкина' and works['id'] == message.chat.id:
         doc = open('/root/bot/kystbay_tgbot/kst_data/IMG_8162.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-    elif works['cafe'] in '3. Спартаковская' and works['id'] in message.chat.id:
+    elif works['cafe'] in '3. Спартаковская' and works['id'] == message.chat.id:
         doc = 'BAACAgIAAxkBAAIXAmRGrkDq-jLJJoZEbnLHSPIjyNFEAALKKQACcUg4Su2q2tbGQi3XLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-    elif works['cafe'] in '4. Ямашева' and works['id'] in message.chat.id:
+    elif works['cafe'] in '4. Ямашева' and works['id'] == message.chat.id:
         doc = open('/root/bot/kystbay_tgbot/kst_data/IMG_8164.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-    elif works['cafe'] in '5. Кулахметова' and works['id'] in message.chat.id:
+    elif works['cafe'] in '5. Кулахметова' and works['id'] == message.chat.id:
         doc = 'BAACAgIAAxkBAAIXAWRGrLrlcsVvhkjYZjQnFy3OBrvhAALAKQACcUg4SiHPIgMXhS0aLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
