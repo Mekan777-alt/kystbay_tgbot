@@ -82,8 +82,14 @@ async def problem_kassa(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Открытие киосков')
     doc = open('/root/bot/kystbay_tgbot/kst_data/IMG_6390.MP4', 'rb')
+    video = open('/root/bot/kystbay_tgbot/kst_data/qr.MP4', 'rb')
+    video_2 = 'BAACAgIAAxkBAAI9a2RXfmrRaDKRn9iENZzJjY5oua6kAAJMJQACliHBSo_aD8lQzTusLwQ'
+    video_3 = 'BAACAgIAAxkBAAI9bGRXfv9uPODYz3ftgC85iANdkFJgAAJPJQACliHBSq6288oBqL55LwQ'
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-    await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+    await bot.send_video(message.chat.id, video=doc)
+    await bot.send_video(message.chat.id, video=video)
+    await bot.send_video(message.chat.id, video=video_2)
+    await bot.send_video(message.chat.id, video=video_3, reply_markup=markup)
 
 
 @dp.message_handler(text='Открытие киосков')

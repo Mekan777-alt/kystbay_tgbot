@@ -105,8 +105,10 @@ async def yamash(message: types.Message, state: FSMContext):
     works['cafe'] = message.text
     await state.finish()
     file = open('/root/bot/kystbay_tgbot/kst_data/yamash.MP4', 'rb')
+    video = open('/root/bot/kystbay_tgbot/kst_data/podsobka.MOV', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-    await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
+    await bot.send_video(chat_id=message.chat.id, video=file)
+    await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
 
 
 @dp.message_handler(text='5. Кулахметова', state=UsersTest_1.cafe)
