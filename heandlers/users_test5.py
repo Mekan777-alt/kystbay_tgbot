@@ -176,6 +176,8 @@ async def reglament_bathroom(message: types.Message):
     markup.add('Обязанности кассира')
     photo7 = open('/root/bot/kystbay_tgbot/kst_data/IMG_7095.JPG', 'rb')
     photo6 = open('/root/bot/kystbay_tgbot/kst_data/IMG_7099.JPG', 'rb')
+    video = open('/root/bot/kystbay_tgbot/kst_data/уборказала.MOV', 'rb')
+    await bot.send_video(message.chat.id, video=video)
     await bot.send_photo(message.chat.id, photo=photo6)
     await bot.send_photo(message.chat.id, photo=photo7)
     if works['cafe'] in '1. Парина' and works['id'] == message.chat.id:
@@ -209,6 +211,26 @@ async def obyaz_kass(message: types.Message):
     markup.add('Нужные документы для кассира, как чек-лист, акт такси, график уборки туалета')
     doc = open('/root/bot/kystbay_tgbot/kst_data/Обязанности кассира.docx', 'rb')
     await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
+    if works['cafe'] in '1. Парина' and works['id'] == message.chat.id:
+        file = open('/root/bot/kystbay_tgbot/kst_data/parinavitrina.MP4', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=file)
+    elif works['cafe'] in '2. Пушкина' and works['id'] == message.chat.id:
+        doc = 'BAACAgIAAxkBAAI9cGRXhjzISNj78wqOchQCIOzu8kHIAAK8JQACliHBSrMLZxm6p15PLwQ'
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=doc)
+    elif works['cafe'] in '3. Спартаковская' and works['id'] == message.chat.id:
+        doc = open('/root/bot/kystbay_tgbot/kst_data/spartakvitrina.MOV', 'rb')
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=doc)
+    elif works['cafe'] in '4. Ямашева' and works['id'] == message.chat.id:
+        doc = 'BAACAgIAAxkBAAI9bmRXhHipphzhlRk2BeJYROT_I_32AAKnJQACliHBSgvoBNhAivqvLwQ'
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=doc)
+    elif works['cafe'] in '5. Кулахметова' and works['id'] == message.chat.id:
+        doc = 'BAACAgIAAxkBAAI9b2RXhaqkuiVJzhaKODx_hGMzXsQ8AAK0JQACliHBSp1AGZh6s6SeLwQ'
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(message.chat.id, video=doc)
 
 
 @dp.message_handler(text='Нужные документы для кассира, как чек-лист, акт такси, график уборки туалета')

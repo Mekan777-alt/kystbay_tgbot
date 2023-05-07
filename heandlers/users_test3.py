@@ -18,7 +18,7 @@ async def continue__(message: types.Message):
 async def work_obor(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как делать заготовки.')
-    video = open('/root/bot/kystbay_tgbot/kst_data/zonakyst.MP4', 'rb')
+    video = 'BAACAgIAAxkBAAI9bWRXghJYb0pOFwbh4w4SHiXHOVCwAAJ7JQACliHBSkr4XZXXT6JRLwQ'
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=video, reply_markup=markup)
 
@@ -192,7 +192,7 @@ async def one_3(call: types.CallbackQuery, state: FSMContext):
                                          '\n'
                                          '1. 125 гр\n '
                                          '\n'
-                                         '2. 175 гр\n '
+                                         '2. 170 гр\n '
                                          '\n'
                                          '3. 180 гр',
                                          reply_markup=nmts_cb())

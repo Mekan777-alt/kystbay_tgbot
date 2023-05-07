@@ -63,7 +63,7 @@ async def cofe(message: types.Message):
 async def continue_work(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Продолжить')
-    file = open('/root/bot/kystbay_tgbot/kst_data/reg.pptx', 'rb')
+    file = open('/root/bot/kystbay_tgbot/kst_data/регламент.pptx', 'rb')
     await message.answer("Пора научиться готовить продукты во фритюрнице, такие как нани, фри, наггетсы, сосиски. ")
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
     await bot.send_document(message.chat.id, document=file, reply_markup=markup)
@@ -260,7 +260,9 @@ async def belesh_blud(message: types.Message):
 async def fabric_blud(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Бокс 1')
+    video = 'BAACAgIAAxkBAAI9cWRXh4hLDhXGIEAnjJ4Q8fvcFGSWAALRJQACliHBSjTAJWYBgBgWLwQ'
     doc = open('/root/bot/kystbay_tgbot/kst_data/Полуфабрикаты новые цены январь.pdf', 'rb')
+    await bot.send_video(message.chat.id, video=video)
     await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
 
 
