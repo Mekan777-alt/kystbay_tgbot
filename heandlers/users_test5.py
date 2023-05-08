@@ -293,8 +293,10 @@ async def close_work(message: types.Message):
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
     elif works['cafe'] in '4. Ямашева' and works['id'] == message.chat.id:
         doc = 'BAACAgIAAxkBAAIFnWQ21T83g9MhwzksUKsP_0Hmp6MlAAJDLQACNCK4SdM3Q6-WqXfvLwQ'
+        video = open('/root/bot/kystbay_tgbot/kst_data/zakrytkuhni.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-        await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
+        await bot.send_video(message.chat.id, video=doc)
+        await bot.send_video(message.chat.id, video=video, reply_markup=markup)
     elif works['cafe'] in '5. Кулахметова' and works['id'] == message.chat.id:
         doc = 'BAACAgIAAxkBAAIFnmQ22aoZglKWqTk_DL2LJzUZeDygAAJmLQACNCK4Sd8RrjxcJU6nLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)

@@ -197,6 +197,7 @@ async def att_20(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         markup = ReplyKeyboardRemove()
         data['attestation_19'] = message.text
+
         works.clear()
         await message.answer('"Поздравляю, ты прошел аттестацию! Теперь ты гордость нашей команды))"',
                              reply_markup=markup)
