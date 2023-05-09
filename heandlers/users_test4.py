@@ -411,7 +411,7 @@ async def start_test_2(message: types.Message):
 @dp.message_handler(state=UsersTest_1.two_1)
 async def two_1(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
-        data['two_1'] = message.text
+        works['test2_1'] = message.text
         await UsersTest_1.next()
         await message.answer('Что входит в детский набор «Куян сет»\n'
                              '\n'
