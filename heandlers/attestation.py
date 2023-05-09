@@ -1,5 +1,5 @@
 import smtplib
-from config import dp
+from config import dp, sender, password
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
@@ -8,8 +8,8 @@ from .users_test1 import works
 
 
 async def send_mail(mail, text):
-    sender = ''
-    password = ''
+    sender = sender
+    password = password
     mail_lib = smtplib.SMTP_SSL('smtp.yandex.ru', 465)
     mail_lib.login(sender, password)
     msg = 'From: %s\r\nTo: %s\r\nContent-Type: text/plain; charset="utf-8"\r\nSubject: %s\r\n\r\n' % (
