@@ -8,8 +8,8 @@ from .users_test1 import works
 
 
 async def send_mail(mail, text):
-    sender = sender
-    password = password
+    sender = 'kstbhr@yandex.ru'
+    password = 'kstb1986!'
     mail_lib = smtplib.SMTP_SSL('smtp.yandex.ru', 465)
     mail_lib.login(sender, password)
     msg = 'From: %s\r\nTo: %s\r\nContent-Type: text/plain; charset="utf-8"\r\nSubject: %s\r\n\r\n' % (
@@ -178,6 +178,32 @@ async def att_19(message: types.Message):
 async def att_20(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardRemove()
     works['attestation_19'] = message.text
+    all_info = f"Имя {works['name']}\n" \
+               f"Точка {works['cafe']}\n" \
+               f"______________________\n" \
+               f"2 тест 1 ответ {works['test2_1']}\n" \
+               f"_________________________________\n" \
+               f"Аттестация:\n" \
+               f"1. {works['attestation_1']}\n" \
+               f"2. {works['attestation_2']}\n" \
+               f"3. {works['attestation_3']}\n" \
+               f"4. {works['attestation_4']}\n" \
+               f"5. {works['attestation_5']}\n" \
+               f"6. {works['attestation_6']}\n" \
+               f"7. {works['attestation_7']}\n" \
+               f"8. {works['attestation_8']}\n" \
+               f"9. {works['attestation_9']}\n" \
+               f"10. {works['attestation_10']}\n" \
+               f"11. {works['attestation_11']}\n" \
+               f"12. {works['attestation_12']}\n" \
+               f"13. {works['attestation_13']}\n" \
+               f"14. {works['attestation_14']}\n" \
+               f"15. {works['attestation_15']}\n" \
+               f"16. {works['attestation_16']}\n" \
+               f"17. {works['attestation_17']}\n" \
+               f"18. {works['attestation_18']}\n" \
+               f"19. {works['attestation_19']}\n"
+    await send_mail('HRtest@kstb.cafe', all_info)
     works.clear()
     await message.answer('"Поздравляю, ты прошел аттестацию! Теперь ты гордость нашей команды))"',
                          reply_markup=markup)
