@@ -1,4 +1,4 @@
-from config import dp, bot, db
+from config import dp, bot
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ChatActions
@@ -16,8 +16,6 @@ async def exception_handler(update: types.Update, exception: exceptions.RetryAft
 
 @dp.message_handler(commands='start')
 async def start(message: types.Message):
-    works.clear()
-    works['id'] = message.chat.id
     await message.answer('Привет, друг! с тобой на связи KSTBOT, я обучу тебя всей работе в нашей компании. \n')
     await message.answer("Давай знакомиться, напиши как тебя зовут.")
     await UsersTest_1.name.set()
@@ -27,20 +25,22 @@ async def start(message: types.Message):
 async def command_name(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать обучение')
-    works['name'] = message.text
-    await state.finish()
-    await message.answer(f'Приятно познакомиться, {message.text}, посмотри приветсвенное видео '
-                         ' с Основателем Кыстыбый - Назмутдинов Азатом и с руководителем сети Еленой Кофоновой',
-                         reply_markup=markup)
-    video = "BAACAgIAAxkBAAMHZDAGxfiTTc-0WpjY1Kg0Kjz2tdQAArcxAAK0MYFJNbrtrYo39A8vBA"
-    await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
-    await bot.send_video(chat_id=message.chat.id, video=video)
+    async with state.proxy() as data:
+        data['name'] = message.text
+        await UsersTest_1.next()
+        await message.answer(f'Приятно познакомиться, {message.text}, посмотри приветсвенное видео '
+                             ' с Основателем Кыстыбый - Назмутдинов Азатом и с руководителем сети Еленой Кофоновой',
+                             reply_markup=markup)
+        video = "BAACAgIAAxkBAAMHZDAGxfiTTc-0WpjY1Kg0Kjz2tdQAArcxAAK0MYFJNbrtrYo39A8vBA"
+        await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
+        await bot.send_video(chat_id=message.chat.id, video=video)
 
 
-@dp.message_handler(text='Начать обучение')
+@dp.message_handler(text='Начать обучение', state=UsersTest_1.next_cmd)
 async def start_education(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я понял(а), продолжим обучение.')
+    await UsersTest_1.next()
     await message.answer('Первый урок.\n'
                          '\n'
                          'Приступим к первому уроку. Я предоставлю тебе материалы в PDF формате и видеороликах.\n'
@@ -53,7 +53,7 @@ async def start_education(message: types.Message):
     await bot.send_document(message.chat.id, document=doc)
 
 
-@dp.message_handler(text='Я понял(а), продолжим обучение.')
+@dp.message_handler(text='Я понял(а), продолжим обучение.', state=UsersTest_1.next_cmd_2)
 async def i_undestand(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('1. Парина')

@@ -4,6 +4,8 @@ from aiogram.dispatcher.filters.state import StatesGroup, State
 class UsersTest_1(StatesGroup):
     name = State()
     cafe = State()
+    next_cmd = State()
+    next_cmd_2 = State()
     one_1 = State()
     one_2 = State()
     one_3 = State()
