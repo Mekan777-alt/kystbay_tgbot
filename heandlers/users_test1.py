@@ -1,4 +1,4 @@
-from config import dp, bot
+from config import dp, bot, db
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ChatActions
