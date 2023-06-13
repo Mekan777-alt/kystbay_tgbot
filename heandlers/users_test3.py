@@ -4,7 +4,6 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from buttons.buttons import nmts_cb, nmts_cb2
 from context.context import UsersTest_1
-from .users_test1 import works
 
 
 @dp.message_handler(text='Начать третье упражнение')
