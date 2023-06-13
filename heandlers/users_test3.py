@@ -1,9 +1,10 @@
-from config import dp, bot
+from config import dp, bot, db_link
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from buttons.buttons import nmts_cb, nmts_cb2
 from context.context import UsersTest_1
+import sqlite3
 
 
 @dp.message_handler(text='Начать третье упражнение')
