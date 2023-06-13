@@ -73,7 +73,9 @@ async def parina(message: types.Message, state: FSMContext):
     cursor = conn.cursor()
     cursor.execute("INSERT INTO users(chat_id, name, cafe)"
                    "VALUES (?, ?, ?)",
-                   message.chat.id, works['name'], works['cafe'])
+                   (message.chat.id, works['name'], works['cafe'],))
+    conn.commit()
+    conn.close()
     await state.finish()
     file = "BAACAgIAAxkBAAMGZDACavgOKYb2Uce9QCTW0aZvkh4AAqQxAAK0MYFJqvztuhQf-OgvBA"
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
