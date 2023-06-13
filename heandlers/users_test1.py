@@ -76,6 +76,7 @@ async def parina(message: types.Message, state: FSMContext):
                    (message.chat.id, works['name'], works['cafe'],))
     conn.commit()
     conn.close()
+    works.clear()
     await state.finish()
     file = "BAACAgIAAxkBAAMGZDACavgOKYb2Uce9QCTW0aZvkh4AAqQxAAK0MYFJqvztuhQf-OgvBA"
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
@@ -86,9 +87,16 @@ async def parina(message: types.Message, state: FSMContext):
 async def pushkina(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['cafe'] = message.text
-        await state.finish()
+    works['cafe'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO users(chat_id, name, cafe)"
+                   "VALUES (?, ?, ?)",
+                   (message.chat.id, works['name'], works['cafe'],))
+    conn.commit()
+    conn.close()
+    works.clear()
+    await state.finish()
     file = "BAACAgIAAxkBAAMcZDAIzYEnZUnQt3nc8exVVmvrFz8AAsExAAK0MYFJ_o9QSoIF2xkvBA"
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
@@ -98,9 +106,16 @@ async def pushkina(message: types.Message, state: FSMContext):
 async def spart(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['cafe'] = message.text
-        await state.finish()
+    works['cafe'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO users(chat_id, name, cafe)"
+                   "VALUES (?, ?, ?)",
+                   (message.chat.id, works['name'], works['cafe'],))
+    conn.commit()
+    conn.close()
+    works.clear()
+    await state.finish()
     file = "BAACAgIAAxkBAAIBP2QxqtK-k5NXmIZH-WS-sBoG7720AAJlKwACtHKRSfxxkjNzDs-uLwQ"
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
@@ -110,9 +125,16 @@ async def spart(message: types.Message, state: FSMContext):
 async def yamash(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['cafe'] = message.text
-        await state.finish()
+    works['cafe'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO users(chat_id, name, cafe)"
+                   "VALUES (?, ?, ?)",
+                   (message.chat.id, works['name'], works['cafe'],))
+    conn.commit()
+    conn.close()
+    await state.finish()
+    works.clear()
     file = open('/root/bot/kystbay_tgbot/kst_data/yamash.MP4', 'rb')
     video = open('/root/bot/kystbay_tgbot/kst_data/podsobka.MOV', 'rb')
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
@@ -124,9 +146,16 @@ async def yamash(message: types.Message, state: FSMContext):
 async def kullah(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я посмотрел(а), го дальше :)')
-    async with state.proxy() as data:
-        data['cafe'] = message.text
-        await state.finish()
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO users(chat_id, name, cafe)"
+                   "VALUES (?, ?, ?)",
+                   (message.chat.id, works['name'], works['cafe'],))
+    conn.commit()
+    conn.close()
+    works['cafe'] = message.text
+    await state.finish()
+    works.clear()
     file = "BAACAgIAAxkBAAIBPmQxnIhXITqL8KthUK7nuf1Bs9a4AAL4KgACtHKRSR5fKtmcOj4ELwQ"
     await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
     await bot.send_video(chat_id=message.chat.id, video=file, reply_markup=markup)
