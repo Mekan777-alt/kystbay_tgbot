@@ -17,6 +17,35 @@ def create_table():
             cafe TEXT);
         """
     )
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS answer(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            test2_1 TEXT,
+            at_1 TEXT,
+            at_2 TEXT,
+            at_3 TEXT,
+            at_4  TEXT,
+            at_5 TEXT,
+            at_6 TEXT,
+            at_7 TEXT,
+            at_8 TEXT,
+            at_9 TEXT,
+            at_10 TEXT,
+            at_11 TEXT,
+            at_12 TEXT,
+            at_13 TEXT,
+            at_14 TEXT,
+            at_15 TEXT,
+            at_16 TEXT,
+            at_17 TEXT,
+            at_18 TEXT,
+            at_19 TEXT,
+            FOREIGN KEY (user_id) REFERENCES users (id)
+        )
+        """
+    )
     conn.commit()
     conn.close()
 
