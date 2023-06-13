@@ -27,7 +27,7 @@ async def command_name(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Начать обучение')
     works['name'] = message.text
-    await UsersTest_1.next()
+    await state.finish()
     await message.answer(f'Приятно познакомиться, {message.text}, посмотри приветсвенное видео '
                          ' с Основателем Кыстыбый - Назмутдинов Азатом и с руководителем сети Еленой Кофоновой',
                          reply_markup=markup)
