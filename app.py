@@ -14,7 +14,7 @@ def create_table():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             chat_id TEXT,
             name TEXT, 
-            cafe TEXT,);
+            cafe TEXT);
         """
     )
     cursor.execute(
