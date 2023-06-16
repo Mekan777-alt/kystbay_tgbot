@@ -1,7 +1,7 @@
 from config import dp, bot
 from aiogram import types
 from aiogram.types import ReplyKeyboardMarkup, ChatActions
-
+from .users_test1 import works
 
 @dp.message_handler(text='Я красавчик(ца), идем дальше.')
 async def lesson3(message: types.Message):
