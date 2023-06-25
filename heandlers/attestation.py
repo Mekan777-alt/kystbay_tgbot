@@ -255,38 +255,33 @@ async def att_20(message: types.Message, state: FSMContext):
     cursor.execute("UPDATE users SET at_19=? WHERE chat_id=?", (str(message.text), message.chat.id))
     conn.commit()
     data = cursor.execute("SELECT * FROM users WHERE chat_id = ?", (message.chat.id, )).fetchone()
-    for i in data:
-        print(i)
-    name = cursor.execute("SELECT name FROM users WHERE chat_id = ?", (str(message.chat.id), )).fetchone()
-    cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id), )).fetchone()
-    test2_1 = cursor.execute("SELECT test2_1 FROM users WHERE chat_id = ?", (str(message.chat.id), )).fetchone()
-    all_info = f"Имя {name}\n" \
-               f"Точка {cafe}\n" \
+    for row in data:
+        all_info = f"Имя {row[2]}\n" \
+               f"Точка {row[3]}\n" \
                f"______________________\n" \
-               f"2 тест 1 ответ {test2_1}\n" \
+               f"2 тест 1 ответ {row[4]}\n" \
                f"_________________________________\n" \
                f"Аттестация:\n" \
-               f"1. {works['attestation_1']}\n" \
-               f"2. {works['attestation_2']}\n" \
-               f"3. {works['attestation_3']}\n" \
-               f"4. {works['attestation_4']}\n" \
-               f"5. {works['attestation_5']}\n" \
-               f"6. {works['attestation_6']}\n" \
-               f"7. {works['attestation_7']}\n" \
-               f"8. {works['attestation_8']}\n" \
-               f"9. {works['attestation_9']}\n" \
-               f"10. {works['attestation_10']}\n" \
-               f"11. {works['attestation_11']}\n" \
-               f"12. {works['attestation_12']}\n" \
-               f"13. {works['attestation_13']}\n" \
-               f"14. {works['attestation_14']}\n" \
-               f"15. {works['attestation_15']}\n" \
-               f"16. {works['attestation_16']}\n" \
-               f"17. {works['attestation_17']}\n" \
-               f"18. {works['attestation_18']}\n" \
-               f"19. {works['attestation_19']}\n"
-    await send_mail('HRtest@kstb.cafe', all_info)
-    works.clear()
+               f"1. {row[5]}\n" \
+               f"2. {row[6]}\n" \
+               f"3. {row[7]}\n" \
+               f"4. {row[8]}\n" \
+               f"5. {row[9]}\n" \
+               f"6. {row[10]}\n" \
+               f"7. {row[11]}\n" \
+               f"8. {row[12]}\n" \
+               f"9. {row[13]}\n" \
+               f"10. {row[14]}\n" \
+               f"11. {row[15]}\n" \
+               f"12. {row[16]}\n" \
+               f"13. {row[17]}\n" \
+               f"14. {row[18]}\n" \
+               f"15. {row[19]}\n" \
+               f"16. {row[20]}\n" \
+               f"17. {row[21]}\n" \
+               f"18. {row[22]}\n" \
+               f"19. {row[23]}\n"
+        await send_mail('mekan.mededov10@gmail.com', all_info)
     await message.answer('"Поздравляю, ты прошел аттестацию! Теперь ты гордость нашей команды))"',
                          reply_markup=markup)
     await state.finish()
