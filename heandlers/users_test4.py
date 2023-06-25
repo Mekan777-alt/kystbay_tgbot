@@ -433,7 +433,7 @@ async def start_test_2(message: types.Message):
 async def two_1(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET test2_1=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET test2_1=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Что входит в детский набор «Куян сет»\n'
                          '\n'

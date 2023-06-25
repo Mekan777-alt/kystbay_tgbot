@@ -53,16 +53,16 @@ async def st_att(message: types.Message):
 async def att_1(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_1=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_1=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Какая миссия компании КСТБ?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_2)
-async def att_2(message: types.Message, state: FSMContext):
+async def att_2(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_2=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_2=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Что входит в Комбо №3?')
 
@@ -71,7 +71,7 @@ async def att_2(message: types.Message, state: FSMContext):
 async def att_3(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_3=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_3=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Что такое губадия? эчпочмак?')
 
@@ -80,7 +80,7 @@ async def att_3(message: types.Message):
 async def att_4(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_4=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_4=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Завтрак 1? Название, состав')
 
@@ -89,7 +89,7 @@ async def att_4(message: types.Message):
 async def att_6(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_5=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_5=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Добавка доп сыр – сколько порции?')
 
@@ -98,7 +98,7 @@ async def att_6(message: types.Message):
 async def att_7(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_6=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_6=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Как подают Кояшлы аш')
 
@@ -107,7 +107,7 @@ async def att_7(message: types.Message):
 async def att_8(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_7=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_7=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Зашел гость, последовательность обслуживания?')
 
@@ -116,7 +116,7 @@ async def att_8(message: types.Message):
 async def att_9(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_8=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_8=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Как мы работаем с конфликтными ситуациями?')
 
@@ -125,7 +125,7 @@ async def att_9(message: types.Message):
 async def att_10(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_1=9", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_9=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Ты на сборке, гость просит убрать стол?')
 
@@ -134,7 +134,7 @@ async def att_10(message: types.Message):
 async def att_11(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_10=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_10=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Какие вторичные обязанности у кассира?')
 
@@ -143,7 +143,7 @@ async def att_11(message: types.Message):
 async def att_12(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_11=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_11=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Гость заказал Ланч №2, чизкейк, манты. Какая будет расстановка на подносе?')
 
@@ -152,7 +152,7 @@ async def att_12(message: types.Message):
 async def att_13(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_12=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_12=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Гость спрашивает, что в составе Булгура с курицей?')
 
@@ -161,7 +161,7 @@ async def att_13(message: types.Message):
 async def att_14(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_13=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_13=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('У гостя в заказе Комбо №5, булгур, уфтанма, капучино – последовательность сборки?')
 
@@ -170,7 +170,7 @@ async def att_14(message: types.Message):
 async def att_15(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_14=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_14=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Сколько мл сгущенки наливается в соусничку?')
 
@@ -179,7 +179,7 @@ async def att_15(message: types.Message):
 async def att_16(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_15=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_15=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Состав супа Токмач Ям?')
 
@@ -188,7 +188,7 @@ async def att_16(message: types.Message):
 async def att_17(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_16=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_16=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Как собираем с собой доставку Ланч 2, Уфтанма?')
 
@@ -197,7 +197,7 @@ async def att_17(message: types.Message):
 async def att_18(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_17=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_17=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Как часто проверяем (чистим) санузлы?')
 
@@ -206,7 +206,7 @@ async def att_18(message: types.Message):
 async def att_19(message: types.Message):
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_18=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_18=? WHERE chat_id=?", (str(message.text), message.chat.id))
     await UsersTest_1.next()
     await message.answer('Как происходит закрытие смены?')
 
@@ -216,7 +216,7 @@ async def att_20(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardRemove()
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("UPDATE users SET at_19=?", (str(message.text)), )
+    cursor.execute("UPDATE users SET at_19=? WHERE chat_id=?", (str(message.text), message.chat.id))
     name = cursor.execute("SELECT name FROM users WHERE chat_id = ?", (str(message.chat.id), )).fetchone()
     cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id), )).fetchone()
     test2_1 = cursor.execute("SELECT test2_1 FROM users WHERE chat_id = ?", (str(message.chat.id), )).fetchone()
