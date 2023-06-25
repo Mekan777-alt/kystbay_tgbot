@@ -39,6 +39,8 @@ async def work_prod(message: types.Message):
     cursor = conn.cursor()
     select_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
     cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    print(cafe[0])
+    print(select_id[0])
     if cafe[0] == '1. Парина' and select_id[0] == message.chat.id:
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_8163.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
