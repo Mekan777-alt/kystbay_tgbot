@@ -75,7 +75,7 @@ async def parina(message: types.Message, state: FSMContext):
     if chat_id:
         cursor.execute("UPDATE users SET cafe=?",
                        (
-                           works['cafe']
+                           works['cafe'],
                        ))
     else:
         cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7,"
@@ -104,7 +104,7 @@ async def pushkina(message: types.Message, state: FSMContext):
     if chat_id:
         cursor.execute("UPDATE users SET cafe=?",
                        (
-                           works['cafe']
+                           works['cafe'],
                        ))
     else:
         cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7,"
@@ -133,7 +133,7 @@ async def spart(message: types.Message, state: FSMContext):
     if chat_id:
         cursor.execute("UPDATE users SET cafe=?",
                        (
-                           works['cafe']
+                           works['cafe'],
                        ))
     else:
         cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7,"
@@ -162,7 +162,7 @@ async def yamash(message: types.Message, state: FSMContext):
     if chat_id:
         cursor.execute("UPDATE users SET cafe=?",
                        (
-                           works['cafe']
+                           works['cafe'],
                        ))
 
     else:
@@ -193,7 +193,7 @@ async def kullah(message: types.Message, state: FSMContext):
     if chat_id:
         cursor.execute("UPDATE users SET cafe=?",
                        (
-                           works['cafe']
+                           works['cafe'],
                        ))
     else:
         cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7,"
