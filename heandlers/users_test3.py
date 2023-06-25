@@ -37,27 +37,24 @@ async def work_prod(message: types.Message):
     markup.add('Как держать зону кыстыбышника в чистоте.')
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    select_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
     cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
-    print(cafe[0])
-    print(select_id[0])
     if cafe[0] == '1. Парина':
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_8163.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif cafe[0] == '2. Пушкина' and select_id[0] == message.chat.id:
+    elif cafe[0] == '2. Пушкина':
         doc = open('/root/bot/kystbay_tgbot/kst_data/IMG_8162.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-    elif cafe[0] == '3. Спартаковская' and select_id[0] == message.chat.id:
+    elif cafe[0] == '3. Спартаковская':
         doc = 'BAACAgIAAxkBAAIXAmRGrkDq-jLJJoZEbnLHSPIjyNFEAALKKQACcUg4Su2q2tbGQi3XLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-    elif cafe[0] == '4. Ямашева' and select_id[0] == message.chat.id:
+    elif cafe[0] == '4. Ямашева':
         doc = open('/root/bot/kystbay_tgbot/kst_data/IMG_8164.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
-    elif cafe[0] == '5. Кулахметова' and select_id[0] == message.chat.id:
+    elif cafe[0] == '5. Кулахметова':
         doc = 'BAACAgIAAxkBAAIXAWRGrLrlcsVvhkjYZjQnFy3OBrvhAALAKQACcUg4SiHPIgMXhS0aLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
