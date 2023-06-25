@@ -5,8 +5,6 @@ from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from buttons.buttons import nmts_cb, nmts_cb2
 from context.context import UsersTest_1
 import sqlite3
-from .users_test1 import works
-
 
 @dp.message_handler(text='Начать третье упражнение')
 async def continue__(message: types.Message):
@@ -41,8 +39,10 @@ async def work_prod(message: types.Message):
     cursor = conn.cursor()
     select_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),))
     select_id = select_id.fetchone()
+    print(select_id)
     cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id),))
     cafe = cafe.fetchone()
+    print(cafe)
     if cafe[0] in '1. Парина' and select_id[0] == message.chat.id:
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_8163.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
