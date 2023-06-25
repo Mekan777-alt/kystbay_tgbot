@@ -73,7 +73,7 @@ async def parina(message: types.Message, state: FSMContext):
     cursor = conn.cursor()
     chat_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
     if chat_id:
-        cursor.execute("UPDATE users SET cafe=?", (works['cafe'], ))
+        cursor.execute("UPDATE users SET cafe=? WHERE chat_id=?", (works['cafe'], message.chat.id))
     else:
         cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7,"
                        "at_8, at_9, at_10, at_11, at_12, at_13, at_14, at_15, at_16, at_17, at_18, at_19)"
@@ -99,7 +99,7 @@ async def pushkina(message: types.Message, state: FSMContext):
     cursor = conn.cursor()
     chat_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
     if chat_id:
-        cursor.execute("UPDATE users SET cafe=?", (works['cafe'], ))
+        cursor.execute("UPDATE users SET cafe=? WHERE chat_id=?", (works['cafe'], message.chat.id))
     else:
         cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7,"
                        "at_8, at_9, at_10, at_11, at_12, at_13, at_14, at_15, at_16, at_17, at_18, at_19)"
@@ -125,7 +125,7 @@ async def spart(message: types.Message, state: FSMContext):
     cursor = conn.cursor()
     chat_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
     if chat_id:
-        cursor.execute("UPDATE users SET cafe=?",(works['cafe'], ))
+        cursor.execute("UPDATE users SET cafe=? WHERE chat_id=?", (works['cafe'], message.chat.id))
     else:
         cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7,"
                        "at_8, at_9, at_10, at_11, at_12, at_13, at_14, at_15, at_16, at_17, at_18, at_19)"
@@ -151,7 +151,7 @@ async def yamash(message: types.Message, state: FSMContext):
     cursor = conn.cursor()
     chat_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
     if chat_id:
-        cursor.execute("UPDATE users SET cafe=?", (works['cafe'], ))
+        cursor.execute("UPDATE users SET cafe=? WHERE chat_id=?", (works['cafe'], message.chat.id))
 
     else:
         cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7,"
@@ -179,7 +179,7 @@ async def kullah(message: types.Message, state: FSMContext):
     cursor = conn.cursor()
     chat_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
     if chat_id:
-        cursor.execute("UPDATE users SET cafe=?", (works['cafe'], ))
+        cursor.execute("UPDATE users SET cafe=? WHERE chat_id=?", (works['cafe'], message.chat.id))
     else:
         cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7,"
                        "at_8, at_9, at_10, at_11, at_12, at_13, at_14, at_15, at_16, at_17, at_18, at_19)"
