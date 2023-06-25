@@ -37,37 +37,33 @@ async def work_prod(message: types.Message):
     markup.add('Как держать зону кыстыбышника в чистоте.')
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    select_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),))
-    select_id = select_id.fetchone()
-    print(select_id)
-    cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id),))
-    cafe = cafe.fetchone()
-    print(cafe)
-    if cafe[0] in '1. Парина' and select_id[0] == message.chat.id:
+    select_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if cafe[0] == '1. Парина' and select_id[0] == message.chat.id:
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_8163.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
         conn.commit()
         conn.close()
-    elif cafe[0] in '2. Пушкина' and select_id[0] == message.chat.id:
+    elif cafe[0] == '2. Пушкина' and select_id[0] == message.chat.id:
         doc = open('/root/bot/kystbay_tgbot/kst_data/IMG_8162.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         conn.commit()
         conn.close()
-    elif cafe[0] in '3. Спартаковская' and select_id[0] == message.chat.id:
+    elif cafe[0] == '3. Спартаковская' and select_id[0] == message.chat.id:
         doc = 'BAACAgIAAxkBAAIXAmRGrkDq-jLJJoZEbnLHSPIjyNFEAALKKQACcUg4Su2q2tbGQi3XLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         conn.commit()
         conn.close()
-    elif cafe[0] in '4. Ямашева' and select_id[0] == message.chat.id:
+    elif cafe[0] == '4. Ямашева' and select_id[0] == message.chat.id:
         doc = open('/root/bot/kystbay_tgbot/kst_data/IMG_8164.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
         conn.commit()
         conn.close()
-    elif cafe[0] in '5. Кулахметова' and select_id[0] == message.chat.id:
+    elif cafe[0] == '5. Кулахметова' and select_id[0] == message.chat.id:
         doc = 'BAACAgIAAxkBAAIXAWRGrLrlcsVvhkjYZjQnFy3OBrvhAALAKQACcUg4SiHPIgMXhS0aLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=doc, reply_markup=markup)
