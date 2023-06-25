@@ -256,6 +256,8 @@ async def att_20(message: types.Message, state: FSMContext):
     conn.commit()
     data = cursor.execute("SELECT * FROM users WHERE chat_id = ?", (message.chat.id, )).fetchone()
     for row in data:
+        print(row[0])
+        print(row[2])
         all_info = f"Имя {row[2]}\n" \
                f"Точка {row[3]}\n" \
                f"______________________\n" \
