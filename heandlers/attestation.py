@@ -256,8 +256,6 @@ async def att_20(message: types.Message, state: FSMContext):
     conn.commit()
     data = cursor.execute("SELECT * FROM users WHERE chat_id = ?", (message.chat.id, )).fetchall()
     for row in data:
-        print(row[0])
-        print(row[2])
         all_info = f"Имя {row[2]}\n" \
                f"Точка {row[3]}\n" \
                f"______________________\n" \
@@ -283,7 +281,7 @@ async def att_20(message: types.Message, state: FSMContext):
                f"17. {row[21]}\n" \
                f"18. {row[22]}\n" \
                f"19. {row[23]}\n"
-        await send_mail('mekan.mededov10@gmail.com', all_info)
+        await send_mail('HRtest@kstb.cafe', all_info)
     await message.answer('"Поздравляю, ты прошел аттестацию! Теперь ты гордость нашей команды))"',
                          reply_markup=markup)
     await state.finish()
