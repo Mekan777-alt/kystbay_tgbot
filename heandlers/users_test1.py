@@ -78,10 +78,12 @@ async def parina(message: types.Message, state: FSMContext):
                            works['cafe']
                        ))
     else:
-        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1)"
-                       "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,"
-                       "NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",
-                       (message.chat.id, works['name'], works['cafe'], ))
+        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7"
+                       "at_8, at_9, at_10, at_11, at_12, at_13, at_14, at_15, at_16, at_17, at_18, at_19)"
+                       "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                       (message.chat.id, works['name'], works['cafe'], 'null', 'null', 'null', 'null', 'null', 'null',
+                        'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null',
+                        'null', 'null'))
     conn.commit()
     conn.close()
     works.clear()
@@ -105,10 +107,12 @@ async def pushkina(message: types.Message, state: FSMContext):
                            works['cafe']
                        ))
     else:
-        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1)"
-                       "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,"
-                       "NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",
-                       (message.chat.id, works['name'], works['cafe'], ))
+        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7"
+                       "at_8, at_9, at_10, at_11, at_12, at_13, at_14, at_15, at_16, at_17, at_18, at_19)"
+                       "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                       (message.chat.id, works['name'], works['cafe'], 'null', 'null', 'null', 'null', 'null', 'null',
+                        'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null',
+                        'null', 'null'))
     conn.commit()
     conn.close()
     works.clear()
@@ -132,10 +136,12 @@ async def spart(message: types.Message, state: FSMContext):
                            works['cafe']
                        ))
     else:
-        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1)"
-                       "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,"
-                       "NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",
-                       (message.chat.id, works['name'], works['cafe'], ))
+        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7"
+                       "at_8, at_9, at_10, at_11, at_12, at_13, at_14, at_15, at_16, at_17, at_18, at_19)"
+                       "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                       (message.chat.id, works['name'], works['cafe'], 'null', 'null', 'null', 'null', 'null', 'null',
+                        'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null',
+                        'null', 'null'))
     conn.commit()
     conn.close()
     works.clear()
@@ -160,10 +166,12 @@ async def yamash(message: types.Message, state: FSMContext):
                        ))
 
     else:
-        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1)"
-                       "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,"
-                       "NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",
-                       (message.chat.id, works['name'], works['cafe'], ))
+        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7"
+                       "at_8, at_9, at_10, at_11, at_12, at_13, at_14, at_15, at_16, at_17, at_18, at_19)"
+                       "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                       (message.chat.id, works['name'], works['cafe'], 'null', 'null', 'null', 'null', 'null', 'null',
+                        'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null',
+                        'null', 'null'))
     conn.commit()
     conn.close()
     await state.finish()
@@ -188,10 +196,12 @@ async def kullah(message: types.Message, state: FSMContext):
                            works['cafe']
                        ))
     else:
-        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1)"
-                       "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,"
-                       "NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",
-                       (message.chat.id, works['name'], works['cafe'], ))
+        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1, at_1, at_2, at_3, at_4, at_5, at_6, at_7"
+                       "at_8, at_9, at_10, at_11, at_12, at_13, at_14, at_15, at_16, at_17, at_18, at_19)"
+                       "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                       (message.chat.id, works['name'], works['cafe'], 'null', 'null', 'null', 'null', 'null', 'null'
+                        'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null'
+                        'null', 'null'))
     conn.commit()
     conn.close()
     await state.finish()
