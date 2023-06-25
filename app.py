@@ -14,19 +14,12 @@ def create_table():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             chat_id TEXT,
             name TEXT, 
-            cafe TEXT);
-        """
-    )
-    cursor.execute(
-        """
-        CREATE TABLE IF NOT EXISTS answer(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id INTEGER,
+            cafe TEXT, 
             test2_1 TEXT,
             at_1 TEXT,
             at_2 TEXT,
             at_3 TEXT,
-            at_4  TEXT,
+            at_4 TEXT,
             at_5 TEXT,
             at_6 TEXT,
             at_7 TEXT,
@@ -41,9 +34,7 @@ def create_table():
             at_16 TEXT,
             at_17 TEXT,
             at_18 TEXT,
-            at_19 TEXT,
-            FOREIGN KEY (user_id) REFERENCES users (id)
-        )
+            at_19 TEXT);
         """
     )
     conn.commit()

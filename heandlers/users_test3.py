@@ -6,6 +6,7 @@ from buttons.buttons import nmts_cb, nmts_cb2
 from context.context import UsersTest_1
 import sqlite3
 
+
 @dp.message_handler(text='Начать третье упражнение')
 async def continue__(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)

@@ -1,10 +1,12 @@
-from config import dp, bot
+from config import dp, bot, db_link
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ChatActions
 from buttons.buttons import nmts_cb, nmts_cb2
 from context.context import UsersTest_1
 from .users_test1 import works
+import sqlite3
+
 
 @dp.message_handler(text='Приступить ко второму уроку.')
 async def lesson2(message: types.Message):
@@ -34,28 +36,32 @@ async def mircro(message: types.Message):
 async def cofe(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Я ознакомился(ась), пошли дальше.')
-    if works['cafe'] in '3. Спартаковская' and works['id'] == message.chat.id:
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if cafe[0] == '3. Спартаковская':
         file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '1. Парина' and works['id'] == message.chat.id:
+    elif cafe[0] == '1. Парина':
         file = 'BAACAgIAAxkBAAIBQGQylmOG2fb0r1GSdZHRsePFTneGAALWKwACtHKZSWdM81hyT_0jLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '2. Пушкина' and works['id'] == message.chat.id:
+    elif cafe[0] == '2. Пушкина':
         doc = open('/root/bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
-    elif works['cafe'] in '4. Ямашева' and works['id'] == message.chat.id:
+    elif cafe[0] == '4. Ямашева':
         video = open('/root/bot/kystbay_tgbot/kst_data/chistkakofe.MP4', 'rb')
         doc = open('/root/bot/kystbay_tgbot/kst_data/кофемашина.pptx', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
-    elif works['cafe'] in '5. Кулахметова' and works['id'] == message.chat.id:
+    elif cafe[0] == '5. Кулахметова':
         doc = 'BAACAgIAAxkBAAImdmRLvedk1hhUwNXiAAEcTa9ks-DdNwACQC0AApb7WUpaZNg9AAFEJ7ovBA'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=doc, reply_markup=markup)
+    conn.close()
 
 
 @dp.message_handler(text='Я ознакомился(ась), пошли дальше.')
@@ -80,7 +86,10 @@ async def con(message: types.Message):
 async def tea(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Как сделать лапшу')
-    if works['cafe'] in '3. Спартаковская' and works['id'] == message.chat.id:
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if cafe[0] == '3. Спартаковская':
         file = open('/root/bot/kystbay_tgbot/kst_data/zavarkaspart.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
@@ -88,6 +97,7 @@ async def tea(message: types.Message):
         file = open('/root/bot/kystbay_tgbot/kst_data/chay.pptx', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_DOCUMENT)
         await bot.send_document(message.chat.id, document=file, reply_markup=markup)
+    conn.close()
 
 
 @dp.message_handler(text='Как сделать лапшу')
@@ -130,26 +140,30 @@ async def sous(message: types.Message):
 async def lojka_vilka(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Чистота в зоне сборки')
-    if works['cafe'] in '1. Парина' and works['id'] == message.chat.id:
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if cafe[0] in '1. Парина':
         video = open('/root/bot/kystbay_tgbot/kst_data/parinarashodmat.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-    elif works['cafe'] in '3. Спартаковская' and works['id'] == message.chat.id:
+    elif cafe[0] in '3. Спартаковская':
         video = 'BAACAgIAAxkBAAIRQmRCydKwcJf6XhtifJYwRCHoGw8xAAIIMAAC4CEYStVMDvMZM9LxLwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-    elif works['cafe'] in '2. Пушкина' and works['id'] == message.chat.id:
+    elif cafe[0] in '2. Пушкина':
         video = open('/root/bot/kystbay_tgbot/kst_data/IMG_5711.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-    elif works['cafe'] in '5. Кулахметова' and works['id'] == message.chat.id:
+    elif cafe[0] in '5. Кулахметова':
         video = 'BAACAgIAAxkBAAIRQ2RCy8XVKBgFI4IoYj5MyNjB9qFAAAIUMAAC4CEYSrXFh9PGlNM6LwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
-    elif works['cafe'] in '4. Ямашева' and works['id'] == message.chat.id:
+    elif cafe[0] in '4. Ямашева':
         video = open('/root/bot/kystbay_tgbot/kst_data/IMG_8432.MP4', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=video, reply_markup=markup)
+    conn.close()
 
 
 @dp.message_handler(text='Чистота в зоне сборки')
@@ -332,26 +346,30 @@ async def razogrev(message: types.Message):
 async def coffee_razvod(message: types.Message):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add('Расстановка заказа на подносе')
-    if works['cafe'] in '3. Спартаковская' and works['id'] == message.chat.id:
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if cafe[0] == '3. Спартаковская':
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '1. Парина' and works['id'] == message.chat.id:
+    elif cafe[0] == '1. Парина':
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '2. Пушкина' and works['id'] == message.chat.id:
+    elif cafe[0] == '2. Пушкина':
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6963.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '4. Ямашева' and works['id'] == message.chat.id:
+    elif cafe[0] == '4. Ямашева':
         file = 'BAACAgIAAxkBAAImdWRLvFJ_8FrLzSgWRikclunPTDCjAAI3LQAClvtZSlO7t1aM7nE5LwQ'
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
-    elif works['cafe'] in '5. Кулахметова' and works['id'] == message.chat.id:
+    elif cafe[0] == '5. Кулахметова':
         file = open('/root/bot/kystbay_tgbot/kst_data/kulahkofe.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+    conn.close()
 
 
 @dp.message_handler(text='Расстановка заказа на подносе')
@@ -365,7 +383,10 @@ async def rastanovka(message: types.Message):
 
 @dp.message_handler(text='Сборка в крафт пакете для доставки')
 async def sborka(message: types.Message):
-    if works['cafe'] != '3. Спарткавоская':
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if cafe[0] != '3. Спарткавоская':
         markup = ReplyKeyboardMarkup(resize_keyboard=True)
         markup.add('Сборка садака')
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
@@ -377,6 +398,7 @@ async def sborka(message: types.Message):
         file = open('/root/bot/kystbay_tgbot/kst_data/IMG_6821.MOV', 'rb')
         await bot.send_chat_action(message.chat.id, ChatActions.UPLOAD_VIDEO)
         await bot.send_video(message.chat.id, video=file, reply_markup=markup)
+    conn.close()
 
 
 @dp.message_handler(text='Сборка садака')
@@ -408,17 +430,18 @@ async def start_test_2(message: types.Message):
 
 
 @dp.message_handler(state=UsersTest_1.two_1)
-async def two_1(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        works['test2_1'] = message.text
-        await UsersTest_1.next()
-        await message.answer('Что входит в детский набор «Куян сет»\n'
-                             '\n'
-                             '1. детское фри, кыстыбый «бэлэкэч», сок 0,2 либо компот, игрушка\n'
-                             '\n'
-                             '2. детское фри, кыстыбый «туган», сок 0,2 либо компот, игрушка\n'
-                             '\n'
-                             '3. детское фри, кыстыбый «бэлэкэч», сок 0,2 либо компот', reply_markup=nmts_cb())
+async def two_1(message: types.Message):
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET test2_1=?", (str(message.text)), )
+    await UsersTest_1.next()
+    await message.answer('Что входит в детский набор «Куян сет»\n'
+                         '\n'
+                         '1. детское фри, кыстыбый «бэлэкэч», сок 0,2 либо компот, игрушка\n'
+                         '\n'
+                         '2. детское фри, кыстыбый «туган», сок 0,2 либо компот, игрушка\n'
+                         '\n'
+                         '3. детское фри, кыстыбый «бэлэкэч», сок 0,2 либо компот', reply_markup=nmts_cb())
 
 
 @dp.callback_query_handler(text=['1', '2', '3'], state=UsersTest_1.two_2)

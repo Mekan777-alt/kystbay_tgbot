@@ -71,9 +71,17 @@ async def parina(message: types.Message, state: FSMContext):
     works['cafe'] = message.text
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users(chat_id, name, cafe)"
-                   "VALUES (?, ?, ?)",
-                   (message.chat.id, works['name'], works['cafe'],))
+    chat_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if chat_id:
+        cursor.execute("UPDATE users SET cafe=?",
+                       (
+                           works['cafe']
+                       ))
+    else:
+        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1)"
+                       "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,"
+                       "NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",
+                       (message.chat.id, works['name'], works['cafe'], ))
     conn.commit()
     conn.close()
     works.clear()
@@ -90,9 +98,17 @@ async def pushkina(message: types.Message, state: FSMContext):
     works['cafe'] = message.text
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users(chat_id, name, cafe)"
-                   "VALUES (?, ?, ?)",
-                   (message.chat.id, works['name'], works['cafe'],))
+    chat_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if chat_id:
+        cursor.execute("UPDATE users SET cafe=?",
+                       (
+                           works['cafe']
+                       ))
+    else:
+        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1)"
+                       "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,"
+                       "NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",
+                       (message.chat.id, works['name'], works['cafe'], ))
     conn.commit()
     conn.close()
     works.clear()
@@ -109,9 +125,17 @@ async def spart(message: types.Message, state: FSMContext):
     works['cafe'] = message.text
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users(chat_id, name, cafe)"
-                   "VALUES (?, ?, ?)",
-                   (message.chat.id, works['name'], works['cafe'],))
+    chat_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if chat_id:
+        cursor.execute("UPDATE users SET cafe=?",
+                       (
+                           works['cafe']
+                       ))
+    else:
+        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1)"
+                       "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,"
+                       "NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",
+                       (message.chat.id, works['name'], works['cafe'], ))
     conn.commit()
     conn.close()
     works.clear()
@@ -128,9 +152,18 @@ async def yamash(message: types.Message, state: FSMContext):
     works['cafe'] = message.text
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users(chat_id, name, cafe)"
-                   "VALUES (?, ?, ?)",
-                   (message.chat.id, works['name'], works['cafe'],))
+    chat_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if chat_id:
+        cursor.execute("UPDATE users SET cafe=?",
+                       (
+                           works['cafe']
+                       ))
+
+    else:
+        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1)"
+                       "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,"
+                       "NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",
+                       (message.chat.id, works['name'], works['cafe'], ))
     conn.commit()
     conn.close()
     await state.finish()
@@ -148,9 +181,17 @@ async def kullah(message: types.Message, state: FSMContext):
     markup.add('Я посмотрел(а), го дальше :)')
     conn = sqlite3.connect(db_link)
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users(chat_id, name, cafe)"
-                   "VALUES (?, ?, ?)",
-                   (message.chat.id, works['name'], works['cafe'],))
+    chat_id = cursor.execute("SELECT chat_id FROM users WHERE chat_id = ?", (str(message.chat.id),)).fetchone()
+    if chat_id:
+        cursor.execute("UPDATE users SET cafe=?",
+                       (
+                           works['cafe']
+                       ))
+    else:
+        cursor.execute("INSERT INTO users(chat_id, name, cafe, test2_1)"
+                       "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,"
+                       "NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)",
+                       (message.chat.id, works['name'], works['cafe'], ))
     conn.commit()
     conn.close()
     await state.finish()

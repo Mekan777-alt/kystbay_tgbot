@@ -1,10 +1,11 @@
 import smtplib
-from config import dp
+from config import dp, db_link
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from context.context import UsersTest_1
 from .users_test1 import works
+import sqlite3
 
 
 async def send_mail(mail, text):
@@ -50,126 +51,162 @@ async def st_att(message: types.Message):
 
 @dp.message_handler(state=UsersTest_1.attestation_1)
 async def att_1(message: types.Message):
-    works['attestation_1'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_1=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Какая миссия компании КСТБ?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_2)
-async def att_2(message: types.Message):
-    works['attestation_2'] = message.text
+async def att_2(message: types.Message, state: FSMContext):
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_2=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Что входит в Комбо №3?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_3)
 async def att_3(message: types.Message):
-    works['attestation_3'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_3=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Что такое губадия? эчпочмак?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_4)
 async def att_4(message: types.Message):
-    works['attestation_4'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_4=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Завтрак 1? Название, состав')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_5)
 async def att_6(message: types.Message):
-    works['attestation_5'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_5=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Добавка доп сыр – сколько порции?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_6)
 async def att_7(message: types.Message):
-    works['attestation_6'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_6=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Как подают Кояшлы аш')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_7)
 async def att_8(message: types.Message):
-    works['attestation_7'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_7=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Зашел гость, последовательность обслуживания?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_8)
 async def att_9(message: types.Message):
-    works['attestation_8'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_8=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Как мы работаем с конфликтными ситуациями?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_9)
 async def att_10(message: types.Message):
-    works['attestation_9'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_1=9", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Ты на сборке, гость просит убрать стол?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_10)
 async def att_11(message: types.Message):
-    works['attestation_10'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_10=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Какие вторичные обязанности у кассира?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_11)
 async def att_12(message: types.Message):
-    works['attestation_11'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_11=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Гость заказал Ланч №2, чизкейк, манты. Какая будет расстановка на подносе?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_12)
 async def att_13(message: types.Message):
-    works['attestation_12'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_12=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Гость спрашивает, что в составе Булгура с курицей?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_13)
 async def att_14(message: types.Message):
-    works['attestation_13'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_13=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('У гостя в заказе Комбо №5, булгур, уфтанма, капучино – последовательность сборки?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_14)
 async def att_15(message: types.Message):
-    works['attestation_14'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_14=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Сколько мл сгущенки наливается в соусничку?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_15)
 async def att_16(message: types.Message):
-    works['attestation_15'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_15=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Состав супа Токмач Ям?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_16)
 async def att_17(message: types.Message):
-    works['attestation_16'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_16=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Как собираем с собой доставку Ланч 2, Уфтанма?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_17)
 async def att_18(message: types.Message):
-    works['attestation_17'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_17=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Как часто проверяем (чистим) санузлы?')
 
 
 @dp.message_handler(state=UsersTest_1.attestation_18)
 async def att_19(message: types.Message):
-    works['attestation_18'] = message.text
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_18=?", (str(message.text)), )
     await UsersTest_1.next()
     await message.answer('Как происходит закрытие смены?')
 
@@ -177,11 +214,16 @@ async def att_19(message: types.Message):
 @dp.message_handler(state=UsersTest_1.attestation_19)
 async def att_20(message: types.Message, state: FSMContext):
     markup = ReplyKeyboardRemove()
-    works['attestation_19'] = message.text
-    all_info = f"Имя {works['name']}\n" \
-               f"Точка {works['cafe']}\n" \
+    conn = sqlite3.connect(db_link)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE users SET at_19=?", (str(message.text)), )
+    name = cursor.execute("SELECT name FROM users WHERE chat_id = ?", (str(message.chat.id), )).fetchone()
+    cafe = cursor.execute("SELECT cafe FROM users WHERE chat_id = ?", (str(message.chat.id), )).fetchone()
+    test2_1 = cursor.execute("SELECT test2_1 FROM users WHERE chat_id = ?", (str(message.chat.id), )).fetchone()
+    all_info = f"Имя {name}\n" \
+               f"Точка {cafe}\n" \
                f"______________________\n" \
-               f"2 тест 1 ответ {works['test2_1']}\n" \
+               f"2 тест 1 ответ {test2_1}\n" \
                f"_________________________________\n" \
                f"Аттестация:\n" \
                f"1. {works['attestation_1']}\n" \
