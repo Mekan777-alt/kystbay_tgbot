@@ -254,7 +254,7 @@ async def att_20(message: types.Message, state: FSMContext):
     cursor = conn.cursor()
     cursor.execute("UPDATE users SET at_19=? WHERE chat_id=?", (str(message.text), message.chat.id))
     conn.commit()
-    data = cursor.execute("SELECT * FROM users WHERE chat_id = ?", (message.chat.id, )).fetchone()
+    data = cursor.execute("SELECT * FROM users WHERE chat_id = ?", (message.chat.id, )).fetchall()
     for row in data:
         print(row[0])
         print(row[2])
